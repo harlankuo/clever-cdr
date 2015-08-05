@@ -98,6 +98,8 @@ public class PatientAdtResource {
 			logger.debug("*********  patientAdmission Inserted  ***********");
 			sqlSession.commit();
 			logger.debug("*********  SqlSession Commit  ***********");
+			integrationResult.setResultCode(integrationResult.SUCCESSCODE);
+			integrationResult.setResultDesc(integrationResult.SUCCESSDESC);
 		}catch(Exception e){
 			logger.error(e.toString());
 			integrationResult.setResultCode(integrationResult.INTERNALERROR);
