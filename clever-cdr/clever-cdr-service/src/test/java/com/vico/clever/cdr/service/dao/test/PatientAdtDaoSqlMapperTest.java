@@ -19,10 +19,9 @@ import com.vico.clever.cdr.service.model.PatientInfo;
 
 public class PatientAdtDaoSqlMapperTest {
 	protected final Logger logger =Logger.getLogger(this.getClass()) ;
-	//private ClassPathXmlApplicationContext context;
 	@Before
 	public void init(){
-		//context=new ClassPathXmlApplicationContext("com/zju/edu/integration/clever/config/SQLMapperConfig.xml");
+		
 	}
 	@Test
 	public void testPatientAdtDao(){
