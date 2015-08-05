@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.vico.clever.cdr</groupId>
+		<artifactId>clever-cdr</artifactId>
+		<version>0.0.1</version>
+	</parent>
+	<artifactId>clever-cdr-api</artifactId>
+	<packaging>war</packaging>
+	<name>clever-cdr-api</name>
+	<properties>
+		<servlet-api.version>3.1.0</servlet-api.version>
+		<jackson.version>2.2.1</jackson.version>
+		<tomcat.url>http://172.16.100.63:8080/manager/text</tomcat.url>
+		<jersey.version>2.19</jersey.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.glassfish.jersey</groupId>
+				<artifactId>jersey-bom</artifactId>
+				<version>${jersey.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet-core</artifactId>
+			<!-- use the following artifactId if you don't need servlet 2.x compatibility -->
+			<!-- artifactId>jersey-container-servlet</artifactId -->
+		</dependency>
+		<!-- uncomment this to get JSON support <dependency> <groupId>org.glassfish.jersey.media</groupId> 
+			<artifactId>jersey-media-moxy</artifactId> </dependency> -->
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+			<version>2.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.vico.clever.cdr</groupId>
+			<artifactId>clever-cdr-common</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.vico.clever.cdr</groupId>
+			<artifactId>clever-cdr-service</artifactId>
+			<version>0.0.1</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+					<url>${tomcat.url}</url>
+					<username>admin</username>
+					<password>admin</password>
+					<path>/${project.artifactId}</path>
+					<charset>${project.build.sourceEncoding}</charset>
+					<uriEncoding>${project.build.sourceEncoding}</uriEncoding>
+					<port>${server.port}</port>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
