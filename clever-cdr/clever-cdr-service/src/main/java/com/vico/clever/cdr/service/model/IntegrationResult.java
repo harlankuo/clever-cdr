@@ -33,4 +33,38 @@ public class IntegrationResult {
 	public void setResultDesc(String resultDesc) {
 		this.resultDesc = resultDesc;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + resultCode;
+		result = prime * result
+				+ ((resultDesc == null) ? 0 : resultDesc.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		IntegrationResult other = (IntegrationResult) obj;
+		if (resultCode != other.resultCode)
+			return false;
+		if (resultDesc == null) {
+			if (other.resultDesc != null)
+				return false;
+		} else if (!resultDesc.equals(other.resultDesc))
+			return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("IntegrationResult [resultCode=").append(resultCode)
+				.append(", resultDesc=").append(resultDesc).append("]");
+		return builder.toString();
+	}
 }

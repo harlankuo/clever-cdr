@@ -19,6 +19,7 @@ import com.vico.clever.cdr.service.entity.SQLSessionConfig;
 import com.vico.clever.cdr.service.model.IntegrationResult;
 import com.vico.clever.cdr.service.model.PatientAdmission;
 import com.vico.clever.cdr.service.model.PatientInfo;
+import com.vico.clever.cdr.service.service.PatientADTService;
 
 /**
  * Root resource (exposed at "patientAdt" path)
@@ -27,96 +28,35 @@ import com.vico.clever.cdr.service.model.PatientInfo;
 public class PatientAdtResource {
 
 	protected final Logger logger = Logger.getLogger(this.getClass());
-
+	private PatientADTService patientAdtService=new PatientADTService();;
 	@POST
-	@Path("/patientAdmission")
+	@Path("/patientADTA01")
 	@Produces({ MediaType.APPLICATION_XML })
 	public IntegrationResult insertPatientAdmission(
 			PatientAdmissionEntity patientAdmissionEntity) {
 		IntegrationResult integrationResult = new IntegrationResult();
-		logger.debug("*********  InsertPatientAdmission Start ***********");
-		SqlSession sqlSession = SQLSessionConfig.getSqlSessionFactory()
-				.openSession();
-		logger.debug("*********  SqlSession Open  ***********");
-		PatientAdtDao patientAdtDao = sqlSession.getMapper(PatientAdtDao.class);
-		try {
-			PatientInfo patientInfo = patientAdmissionEntity.getPatientInfo();
-			long i = patientAdtDao.insertPatientInfo(patientInfo);
-			logger.debug("*********  patientInfo Inserted  ***********");
-
-			PatientAdmission patientAdm = patientAdmissionEntity
-					.getPatientAdmission();
-
-			logger.debug("*********  patientAdmission Created  ***********");
-			logger.debug(patientAdm.toString());
-			long j = patientAdtDao.insertPatientAdmission(patientAdm);
-			logger.debug("*********  patientAdmission Inserted  ***********");
-			sqlSession.commit();
-			logger.debug("*********  SqlSession Commit  ***********");
-
-			integrationResult.setResultCode(integrationResult.SUCCESSCODE);
-			integrationResult.setResultDesc(integrationResult.SUCCESSDESC);
-		} catch (Exception e) {
-			logger.error(e.toString());
-			integrationResult.setResultCode(integrationResult.INTERNALERROR);
-			integrationResult.setResultDesc(integrationResult.INTERNALDESC
-					+ e.toString());
-			sqlSession.rollback();
-			logger.debug("*********  SqlSession Rollback  ***********");
-		} finally {
-			sqlSession.close();
-			logger.debug("*********  SqlSession Closed  ***********");
-		}
-		logger.debug("*********  InsertPatientAdmission End ***********");
+		PatientInfo patientInfo=patientAdmissionEntity.getPatientInfo();
+		PatientAdmission patientAdmission=patientAdmissionEntity.getPatientAdmission();
+		integrationResult=patientAdtService.insertPatientAndVisitInfo(patientInfo, patientAdmission);
 		return integrationResult;
 	}
 
 	@GET
 	@Path("/patientInfo")
 	@Produces({ MediaType.APPLICATION_XML })
-	public PatientInfo getPatientInfoByPatId(
+	public PatientInfo queryPatientInfoById(
 			@QueryParam("patientId") String patientId) {
-		logger.debug("*********  getPatientInfoByPatId Start ***********");
-		SqlSession sqlSession = SQLSessionConfig.getSqlSessionFactory()
-				.openSession();
-		logger.debug("*********  SqlSession Open  ***********");
-		PatientAdtDao patientAdtDao = sqlSession.getMapper(PatientAdtDao.class);
-		PatientInfo patientInfo = patientAdtDao.selectPatientInfo(patientId);
-		sqlSession.commit();
-		logger.debug("*********  SqlSession Commit  ***********");
-		sqlSession.close();
-		logger.debug("*********  SqlSession Close  ***********");
+		PatientInfo patientInfo=patientAdtService.getPatientInfoById(patientId);
 		return patientInfo;
 	}
 
 	@DELETE
 	@Path("/patientInfo")
 	@Produces({ MediaType.APPLICATION_XML })
-	public IntegrationResult deletePatientInfoById(
+	public IntegrationResult removePatientInfo(
 			@QueryParam("patientId") String patientId) {
 		IntegrationResult integrationResult = new IntegrationResult();
-		logger.debug("*********  deletePatientInfoById Start ***********");
-		SqlSession sqlSession = SQLSessionConfig.getSqlSessionFactory()
-				.openSession();
-		logger.debug("*********  SqlSession Open  ***********");
-		PatientAdtDao patientAdtDao = sqlSession.getMapper(PatientAdtDao.class);
-		try {
-			int i = patientAdtDao.deletPatInfoByPatId(patientId);
-			sqlSession.commit();
-			logger.debug("*********  SqlSession Commit  ***********");
-			integrationResult.setResultCode(integrationResult.SUCCESSCODE);
-			integrationResult.setResultDesc(integrationResult.SUCCESSDESC);
-		} catch (Exception e) {
-			logger.error(e.toString());
-			integrationResult.setResultCode(integrationResult.INTERNALERROR);
-			integrationResult.setResultDesc(integrationResult.INTERNALDESC
-					+ e.toString());
-			sqlSession.rollback();
-			logger.debug("*********  SqlSession Rollback  ***********");
-		} finally {
-			sqlSession.close();
-			logger.debug("*********  SqlSession Closed  ***********");
-		}
+		integrationResult=patientAdtService.deletePatientInfoById(patientId);
 		return integrationResult;
 	}
 
@@ -124,41 +64,9 @@ public class PatientAdtResource {
 	@Path("/patientInfo")
 	@Produces({ MediaType.APPLICATION_XML })
 	@Consumes({ MediaType.APPLICATION_XML })
-	public IntegrationResult updatePatiebtInfo(PatientInfo patientInfo) {
+	public IntegrationResult updatePatientInfo(PatientInfo patientInfo) {
 		IntegrationResult integrationResult = new IntegrationResult();
-		logger.debug("*********  deletePatientInfoById Start ***********");
-		SqlSession sqlSession = SQLSessionConfig.getSqlSessionFactory()
-				.openSession();
-		logger.debug("*********  SqlSession Open  ***********");
-		PatientAdtDao patientAdtDao = sqlSession.getMapper(PatientAdtDao.class);
-		try {
-			String patientId = patientInfo.getPatientID();
-			PatientInfo patientInfoExist = patientAdtDao
-					.selectPatientInfo(patientId);
-			if (patientInfoExist != null) {
-				int update = patientAdtDao.updatePatInfoByPatId(patientInfo);
-			} else {
-				int insert = patientAdtDao.insertPatientInfo(patientInfo);
-			}
-			sqlSession.commit();
-			logger.debug("*********  SqlSession Commit  ***********");
-
-			integrationResult.setResultCode(integrationResult.SUCCESSCODE);
-			integrationResult.setResultDesc(integrationResult.SUCCESSDESC);
-		} catch (Exception e) {
-			logger.error(e.toString());
-			integrationResult.setResultCode(integrationResult.INTERNALERROR);
-			integrationResult.setResultDesc(integrationResult.INTERNALDESC
-					+ e.toString());
-			integrationResult.setResultDesc(integrationResult.INTERNALDESC
-					+ e.toString());
-
-			sqlSession.rollback();
-			logger.debug("*********  SqlSession Rollback  ***********");
-		} finally {
-			sqlSession.close();
-			logger.debug("*********  SqlSession Closed  ***********");
-		}
+		integrationResult=patientAdtService.updatePatientInfoById(patientInfo);
 		return integrationResult;
 
 	}

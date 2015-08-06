@@ -288,10 +288,10 @@
 	<select id="selectPatientVisit" resultMap="PatientAdmissionMap">
 		select * from Admin_PatientAdmission where EncounterIdentifier_Id=#{visitID}
 	</select>
-	<delete id="deletPatInfoByPatId" parameterType="String" >
+	<delete id="deletePatInfoByPatId" parameterType="String" >
     	delete from Person_Patient  where PatientIdentifier_IdentifierMainData_Id=#{patientID} 
   	</delete>
-  	<delete id="deletPatVisitByVisitId" parameterType="String" >
+  	<delete id="deletePatVisitByVisitId" parameterType="String" >
     	delete from Admin_PatientAdmission  where EncounterIdentifier_Id=#{visitID};
   	</delete>
   	<update id="updatePatInfoByPatId" parameterType="com.vico.clever.cdr.service.model.PatientInfo" >

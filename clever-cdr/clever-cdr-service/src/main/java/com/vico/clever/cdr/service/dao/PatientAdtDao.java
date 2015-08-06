@@ -14,9 +14,9 @@ public interface PatientAdtDao {
 	
 	public PatientAdmission selectPatientVisit(String visitId);
 	
-	public int deletPatInfoByPatId(String patientId);
+	public int deletePatInfoByPatId(String patientId);
 	
-	public int deletPatVisitByVisitId(String visitId);
+	public int deletePatVisitByVisitId(String visitId);
 	
 	public int updatePatInfoByPatId(PatientInfo patientInfo);
 	
