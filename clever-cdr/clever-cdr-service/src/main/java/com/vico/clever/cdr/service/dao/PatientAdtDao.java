@@ -1,15 +1,25 @@
 package com.vico.clever.cdr.service.dao;
 
-import org.springframework.stereotype.Repository;
-
 import com.vico.clever.cdr.service.model.PatientAdmission;
 import com.vico.clever.cdr.service.model.PatientInfo;
 
-@Repository("patientAdtDao")
+
 public interface PatientAdtDao {
 	
-	public long insertPatientInfo(PatientInfo patientInfo);
+	public int insertPatientInfo(PatientInfo patientInfo);
 	
-	public long insertPatientAdmission(PatientAdmission patientAdmission);
+	public int insertPatientAdmission(PatientAdmission patientAdmission);
+	
+	public PatientInfo selectPatientInfo(String patientId);
+	
+	public PatientAdmission selectPatientVisit(String visitId);
+	
+	public int deletPatInfoByPatId(String patientId);
+	
+	public int deletPatVisitByVisitId(String visitId);
+	
+	public int updatePatInfoByPatId(PatientInfo patientInfo);
+	
+	public int updatePatVisitInfo(PatientAdmission patientAdmission);
 
 }
