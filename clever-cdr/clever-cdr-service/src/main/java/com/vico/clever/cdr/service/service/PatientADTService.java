@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import com.vico.clever.cdr.service.dao.PatientAdtDao;
 import com.vico.clever.cdr.service.entity.SQLSessionConfig;
 import com.vico.clever.cdr.service.model.IntegrationResult;
+import com.vico.clever.cdr.service.model.PatientADTInfo;
 import com.vico.clever.cdr.service.model.PatientAdmission;
 import com.vico.clever.cdr.service.model.PatientInfo;
 
@@ -20,8 +21,8 @@ public class PatientADTService {
 
 	protected final Logger logger = Logger.getLogger(this.getClass());
 
-	public IntegrationResult insertPatientAndVisitInfo(PatientInfo patientInfo,
-			PatientAdmission patientAdmission) {
+	public IntegrationResult insertPatADTA01Info(PatientInfo patientInfo,
+			PatientAdmission patientAdmission,PatientADTInfo patientADTInfo) {
 		IntegrationResult integrationResult = new IntegrationResult();
 		logger.debug("*********  InsertPatientAdmission Start ***********");
 		
@@ -37,13 +38,23 @@ public class PatientADTService {
 		logger.debug("*********  SqlSession Open  ***********");
 		PatientAdtDao patientAdtDao = sqlSession.getMapper(PatientAdtDao.class);
 		try {
-			long i = patientAdtDao.insertPatientInfo(patientInfo);
-			logger.debug("*********  patientInfo Inserted  ***********");
-
-			logger.debug("*********  patientAdmission Created  ***********");
-			logger.debug(patientAdmission.toString());
-			long j = patientAdtDao.insertPatientAdmission(patientAdmission);
-			logger.debug("*********  patientAdmission Inserted  ***********");
+			String patientId=patientInfo.getPatientID();
+			int countPatInfo=patientAdtDao.selectCountPatInfo(patientId);
+			if(countPatInfo>0){
+				int update=patientAdtDao.updatePatInfoByPatId(patientInfo);
+			}else{
+				int insert = patientAdtDao.insertPatientInfo(patientInfo);
+			}
+			String visitId=patientAdmission.getVisitID();
+			int countVisit=patientAdtDao.selectCountPatVisit(visitId);
+			if(countVisit>0){
+				int update=patientAdtDao.updatePatVisitInfo(patientAdmission);
+			}else{
+				int insert=patientAdtDao.insertPatientAdmission(patientAdmission);
+			}
+			
+			int k =patientAdtDao.insertPatTransferInfo(patientADTInfo);
+			
 			sqlSession.commit();
 			logger.debug("*********  SqlSession Commit  ***********");
 			integrationResult.setResultCode(integrationResult.SUCCESSCODE);

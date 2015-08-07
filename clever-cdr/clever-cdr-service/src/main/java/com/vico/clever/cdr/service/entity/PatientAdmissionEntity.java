@@ -2,6 +2,7 @@ package com.vico.clever.cdr.service.entity;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.vico.clever.cdr.service.model.PatientADTInfo;
 import com.vico.clever.cdr.service.model.PatientAdmission;
 import com.vico.clever.cdr.service.model.PatientInfo;
 
@@ -9,14 +10,16 @@ import com.vico.clever.cdr.service.model.PatientInfo;
 public class PatientAdmissionEntity {
 	private PatientInfo patientInfo;
 	private PatientAdmission patientAdmission;
+	private PatientADTInfo patientADTInfo;
 	public PatientAdmissionEntity() {
 		super();
 	}
 	public PatientAdmissionEntity(PatientInfo patientInfo,
-			PatientAdmission patientAdmission) {
+			PatientAdmission patientAdmission, PatientADTInfo patientADTInfo) {
 		super();
 		this.patientInfo = patientInfo;
 		this.patientAdmission = patientAdmission;
+		this.patientADTInfo = patientADTInfo;
 	}
 	public PatientInfo getPatientInfo() {
 		return patientInfo;
@@ -30,18 +33,18 @@ public class PatientAdmissionEntity {
 	public void setPatientAdmission(PatientAdmission patientAdmission) {
 		this.patientAdmission = patientAdmission;
 	}
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("PatientAdmissionEntity [patientInfo=")
-				.append(patientInfo).append(", patientAdmission=")
-				.append(patientAdmission).append("]");
-		return builder.toString();
+	public PatientADTInfo getPatientADTInfo() {
+		return patientADTInfo;
+	}
+	public void setPatientADTInfo(PatientADTInfo patientADTInfo) {
+		this.patientADTInfo = patientADTInfo;
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result
+				+ ((patientADTInfo == null) ? 0 : patientADTInfo.hashCode());
 		result = prime
 				* result
 				+ ((patientAdmission == null) ? 0 : patientAdmission.hashCode());
@@ -58,6 +61,11 @@ public class PatientAdmissionEntity {
 		if (getClass() != obj.getClass())
 			return false;
 		PatientAdmissionEntity other = (PatientAdmissionEntity) obj;
+		if (patientADTInfo == null) {
+			if (other.patientADTInfo != null)
+				return false;
+		} else if (!patientADTInfo.equals(other.patientADTInfo))
+			return false;
 		if (patientAdmission == null) {
 			if (other.patientAdmission != null)
 				return false;
@@ -70,4 +78,11 @@ public class PatientAdmissionEntity {
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "PatientAdmissionEntity [patientInfo=" + patientInfo
+				+ ", patientAdmission=" + patientAdmission
+				+ ", patientADTInfo=" + patientADTInfo + "]";
+	}
+	
 }

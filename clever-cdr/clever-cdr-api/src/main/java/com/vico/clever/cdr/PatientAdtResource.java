@@ -10,13 +10,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 
-import com.vico.clever.cdr.service.dao.PatientAdtDao;
 import com.vico.clever.cdr.service.entity.PatientAdmissionEntity;
-import com.vico.clever.cdr.service.entity.SQLSessionConfig;
 import com.vico.clever.cdr.service.model.IntegrationResult;
+import com.vico.clever.cdr.service.model.PatientADTInfo;
 import com.vico.clever.cdr.service.model.PatientAdmission;
 import com.vico.clever.cdr.service.model.PatientInfo;
 import com.vico.clever.cdr.service.service.PatientADTService;
@@ -32,12 +30,13 @@ public class PatientAdtResource {
 	@POST
 	@Path("/patientADTA01")
 	@Produces({ MediaType.APPLICATION_XML })
-	public IntegrationResult insertPatientAdmission(
+	public IntegrationResult insertPatientADTA01(
 			PatientAdmissionEntity patientAdmissionEntity) {
 		IntegrationResult integrationResult = new IntegrationResult();
 		PatientInfo patientInfo=patientAdmissionEntity.getPatientInfo();
 		PatientAdmission patientAdmission=patientAdmissionEntity.getPatientAdmission();
-		integrationResult=patientAdtService.insertPatientAndVisitInfo(patientInfo, patientAdmission);
+		PatientADTInfo patientADTInfo=patientAdmissionEntity.getPatientADTInfo();
+		integrationResult=patientAdtService.insertPatADTA01Info(patientInfo, patientAdmission,patientADTInfo);
 		return integrationResult;
 	}
 
@@ -68,6 +67,5 @@ public class PatientAdtResource {
 		IntegrationResult integrationResult = new IntegrationResult();
 		integrationResult=patientAdtService.updatePatientInfoById(patientInfo);
 		return integrationResult;
-
 	}
 }

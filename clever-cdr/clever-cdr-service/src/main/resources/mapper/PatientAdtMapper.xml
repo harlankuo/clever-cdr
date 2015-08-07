@@ -1,99 +1,270 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.vico.clever.cdr.service.dao.PatientAdtDao">
-	<resultMap id="PatientInfoMap"
-		type="com.vico.clever.cdr.service.model.PatientInfo">
+	<resultMap id="PatientInfoMap" type="com.vico.clever.cdr.service.model.PatientInfo">
 		<id column="Guid" property="guid" jdbcType="VARCHAR" />
-		<result column="PatientIdentifier_IdentifierMainData_Id" property="patientID" jdbcType="VARCHAR" />
-		<result column="Name_Name_FullName" property="patientName" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_Gender_Code" property="patientSexCode" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_Gender_Name" property="patientSexName" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_BirthData_BirthDate" property="dateOfBirth" jdbcType="TIMESTAMP" />
-		<result column="DemographicDetails_Nationlity" property="nationality" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_EthnicBackground_Code" property="ethnicCode" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_EthnicBackground_Name" property="ethnic" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_MaritalStatus_Code" property="maritalStatusCode" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_MaritalStatus_Name" property="maritalStatus" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_Profession" property="profession" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_EducationBackground" property="educationBackground" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_ABOBloodType" property="bloodTypeABO" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_RHBloodType" property="bloodTypeRH" jdbcType="VARCHAR" />
-		<result column="IdNumber_IdentifierMainData_Id" property="patientIdNO" jdbcType="VARCHAR" />
-		<result column="HealthcareIdentifier_IdentifierMainData_Id" property="healthNO" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_BirthData_BirthAddressDescription" property="birthPlace" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_BirthData_CountryOfBirth_Code" property="birthPlaceCountryCode" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_BirthData_CountryOfBirth_Name" property="birthPlaceCountry" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_BirthData_StateTerritoryProvince_Code" property="birthPlaceProvinceCode" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_BirthData_StateTerritoryProvince_Name" property="birthPlaceProvince" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_DeathData_CityTownLocality_Code" property="birthPlaceCityCode" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_DeathData_CityTownLocality_Name" property="birthPlaceCity" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_DeathData_DeathDate" property="dateOfDeath" jdbcType="TIMESTAMP" />
-		<result column="DemographicDetails_DeathData_Country_Code" property="deathCountryCode" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_DeathData_Country_Name" property="deathCountry" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_DeathData_StateTerritoryProvince_Code" property="deathProvinceCode" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_DeathData_StateTerritoryProvince_Name" property="deathProvince" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_DeathData_CityTownLocality_Code" property="deathCityCode" jdbcType="VARCHAR" />
-		<result column="DemographicDetails_DeathData_CityTownLocality_Name" property="deathCity" jdbcType="VARCHAR" />
+		<result column="PatientIdentifier_IdentifierMainData_Id"
+			property="patientID" jdbcType="VARCHAR" />
+		<result column="Name_Name_FullName" property="patientName"
+			jdbcType="VARCHAR" />
+		<result column="DemographicDetails_Gender_Code" property="patientSexCode"
+			jdbcType="VARCHAR" />
+		<result column="DemographicDetails_Gender_Name" property="patientSexName"
+			jdbcType="VARCHAR" />
+		<result column="DemographicDetails_BirthData_BirthDate"
+			property="dateOfBirth" jdbcType="TIMESTAMP" />
+		<result column="DemographicDetails_Nationlity" property="nationality"
+			jdbcType="VARCHAR" />
+		<result column="DemographicDetails_EthnicBackground_Code"
+			property="ethnicCode" jdbcType="VARCHAR" />
+		<result column="DemographicDetails_EthnicBackground_Name"
+			property="ethnic" jdbcType="VARCHAR" />
+		<result column="DemographicDetails_MaritalStatus_Code"
+			property="maritalStatusCode" jdbcType="VARCHAR" />
+		<result column="DemographicDetails_MaritalStatus_Name"
+			property="maritalStatus" jdbcType="VARCHAR" />
+		<result column="DemographicDetails_Profession" property="profession"
+			jdbcType="VARCHAR" />
+		<result column="DemographicDetails_EducationBackground"
+			property="educationBackground" jdbcType="VARCHAR" />
+		<result column="DemographicDetails_ABOBloodType" property="bloodTypeABO"
+			jdbcType="VARCHAR" />
+		<result column="DemographicDetails_RHBloodType" property="bloodTypeRH"
+			jdbcType="VARCHAR" />
+		<result column="IdNumber_IdentifierMainData_Id" property="patientIdNO"
+			jdbcType="VARCHAR" />
+		<result column="HealthcareIdentifier_IdentifierMainData_Id"
+			property="healthNO" jdbcType="VARCHAR" />
+		<result column="DemographicDetails_BirthData_BirthAddressDescription"
+			property="birthPlace" jdbcType="VARCHAR" />
+		<result column="DemographicDetails_BirthData_CountryOfBirth_Code"
+			property="birthPlaceCountryCode" jdbcType="VARCHAR" />
+		<result column="DemographicDetails_BirthData_CountryOfBirth_Name"
+			property="birthPlaceCountry" jdbcType="VARCHAR" />
+		<result column="DemographicDetails_BirthData_StateTerritoryProvince_Code"
+			property="birthPlaceProvinceCode" jdbcType="VARCHAR" />
+		<result column="DemographicDetails_BirthData_StateTerritoryProvince_Name"
+			property="birthPlaceProvince" jdbcType="VARCHAR" />
+		<result column="DemographicDetails_DeathData_CityTownLocality_Code"
+			property="birthPlaceCityCode" jdbcType="VARCHAR" />
+		<result column="DemographicDetails_DeathData_CityTownLocality_Name"
+			property="birthPlaceCity" jdbcType="VARCHAR" />
+		<result column="DemographicDetails_DeathData_DeathDate"
+			property="dateOfDeath" jdbcType="TIMESTAMP" />
+		<result column="DemographicDetails_DeathData_Country_Code"
+			property="deathCountryCode" jdbcType="VARCHAR" />
+		<result column="DemographicDetails_DeathData_Country_Name"
+			property="deathCountry" jdbcType="VARCHAR" />
+		<result column="DemographicDetails_DeathData_StateTerritoryProvince_Code"
+			property="deathProvinceCode" jdbcType="VARCHAR" />
+		<result column="DemographicDetails_DeathData_StateTerritoryProvince_Name"
+			property="deathProvince" jdbcType="VARCHAR" />
+		<result column="DemographicDetails_DeathData_CityTownLocality_Code"
+			property="deathCityCode" jdbcType="VARCHAR" />
+		<result column="DemographicDetails_DeathData_CityTownLocality_Name"
+			property="deathCity" jdbcType="VARCHAR" />
 	</resultMap>
 	<resultMap id="PatientAdmissionMap"
 		type="com.vico.clever.cdr.service.model.PatientAdmission">
 		<id column="Guid" property="uid" jdbcType="NUMERIC" />
-		<result column="PatientIdentifier_Id" property="patientID" jdbcType="VARCHAR" />
-		<result column="PatientClass_Code" property="patientClassCode" jdbcType="VARCHAR" />
-		<result column="PatientClass_Name" property="patientClassName" jdbcType="VARCHAR" />
-		<result column="EncounterIdentifier_Id" property="visitID" jdbcType="VARCHAR" />
-		<result column="AssignedPatientLocation_LocationDescription_Code" property="deptCode" jdbcType="TIMESTAMP" />
-		<result column="AssignedPatientLocation_LocationDescription_Name" property="deptName" jdbcType="VARCHAR" />
-		<result column="AssignedPatientLocation_Ward_Code" property="wardCode" jdbcType="VARCHAR" />
-		<result column="AssignedPatientLocation_Ward_Name" property="wardName" jdbcType="VARCHAR" />
-		<result column="AssignedPatientLocation_Room_Code" property="roomCode" jdbcType="VARCHAR" />
-		<result column="AssignedPatientLocation_Room_Name" property="roomName" jdbcType="VARCHAR" />
-		<result column="AssignedPatientLocation_Bed_Code" property="bedCode" jdbcType="VARCHAR" />
-		<result column="AssignedPatientLocation_Bed_Name" property="bedName" jdbcType="VARCHAR" />
-		<result column="AdmitDateTime" property="admitDateTime" jdbcType="TIMESTAMP" />
-		<result column="AdmittingIntent" property="admitIntent" jdbcType="VARCHAR" />
-		<result column="AdmittingDoctor_Id" property="admitDoctorID" jdbcType="VARCHAR" />
-		<result column="AdmittingDoctor_Name" property="admitDoctorName" jdbcType="VARCHAR" />
-		<result column="ResidentDoctor_Id" property="residentDoctorID" jdbcType="VARCHAR" />
-		<result column="ResidentDoctor_Name" property="residentDoctorName" jdbcType="VARCHAR" />
-		<result column="AttendingDoctor_Id" property="attendingDoctorID" jdbcType="VARCHAR" />
-		<result column="AttendingDoctor_Name" property="attendingDoctorName" jdbcType="VARCHAR" />
+		<result column="PatientIdentifier_Id" property="patientID"
+			jdbcType="VARCHAR" />
+		<result column="PatientClass_Code" property="patientClassCode"
+			jdbcType="VARCHAR" />
+		<result column="PatientClass_Name" property="patientClassName"
+			jdbcType="VARCHAR" />
+		<result column="EncounterIdentifier_Id" property="visitID"
+			jdbcType="VARCHAR" />
+		<result column="AssignedPatientLocation_LocationDescription_Code"
+			property="deptCode" jdbcType="TIMESTAMP" />
+		<result column="AssignedPatientLocation_LocationDescription_Name"
+			property="deptName" jdbcType="VARCHAR" />
+		<result column="AssignedPatientLocation_Ward_Code" property="wardCode"
+			jdbcType="VARCHAR" />
+		<result column="AssignedPatientLocation_Ward_Name" property="wardName"
+			jdbcType="VARCHAR" />
+		<result column="AssignedPatientLocation_Room_Code" property="roomCode"
+			jdbcType="VARCHAR" />
+		<result column="AssignedPatientLocation_Room_Name" property="roomName"
+			jdbcType="VARCHAR" />
+		<result column="AssignedPatientLocation_Bed_Code" property="bedCode"
+			jdbcType="VARCHAR" />
+		<result column="AssignedPatientLocation_Bed_Name" property="bedName"
+			jdbcType="VARCHAR" />
+		<result column="AdmitDateTime" property="admitDateTime"
+			jdbcType="TIMESTAMP" />
+		<result column="AdmittingIntent" property="admitIntent"
+			jdbcType="VARCHAR" />
+		<result column="AdmittingDoctor_Id" property="admitDoctorID"
+			jdbcType="VARCHAR" />
+		<result column="AdmittingDoctor_Name" property="admitDoctorName"
+			jdbcType="VARCHAR" />
+		<result column="ResidentDoctor_Id" property="residentDoctorID"
+			jdbcType="VARCHAR" />
+		<result column="ResidentDoctor_Name" property="residentDoctorName"
+			jdbcType="VARCHAR" />
+		<result column="AttendingDoctor_Id" property="attendingDoctorID"
+			jdbcType="VARCHAR" />
+		<result column="AttendingDoctor_Name" property="attendingDoctorName"
+			jdbcType="VARCHAR" />
 		<result column="Director_Id" property="direcotrID" jdbcType="VARCHAR" />
-		<result column="Director_Name" property="direcotrName" jdbcType="VARCHAR" />
-		<result column="DeputyDoctor_Id" property="deputyDoctorID" jdbcType="VARCHAR" />
-		<result column="DeputyDoctor_Name" property="deputyDoctorName" jdbcType="VARCHAR" />
+		<result column="Director_Name" property="direcotrName"
+			jdbcType="VARCHAR" />
+		<result column="DeputyDoctor_Id" property="deputyDoctorID"
+			jdbcType="VARCHAR" />
+		<result column="DeputyDoctor_Name" property="deputyDoctorName"
+			jdbcType="VARCHAR" />
 		<result column="AdmitSource" property="admitSource" jdbcType="VARCHAR" />
-		<result column="PatientCondition" property="patientCondition" jdbcType="VARCHAR" />
-		<result column="AdmissionType_Code" property="admissionTypeCode" jdbcType="VARCHAR" />
-		<result column="AdmissionType_Name" property="admissionType" jdbcType="VARCHAR" />
-		<result column="FinancialClass_Code" property="financialClassCode" jdbcType="VARCHAR" />
-		<result column="FinancialClass_Name" property="financialClass" jdbcType="VARCHAR" />
+		<result column="PatientCondition" property="patientCondition"
+			jdbcType="VARCHAR" />
+		<result column="AdmissionType_Code" property="admissionTypeCode"
+			jdbcType="VARCHAR" />
+		<result column="AdmissionType_Name" property="admissionType"
+			jdbcType="VARCHAR" />
+		<result column="FinancialClass_Code" property="financialClassCode"
+			jdbcType="VARCHAR" />
+		<result column="FinancialClass_Name" property="financialClass"
+			jdbcType="VARCHAR" />
 		<result column="NursingClass" property="nursingClass" jdbcType="VARCHAR" />
-		<result column="DoctorGrooupId" property="doctorGroupID" jdbcType="VARCHAR" />
-		<result column="NursingGroupId" property="nursingGroupID" jdbcType="VARCHAR" />
-		<result column="FirstAdmissionIndicator" property="firstAdmissionIndicator" jdbcType="VARCHAR" />
-		<result column="SpecialDepartment_Code" property="specialDepartmentCode" jdbcType="VARCHAR" />
-		<result column="SpecialDepartment_Name" property="specialDepartment" jdbcType="VARCHAR" />
-		<result column="Insurance_InsuranceIdentifier_Id" property="insuranceID" jdbcType="VARCHAR" />
-		<result column="Insurance_InsuranceInformation" property="insuranceInformation" jdbcType="VARCHAR" />
-		<result column="Insurance_Type_Name" property="insuranceType" jdbcType="VARCHAR" />
-		<result column="Insurance_Type_Code" property="insuranceTypeCode" jdbcType="VARCHAR" />
-		<result column="Insurance_Property_Name" property="insurancePropety" jdbcType="VARCHAR" />
-		<result column="Insurance_Property_Code" property="insurancePropetyCode" jdbcType="VARCHAR" />
-		<result column="EmailAddress_IdentificationOfTheMedium" property="emailAdress" jdbcType="VARCHAR" />
-		<result column="MailingAddress_AddressDescription" property="mailingAdress" jdbcType="VARCHAR" />
-		<result column="MailingAddress_StateProvinceTerritory" property="maillingAdressProvince" jdbcType="VARCHAR" />
-		<result column="MailingAddress_CityUrban" property="maillingAdressCity" jdbcType="VARCHAR" />
-		<result column="MailingAddress_District" property="maillingAdressDistrict" jdbcType="VARCHAR" />
-		<result column="MailingAddress_SuburbTownLocality" property="maillingAdressTownLocality" jdbcType="VARCHAR" />
-		<result column="MailingAddress_StreetName" property="maillingAdressStreetName" jdbcType="VARCHAR" />
-		<result column="MailingAddress_Number" property="maillingAdressNumber" jdbcType="VARCHAR" />
-		<result column="MailingAddress_PostalCode" property="maillingAdressPostalCode" jdbcType="VARCHAR" />
-		<result column="MobilePhone_IdentificationOfTheMedium" property="mobelPhone" jdbcType="VARCHAR" />
-		<result column="HomePhone_IdentificationOfTheMedium" property="homePhone" jdbcType="VARCHAR" />
-		<result column="BusinessPhone_IdentificationOfTheMedium" property="businessPhone" jdbcType="VARCHAR" />
+		<result column="DoctorGrooupId" property="doctorGroupID"
+			jdbcType="VARCHAR" />
+		<result column="NursingGroupId" property="nursingGroupID"
+			jdbcType="VARCHAR" />
+		<result column="FirstAdmissionIndicator" property="firstAdmissionIndicator"
+			jdbcType="VARCHAR" />
+		<result column="SpecialDepartment_Code" property="specialDepartmentCode"
+			jdbcType="VARCHAR" />
+		<result column="SpecialDepartment_Name" property="specialDepartment"
+			jdbcType="VARCHAR" />
+		<result column="Insurance_InsuranceIdentifier_Id" property="insuranceID"
+			jdbcType="VARCHAR" />
+		<result column="Insurance_InsuranceInformation" property="insuranceInformation"
+			jdbcType="VARCHAR" />
+		<result column="Insurance_Type_Name" property="insuranceType"
+			jdbcType="VARCHAR" />
+		<result column="Insurance_Type_Code" property="insuranceTypeCode"
+			jdbcType="VARCHAR" />
+		<result column="Insurance_Property_Name" property="insurancePropety"
+			jdbcType="VARCHAR" />
+		<result column="Insurance_Property_Code" property="insurancePropetyCode"
+			jdbcType="VARCHAR" />
+		<result column="EmailAddress_IdentificationOfTheMedium"
+			property="emailAdress" jdbcType="VARCHAR" />
+		<result column="MailingAddress_AddressDescription" property="mailingAdress"
+			jdbcType="VARCHAR" />
+		<result column="MailingAddress_StateProvinceTerritory"
+			property="maillingAdressProvince" jdbcType="VARCHAR" />
+		<result column="MailingAddress_CityUrban" property="maillingAdressCity"
+			jdbcType="VARCHAR" />
+		<result column="MailingAddress_District" property="maillingAdressDistrict"
+			jdbcType="VARCHAR" />
+		<result column="MailingAddress_SuburbTownLocality" property="maillingAdressTownLocality"
+			jdbcType="VARCHAR" />
+		<result column="MailingAddress_StreetName" property="maillingAdressStreetName"
+			jdbcType="VARCHAR" />
+		<result column="MailingAddress_Number" property="maillingAdressNumber"
+			jdbcType="VARCHAR" />
+		<result column="MailingAddress_PostalCode" property="maillingAdressPostalCode"
+			jdbcType="VARCHAR" />
+		<result column="MobilePhone_IdentificationOfTheMedium"
+			property="mobelPhone" jdbcType="VARCHAR" />
+		<result column="HomePhone_IdentificationOfTheMedium" property="homePhone"
+			jdbcType="VARCHAR" />
+		<result column="BusinessPhone_IdentificationOfTheMedium"
+			property="businessPhone" jdbcType="VARCHAR" />
 	</resultMap>
-	
+	<resultMap id="PatientADTInfoMap"
+		type="com.vico.clever.cdr.service.model.PatientADTInfo">
+		<!-- WARNING - @mbggenerated This element is automatically generated by 
+			MyBatis Generator, do not modify. -->
+		<id column="Guid" property="guid" jdbcType="CHAR" />
+		<result column="ActionType" property="actionType" jdbcType="VARCHAR" />
+		<result column="CurrentAttendingDoctor_Code" property="curAttendingDoctorCode"
+			jdbcType="VARCHAR" />
+		<result column="CurrentAttendingDoctor_Name" property="curAttendingDoctorName"
+			jdbcType="VARCHAR" />
+		<result column="CurrentDeputyDoctor_Code" property="curDeputyDoctorID"
+			jdbcType="VARCHAR" />
+		<result column="CurrentDeputyDoctor_Name" property="curDeputyDoctorName"
+			jdbcType="VARCHAR" />
+		<result column="CurrentDirector_Code" property="curDirectorID"
+			jdbcType="VARCHAR" />
+		<result column="CurrentDirector_Name" property="curDirectorName"
+			jdbcType="VARCHAR" />
+		<result column="CurrentResidentDoctor_Code" property="curResidentDoctorCode"
+			jdbcType="VARCHAR" />
+		<result column="CurrentResidentDoctor_Name" property="curResidentDoctorName"
+			jdbcType="VARCHAR" />
+		<result column="DestinationBed_Code" property="destinationBedCode"
+			jdbcType="VARCHAR" />
+		<result column="DestinationBed_Name" property="destinationBedName"
+			jdbcType="VARCHAR" />
+		<result column="DestinationDepartment_Code" property="destinationDeptCode"
+			jdbcType="VARCHAR" />
+		<result column="DestinationDepartment_Name" property="destinationDeptName"
+			jdbcType="VARCHAR" />
+		<result column="DestinationWard_Code" property="destinationWardCode"
+			jdbcType="VARCHAR" />
+		<result column="DestinationWard_Name" property="destinationWardName"
+			jdbcType="VARCHAR" />
+		<result column="EncounterIdentifier" property="visitID"
+			jdbcType="VARCHAR" />
+		<result column="ExcuteDatetime" property="excuteDateTime"
+			jdbcType="TIMESTAMP" />
+		<result column="Memo" property="memo" jdbcType="VARCHAR" />
+		<result column="OrderIdentifier" property="orderID" jdbcType="VARCHAR" />
+		<result column="PatientIdentifier_Id" property="patientID"
+			jdbcType="VARCHAR" />
+		<result column="Performer_Code" property="performerCode"
+			jdbcType="VARCHAR" />
+		<result column="Performer_Name" property="performerName"
+			jdbcType="VARCHAR" />
+		<result column="PreviousAttendingDoctor_Code" property="preAttendingDoctorCode"
+			jdbcType="VARCHAR" />
+		<result column="PreviousAttendingDoctor_Name" property="preAttendingDoctorName"
+			jdbcType="VARCHAR" />
+		<result column="PreviousDeputyDoctor_Code" property="preDeputyDoctorID"
+			jdbcType="VARCHAR" />
+		<result column="PreviousDeputyDoctor_Name" property="preDeputyDoctorName"
+			jdbcType="VARCHAR" />
+		<result column="PreviousDirector_Code" property="preDirectorID"
+			jdbcType="VARCHAR" />
+		<result column="PreviousDirector_Name" property="preDirectorName"
+			jdbcType="VARCHAR" />
+		<result column="PreviousResidentDoctor_Code" property="preResidentDoctorCode"
+			jdbcType="VARCHAR" />
+		<result column="PreviousResidentDoctor_Name" property="preResidentDoctorName"
+			jdbcType="VARCHAR" />
+		<result column="SourceBed_Code" property="sourceBedCode"
+			jdbcType="VARCHAR" />
+		<result column="SourceBed_Name" property="sourceBedName"
+			jdbcType="VARCHAR" />
+		<result column="SourceDepartment_Code" property="sourceDeptCode"
+			jdbcType="VARCHAR" />
+		<result column="SourceDepartment_Name" property="sourceDeptName"
+			jdbcType="VARCHAR" />
+		<result column="SourceWard_Code" property="sourceWardCode"
+			jdbcType="VARCHAR" />
+		<result column="SourceWard_Name" property="sourceWardName"
+			jdbcType="VARCHAR" />
+		<result column="Status" property="status" jdbcType="VARCHAR" />
+	</resultMap>
+	<resultMap id="PatientDischargeMap" type="com.vico.clever.cdr.service.model.PatientDischargeInfo" >
+	    <!--
+	      WARNING - @mbggenerated
+	      This element is automatically generated by MyBatis Generator, do not modify.
+	    -->
+	    <id column="Guid" property="guid" jdbcType="CHAR" />
+	    <result column="DateOfDischarge" property="dateOfCharge" jdbcType="TIMESTAMP" />
+	    <result column="DischargeDestination_DischargeDestinationType_Code" property="dischargeDestinationType" jdbcType="VARCHAR" />
+	    <result column="DischargeDestination_DischargeDestinationType_Name" property="dischargeDestination" jdbcType="VARCHAR" />
+	    <result column="DischargeDestination_ReasonForDischarge_OutlineOfDecisionToDischarge" property="dischargeDescripition" jdbcType="VARCHAR" />
+	    <result column="DischargeDetails_DischargingSpecialtyDepartment" property="dischargeDept" jdbcType="VARCHAR" />
+	    <result column="DischargeDetails_DischargingWard" property="disChargeWard" jdbcType="VARCHAR" />
+	    <result column="EncounterIdentifier" property="visitID" jdbcType="VARCHAR" />
+	    <result column="OrderIdentifier" property="orderID" jdbcType="VARCHAR" />
+	    <result column="PatientIdentifier_Id" property="patientID" jdbcType="VARCHAR" />
+  	</resultMap>
 	<sql id="patientInfoFields">
 		Guid,
 		PatientIdentifier_IdentifierMainData_Id,
@@ -127,7 +298,7 @@
 		DemographicDetails_DeathData_CityTownLocality_Code,
 		DemographicDetails_DeathData_CityTownLocality_Name
 	</sql>
-		
+
 	<sql id="patientAdmissionFields">
 		Guid,
 		PatientIdentifier_Id,
@@ -185,10 +356,43 @@
 		HomePhone_IdentificationOfTheMedium,
 		BusinessPhone_IdentificationOfTheMedium
 	</sql>
-	
+	<sql id="patientADTInfoFields">
+		<!-- WARNING - @mbggenerated This element is automatically generated by 
+			MyBatis Generator, do not modify. -->
+		Guid, ActionType, CurrentAttendingDoctor_Code,
+		CurrentAttendingDoctor_Name, CurrentDeputyDoctor_Code,
+		CurrentDeputyDoctor_Name, CurrentDirector_Code, CurrentDirector_Name,
+		CurrentResidentDoctor_Code,
+		CurrentResidentDoctor_Name,
+		DestinationBed_Code, DestinationBed_Name, DestinationDepartment_Code,
+		DestinationDepartment_Name, DestinationWard_Code,
+		DestinationWard_Name, EncounterIdentifier,
+		ExcuteDatetime, Memo,
+		OrderIdentifier, PatientIdentifier_Id, Performer_Code,
+		Performer_Name,
+		PreviousAttendingDoctor_Code, PreviousAttendingDoctor_Name,
+		PreviousDeputyDoctor_Code,
+		PreviousDeputyDoctor_Name,
+		PreviousDirector_Code,
+		PreviousDirector_Name,
+		PreviousResidentDoctor_Code,
+		PreviousResidentDoctor_Name,
+		SourceBed_Code, SourceBed_Name,
+		SourceDepartment_Code,
+		SourceDepartment_Name, SourceWard_Code, SourceWard_Name, Status
+	</sql>
+	<sql id="patientDischargeFields" >
+	    <!--
+	      WARNING - @mbggenerated
+	      This element is automatically generated by MyBatis Generator, do not modify.
+	    -->
+	    Guid, DateOfDischarge, DischargeDestination_DischargeDestinationType_Code, DischargeDestination_DischargeDestinationType_Name, 
+	    DischargeDestination_ReasonForDischarge_OutlineOfDecisionToDischarge, DischargeDetails_DischargingSpecialtyDepartment, 
+	    DischargeDetails_DischargingWard, EncounterIdentifier, OrderIdentifier, PatientIdentifier_Id
+  	</sql>
 	<insert id="insertPatientInfo" parameterType="com.vico.clever.cdr.service.model.PatientInfo">
 		insert into Person_Patient(
-			<include refid="patientInfoFields" />
+		<include refid="patientInfoFields" />
 		)
 		values(newid(),
 		#{patientID,jdbcType=VARCHAR},
@@ -224,7 +428,7 @@
 	</insert>
 	<insert id="insertPatientAdmission" parameterType="com.vico.clever.cdr.service.model.PatientAdmission">
 		insert into Admin_PatientAdmission(
-			<include refid="patientAdmissionFields"/>
+		<include refid="patientAdmissionFields" />
 		)
 		values(newid(),
 		#{patientID,jdbcType=VARCHAR},
@@ -282,25 +486,116 @@
 		#{homePhone,jdbcType=VARCHAR},
 		#{businessPhone,jdbcType=VARCHAR});
 	</insert>
+	<insert id="insertPatTransferInfo" parameterType="com.vico.clever.cdr.service.model.PatientADTInfo">
+		<!-- WARNING - @mbggenerated This element is automatically generated by 
+			MyBatis Generator, do not modify. -->
+		insert into Admin_Transaction (
+		<include refid="patientADTInfoFields" />
+		)
+		values (newid(),
+		#{actionType,jdbcType=VARCHAR},
+		#{curAttendingDoctorCode,jdbcType=VARCHAR},
+		#{curAttendingDoctorName,jdbcType=VARCHAR},
+		#{curDeputyDoctorID,jdbcType=VARCHAR},
+		#{curDeputyDoctorName,jdbcType=VARCHAR},
+		#{curDirectorID,jdbcType=VARCHAR},
+		#{curDirectorName,jdbcType=VARCHAR},
+		#{curResidentDoctorCode,jdbcType=VARCHAR},
+		#{curResidentDoctorName,jdbcType=VARCHAR},
+		#{destinationBedCode,jdbcType=VARCHAR},
+		#{destinationBedName,jdbcType=VARCHAR},
+		#{destinationDeptCode,jdbcType=VARCHAR},
+		#{destinationDeptName,jdbcType=VARCHAR},
+		#{destinationWardCode,jdbcType=VARCHAR},
+		#{destinationWardName,jdbcType=VARCHAR},
+		#{visitID,jdbcType=VARCHAR},
+		#{excuteDateTime,jdbcType=TIMESTAMP},
+		#{memo,jdbcType=VARCHAR},
+		#{orderID,jdbcType=VARCHAR},
+		#{patientID,jdbcType=VARCHAR},
+		#{performerCode,jdbcType=VARCHAR},
+		#{performerName,jdbcType=VARCHAR},
+		#{preAttendingDoctorCode,jdbcType=VARCHAR},
+		#{preAttendingDoctorName,jdbcType=VARCHAR},
+		#{preDeputyDoctorID,jdbcType=VARCHAR},
+		#{preDeputyDoctorName,jdbcType=VARCHAR},
+		#{preDirectorID,jdbcType=VARCHAR},
+		#{preDirectorName,jdbcType=VARCHAR},
+		#{preResidentDoctorCode,jdbcType=VARCHAR},
+		#{preResidentDoctorName,jdbcType=VARCHAR},
+		#{sourceBedCode,jdbcType=VARCHAR},
+		#{sourceBedName,jdbcType=VARCHAR},
+		#{sourceDeptCode,jdbcType=VARCHAR},
+		#{sourceDeptName,jdbcType=VARCHAR},
+		#{sourceWardCode,jdbcType=VARCHAR},
+		#{sourceWardName,jdbcType=VARCHAR},
+		#{status,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertPatDisChargeInfo" parameterType="com.vico.clever.cdr.service.model.PatientDischargeInfo" >
+	    <!--
+	      WARNING - @mbggenerated
+	      This element is automatically generated by MyBatis Generator, do not modify.
+	    -->
+	    insert into Admin_DischargeAdministrativeInformation (Guid, DateOfDischarge, DischargeDestination_DischargeDestinationType_Code, 
+	      DischargeDestination_DischargeDestinationType_Name, DischargeDestination_ReasonForDischarge_OutlineOfDecisionToDischarge, 
+	      DischargeDetails_DischargingSpecialtyDepartment, DischargeDetails_DischargingWard, 
+	      EncounterIdentifier, OrderIdentifier, PatientIdentifier_Id
+	      )
+	    values (newid(), #{dateOfCharge,jdbcType=TIMESTAMP}, #{dischargeDestinationType,jdbcType=VARCHAR}, 
+	      #{dischargeDestination,jdbcType=VARCHAR}, #{dischargeDescripition,jdbcType=VARCHAR}, 
+	      #{dischargeDept,jdbcType=VARCHAR}, #{disChargeWard,jdbcType=VARCHAR}, 
+	      #{visitID,jdbcType=VARCHAR}, #{orderID,jdbcType=VARCHAR}, #{patientID,jdbcType=VARCHAR}
+	      )
+  	</insert>
 	<select id="selectPatientInfo" resultMap="PatientInfoMap">
-		select * from Person_Patient where PatientIdentifier_IdentifierMainData_Id=#{patientID} 
+		select * from
+		Person_Patient where
+		PatientIdentifier_IdentifierMainData_Id=#{patientID}
 	</select>
 	<select id="selectPatientVisit" resultMap="PatientAdmissionMap">
-		select * from Admin_PatientAdmission where EncounterIdentifier_Id=#{visitID}
+		select * from
+		Admin_PatientAdmission where EncounterIdentifier_Id=#{visitID}
 	</select>
-	<delete id="deletePatInfoByPatId" parameterType="String" >
-    	delete from Person_Patient  where PatientIdentifier_IdentifierMainData_Id=#{patientID} 
-  	</delete>
-  	<delete id="deletePatVisitByVisitId" parameterType="String" >
-    	delete from Admin_PatientAdmission  where EncounterIdentifier_Id=#{visitID};
-  	</delete>
-  	<update id="updatePatInfoByPatId" parameterType="com.vico.clever.cdr.service.model.PatientInfo" >
+	<select id="selectPatTransferInfo" resultMap="PatientADTInfoMap"
+		parameterType="String">
+		<!-- WARNING - @mbggenerated This element is automatically generated by 
+			MyBatis Generator, do not modify. -->
+		select * from Admin_Transaction where PatientIdentifier_Id =
+		#{patientID,jdbcType=VARCHAR} and EncounterIdentifier =
+		#{visitID,jdbcType=VARCHAR}
+	</select>
+	<delete id="deletePatInfoByPatId" parameterType="String">
+		delete from
+		Person_Patient where
+		PatientIdentifier_IdentifierMainData_Id=#{patientID}
+	</delete>
+	<delete id="deletePatVisitByVisitId" parameterType="String">
+		delete from
+		Admin_PatientAdmission where
+		EncounterIdentifier_Id=#{visitID};
+	</delete>
+	<delete id="deletePatTransferInfo" parameterType="String">
+		<!-- WARNING - @mbggenerated This element is automatically generated by 
+			MyBatis Generator, do not modify. -->
+		delete from Admin_Transaction
+		where PatientIdentifier_Id =
+		#{patientID,jdbcType=VARCHAR} and
+		EncounterIdentifier =
+		#{visitID,jdbcType=VARCHAR}
+	</delete>
+	<delete id="deletePatDisCharge" parameterType="String" >
     <!--
       WARNING - @mbggenerated
       This element is automatically generated by MyBatis Generator, do not modify.
     -->
-    update Person_Patient
-    set 
+    delete from Admin_DischargeAdministrativeInformation
+    where PatientIdentifier_Id=#{patientID,jdbcType=VARCHAR} and EncounterIdentifier =#{visitID,jdbcType=VARCHAR}
+  </delete>
+	<update id="updatePatInfoByPatId" parameterType="com.vico.clever.cdr.service.model.PatientInfo">
+		<!-- WARNING - @mbggenerated This element is automatically generated by 
+			MyBatis Generator, do not modify. -->
+		update Person_Patient
+		set
 		Name_Name_FullName=#{patientName,jdbcType=VARCHAR},
 		DemographicDetails_Gender_Code=#{patientSexCode,jdbcType=VARCHAR},
 		DemographicDetails_Gender_Name=#{patientSexName,jdbcType=VARCHAR},
@@ -329,16 +624,14 @@
 		DemographicDetails_DeathData_StateTerritoryProvince_Code=#{deathProvinceCode,jdbcType=VARCHAR},
 		DemographicDetails_DeathData_StateTerritoryProvince_Name=#{deathProvince,jdbcType=VARCHAR},
 		DemographicDetails_DeathData_CityTownLocality_Code=#{deathCityCode,jdbcType=VARCHAR},
-		DemographicDetails_DeathData_CityTownLocality_Name=#{deathCity,jdbcType=VARCHAR}) 
-    where  PatientIdentifier_IdentifierMainData_Id=#{patientID}
-  </update>
-  <update id="updatePatVisitInfo" parameterType="com.vico.clever.cdr.service.model.PatientAdmission" >
-    <!--
-      WARNING - @mbggenerated
-      This element is automatically generated by MyBatis Generator, do not modify.
-    -->
-    update Admin_PatientAdmission
-    set 
+		DemographicDetails_DeathData_CityTownLocality_Name=#{deathCity,jdbcType=VARCHAR})
+		where PatientIdentifier_IdentifierMainData_Id=#{patientID}
+	</update>
+	<update id="updatePatVisitInfo" parameterType="com.vico.clever.cdr.service.model.PatientAdmission">
+		<!-- WARNING - @mbggenerated This element is automatically generated by 
+			MyBatis Generator, do not modify. -->
+		update Admin_PatientAdmission
+		set
 		PatientClass_Code=#{patientClassCode,jdbcType=VARCHAR},
 		PatientClass_Name=#{patientClassName,jdbcType=VARCHAR},
 		EncounterIdentifier_Id,
@@ -391,7 +684,57 @@
 		MailingAddress_PostalCode=#{maillingAdressPostalCode,jdbcType=VARCHAR},
 		MobilePhone_IdentificationOfTheMedium=#{mobelPhone,jdbcType=VARCHAR},
 		HomePhone_IdentificationOfTheMedium=#{homePhone,jdbcType=VARCHAR},
-		BusinessPhone_IdentificationOfTheMedium=#{businessPhone,jdbcType=VARCHAR}) 
-    where EncounterIdentifier_Id=#{visitID};
-  </update>
+		BusinessPhone_IdentificationOfTheMedium=#{businessPhone,jdbcType=VARCHAR})
+		where EncounterIdentifier_Id=#{visitID};
+	</update>
+	<update id="updatePatTransferInfo" parameterType="com.vico.clever.cdr.service.model.PatientADTInfo">
+		<!-- WARNING - @mbggenerated This element is automatically generated by 
+			MyBatis Generator, do not modify. -->
+		update Admin_Transaction
+		set ActionType =#{actionType,jdbcType=VARCHAR},
+		CurrentAttendingDoctor_Code =#{curAttendingDoctorCode,jdbcType=VARCHAR},
+		CurrentAttendingDoctor_Name =#{curAttendingDoctorName,jdbcType=VARCHAR},
+		CurrentDeputyDoctor_Code =#{curDeputyDoctorID,jdbcType=VARCHAR},
+		CurrentDeputyDoctor_Name =#{curDeputyDoctorName,jdbcType=VARCHAR},
+		CurrentDirector_Code =#{curDirectorID,jdbcType=VARCHAR},
+		CurrentDirector_Name =#{curDirectorName,jdbcType=VARCHAR},
+		CurrentResidentDoctor_Code =#{curResidentDoctorCode,jdbcType=VARCHAR},
+		CurrentResidentDoctor_Name =#{curResidentDoctorName,jdbcType=VARCHAR},
+		DestinationBed_Code =#{destinationBedCode,jdbcType=VARCHAR},
+		DestinationBed_Name =#{destinationBedName,jdbcType=VARCHAR},
+		DestinationDepartment_Code =#{destinationDeptCode,jdbcType=VARCHAR},
+		DestinationDepartment_Name =#{destinationDeptName,jdbcType=VARCHAR},
+		DestinationWard_Code =#{destinationWardCode,jdbcType=VARCHAR},
+		DestinationWard_Name =#{destinationWardName,jdbcType=VARCHAR},
+
+		ExcuteDatetime =#{excuteDateTime,jdbcType=TIMESTAMP},
+		Memo = #{memo,jdbcType=VARCHAR},
+		OrderIdentifier = #{orderID,jdbcType=VARCHAR},
+
+		Performer_Code =#{performerCode,jdbcType=VARCHAR},
+		Performer_Name =#{performerName,jdbcType=VARCHAR},
+		PreviousAttendingDoctor_Code =#{preAttendingDoctorCode,jdbcType=VARCHAR},
+		PreviousAttendingDoctor_Name =#{preAttendingDoctorName,jdbcType=VARCHAR},
+		PreviousDeputyDoctor_Code =#{preDeputyDoctorID,jdbcType=VARCHAR},
+		PreviousDeputyDoctor_Name =#{preDeputyDoctorName,jdbcType=VARCHAR},
+		PreviousDirector_Code =#{preDirectorID,jdbcType=VARCHAR},
+		PreviousDirector_Name =	#{preDirectorName,jdbcType=VARCHAR},
+		PreviousResidentDoctor_Code =#{preResidentDoctorCode,jdbcType=VARCHAR},
+		PreviousResidentDoctor_Name	=#{preResidentDoctorName,jdbcType=VARCHAR},
+		SourceBed_Code =#{sourceBedCode,jdbcType=VARCHAR},
+		SourceBed_Name =#{sourceBedName,jdbcType=VARCHAR},
+		SourceDepartment_Code =	#{sourceDeptCode,jdbcType=VARCHAR},
+		SourceDepartment_Name =	#{sourceDeptName,jdbcType=VARCHAR},
+		SourceWard_Code =#{sourceWardCode,jdbcType=VARCHAR},
+		SourceWard_Name =#{sourceWardName,jdbcType=VARCHAR},
+		Status = #{status,jdbcType=VARCHAR} 
+		where PatientIdentifier_Id = #{patientID,jdbcType=VARCHAR} and
+		EncounterIdentifier = #{visitID,jdbcType=VARCHAR}
+	</update>
+	<select id="selectCountPatInfo" parameterType="String" resultType="int">
+		select count(*) from Person_Patient where PatientIdentifier_IdentifierMainData_Id=#{patientID}
+	</select>
+	<select id="selectCountPatVisit" parameterType="String" resultType="int">
+		select count(*) from Admin_PatientAdmission where EncounterIdentifier_Id=#{visitID};
+	</select>
 </mapper>

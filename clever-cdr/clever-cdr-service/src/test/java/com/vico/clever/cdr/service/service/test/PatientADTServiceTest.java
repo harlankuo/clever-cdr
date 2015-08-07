@@ -8,6 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.vico.clever.cdr.service.model.IntegrationResult;
+import com.vico.clever.cdr.service.model.PatientADTInfo;
 import com.vico.clever.cdr.service.model.PatientAdmission;
 import com.vico.clever.cdr.service.model.PatientInfo;
 import com.vico.clever.cdr.service.service.PatientADTService;
@@ -81,7 +82,11 @@ public class PatientADTServiceTest {
 		patientAdm.setVisitID("visitId-"+num);
 		logger.debug("*********  patientAdmission Created  ***********");
 		logger.debug(patientAdm.toString());
-		IntegrationResult integrationResult=patientADTService.insertPatientAndVisitInfo(patientInfo, patientAdm);
+		
+		
+		PatientADTInfo patientADTInfo=new PatientADTInfo();
+		
+		IntegrationResult integrationResult=patientADTService.insertPatADTA01Info(patientInfo, patientAdm,patientADTInfo);
 		logger.debug("*********  insertPatientAndVisitInfo  ***********");
 		logger.debug(integrationResult);
 	}
