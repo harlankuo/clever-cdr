@@ -6,4 +6,5 @@
     <version>0.0.1</version>
   </parent>
   <artifactId>clever-cdr-common</artifactId>
+  <packaging>jar</packaging>
 </project>
