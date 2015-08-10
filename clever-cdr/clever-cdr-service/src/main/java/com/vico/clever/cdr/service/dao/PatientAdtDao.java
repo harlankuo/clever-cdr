@@ -2,7 +2,7 @@ package com.vico.clever.cdr.service.dao;
 
 import org.apache.ibatis.annotations.Param;
 
-import com.vico.clever.cdr.service.model.PatientADTInfo;
+import com.vico.clever.cdr.service.model.PatientTransferInfo;
 import com.vico.clever.cdr.service.model.PatientAdmission;
 import com.vico.clever.cdr.service.model.PatientDischargeInfo;
 import com.vico.clever.cdr.service.model.PatientInfo;
@@ -26,13 +26,13 @@ public interface PatientAdtDao {
 	
 	public int updatePatVisitInfo(PatientAdmission patientAdmission);
 	
-	public int insertPatTransferInfo(PatientADTInfo patientADTInfo);
+	public int insertPatTransferInfo(PatientTransferInfo patientTransferInfo);
 	
-	public PatientADTInfo selectPatTransferInfo(@Param("patientID") String patientID,@Param("visitId") String visitId);
+	public PatientTransferInfo selectPatTransferInfo(@Param("patientID") String patientID,@Param("visitId") String visitId);
 	
 	public int deletePatTransferInfo(@Param("patientID") String patientID,@Param("visitId") String visitId);
 	
-	public int updatePatTransferInfo(PatientADTInfo patientADTInfo);
+	public int updatePatTransferInfo(PatientTransferInfo patientTransferInfo);
 	
 	public int selectCountPatInfo(String patientID);
 	

@@ -4,7 +4,7 @@ import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="patientTransferInfo")
-public class PatientADTInfo {
+public class PatientTransferInfo {
 	private String guid;
 	public String patientID ;//病人号(*)
     public String visitID;//就诊号(*)
@@ -43,10 +43,10 @@ public class PatientADTInfo {
     public String memo;//转科备注
     public String performerName;//操作者姓名
     public String performerCode;//操作者工号
-	public PatientADTInfo() {
+	public PatientTransferInfo() {
 		super();
 	}
-	public PatientADTInfo(String guid, String patientID, String visitID,
+	public PatientTransferInfo(String guid, String patientID, String visitID,
 			String orderID, String sourceDeptCode, String sourceDeptName,
 			String sourceWardCode, String sourceWardName, String sourceBedCode,
 			String sourceBedName, String actionType,
@@ -452,7 +452,7 @@ public class PatientADTInfo {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PatientADTInfo other = (PatientADTInfo) obj;
+		PatientTransferInfo other = (PatientTransferInfo) obj;
 		if (actionType == null) {
 			if (other.actionType != null)
 				return false;
@@ -647,7 +647,7 @@ public class PatientADTInfo {
 	}
 	@Override
 	public String toString() {
-		return "PatientADTInfo [guid=" + guid + ", patientID=" + patientID
+		return "PatientTransferInfo [guid=" + guid + ", patientID=" + patientID
 				+ ", visitID=" + visitID + ", orderID=" + orderID
 				+ ", sourceDeptCode=" + sourceDeptCode + ", sourceDeptName="
 				+ sourceDeptName + ", sourceWardCode=" + sourceWardCode

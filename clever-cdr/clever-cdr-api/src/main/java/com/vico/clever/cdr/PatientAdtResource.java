@@ -12,10 +12,11 @@ import javax.ws.rs.core.MediaType;
 
 import org.apache.log4j.Logger;
 
-import com.vico.clever.cdr.service.entity.PatientAdmissionEntity;
+import com.vico.clever.cdr.service.entity.PatientAdtEntity;
 import com.vico.clever.cdr.service.model.IntegrationResult;
-import com.vico.clever.cdr.service.model.PatientADTInfo;
+import com.vico.clever.cdr.service.model.PatientTransferInfo;
 import com.vico.clever.cdr.service.model.PatientAdmission;
+import com.vico.clever.cdr.service.model.PatientDischargeInfo;
 import com.vico.clever.cdr.service.model.PatientInfo;
 import com.vico.clever.cdr.service.service.PatientADTService;
 
@@ -31,12 +32,12 @@ public class PatientAdtResource {
 	@Path("/patientADTA01")
 	@Produces({ MediaType.APPLICATION_XML })
 	public IntegrationResult insertPatientADTA01(
-			PatientAdmissionEntity patientAdmissionEntity) {
+			PatientAdtEntity patientAdtEntity) {
 		IntegrationResult integrationResult = new IntegrationResult();
-		PatientInfo patientInfo=patientAdmissionEntity.getPatientInfo();
-		PatientAdmission patientAdmission=patientAdmissionEntity.getPatientAdmission();
-		PatientADTInfo patientADTInfo=patientAdmissionEntity.getPatientADTInfo();
-		integrationResult=patientAdtService.insertPatADTA01Info(patientInfo, patientAdmission,patientADTInfo);
+		PatientInfo patientInfo=patientAdtEntity.getPatientInfo();
+		PatientAdmission patientAdmission=patientAdtEntity.getPatientAdmission();
+		PatientTransferInfo patientTransferInfo=patientAdtEntity.getPatientTransferInfo();
+		integrationResult=patientAdtService.insertPatADTA01Info(patientInfo, patientAdmission,patientTransferInfo);
 		return integrationResult;
 	}
 
@@ -66,6 +67,35 @@ public class PatientAdtResource {
 	public IntegrationResult updatePatientInfo(PatientInfo patientInfo) {
 		IntegrationResult integrationResult = new IntegrationResult();
 		integrationResult=patientAdtService.updatePatientInfoById(patientInfo);
+		return integrationResult;
+	}
+	@POST
+	@Path("/patientTransfer")
+	@Produces({ MediaType.APPLICATION_XML })
+	@Consumes({ MediaType.APPLICATION_XML })
+	public IntegrationResult patientTransfer(PatientTransferInfo patientTransferInfo){
+		IntegrationResult integrationResult = new IntegrationResult();
+		integrationResult=patientAdtService.insertPatTransferInfo(patientTransferInfo);
+		return integrationResult;
+	}
+	@POST
+	@Path("/patientDischarge")
+	@Produces({ MediaType.APPLICATION_XML })
+	@Consumes({ MediaType.APPLICATION_XML })
+	public IntegrationResult patientDischarge(PatientAdtEntity patientAdtEntity){
+		IntegrationResult integrationResult = new IntegrationResult();
+		PatientTransferInfo patientTransferInfo=patientAdtEntity.getPatientTransferInfo();
+		PatientDischargeInfo patDischargeInfo=patientAdtEntity.getPatientDischargeInfo();
+		integrationResult=patientAdtService.patientDischarge(patientTransferInfo, patDischargeInfo);
+		return integrationResult;
+	}
+	@POST
+	@Path("/patientDischargeCancel")
+	@Produces({ MediaType.APPLICATION_XML })
+	@Consumes({ MediaType.APPLICATION_XML })
+	public IntegrationResult patientDischargeCancel(PatientTransferInfo patientTransferInfo){
+		IntegrationResult integrationResult = new IntegrationResult();
+		integrationResult=patientAdtService.patientDischargeCancel(patientTransferInfo);
 		return integrationResult;
 	}
 }

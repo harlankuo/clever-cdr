@@ -27,5 +27,7 @@
 	</environments>
 	<mappers>
 	    <mapper resource="mapper/PatientAdtMapper.xml" />
+	    <mapper resource="mapper/PatientDiagnosisMapper.xml" />
+	    <mapper resource="mapper/OrderInfoMapper.xml" />
 	</mappers>
 </configuration>
