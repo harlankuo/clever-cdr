@@ -23,7 +23,7 @@ public class PatientADTServiceTest {
 	@Test
 	public void testPatientAdtService(){
 		Random random = new Random();
-		int num=random.nextInt();
+		int num=random.nextInt(100);
 		PatientInfo patientInfo=new PatientInfo();
 		patientInfo.setBirthPlace("浙江杭州");
 		patientInfo.setBirthPlaceCity("杭州");
@@ -85,9 +85,49 @@ public class PatientADTServiceTest {
 		
 		
 		PatientTransferInfo patientTransferInfo=new PatientTransferInfo();
+		String param="test"+num;
+		patientTransferInfo.setActionType(param);
+		patientTransferInfo.setCurAttendingDoctorCode(param);
+		patientTransferInfo.setCurAttendingDoctorName(param);
+		patientTransferInfo.setCurAttendingDoctorName(param);
+		patientTransferInfo.setCurDeputyDoctorID(param);
+		patientTransferInfo.setCurDirectorID(param);
+		patientTransferInfo.setCurDirectorName(param);
+		patientTransferInfo.setCurResidentDoctorCode(param);
+		patientTransferInfo.setCurResidentDoctorName(param);
+		patientTransferInfo.setDestinationBedCode(param);
+		patientTransferInfo.setDestinationBedName(param);
+		patientTransferInfo.setDestinationDeptCode(param);
+		patientTransferInfo.setDestinationDeptName(param);
+		patientTransferInfo.setDestinationWardCode(param);
+		patientTransferInfo.setDestinationWardName(param);
+		patientTransferInfo.setExcuteDateTime(date);
+		patientTransferInfo.setMemo(param);
+		patientTransferInfo.setOrderID(param);
+		patientTransferInfo.setPatientID("M0000"+num);
+		patientTransferInfo.setPerformerCode(param);
+		patientTransferInfo.setPerformerName(param);
+		patientTransferInfo.setPreAttendingDoctorCode(param);
+		patientTransferInfo.setPreAttendingDoctorName(param);
+		patientTransferInfo.setPreDeputyDoctorID(param);
+		patientTransferInfo.setPreDeputyDoctorName(param);
+		patientTransferInfo.setPreDirectorID(param);
+		patientTransferInfo.setPreDirectorName(param);
+		patientTransferInfo.setPreResidentDoctorCode(param);
+		patientTransferInfo.setPreResidentDoctorName(param);
+		patientTransferInfo.setSourceBedCode(param);
+		patientTransferInfo.setSourceBedName(param);
+		patientTransferInfo.setSourceDeptCode(param);
+		patientTransferInfo.setSourceDeptName(param);
+		patientTransferInfo.setSourceWardCode(param);
+		patientTransferInfo.setSourceWardName(param);
+		patientTransferInfo.setStatus(""+num);
+		patientTransferInfo.setVisitID("visitID-"+num);
+		logger.debug("*********  patientTransferInfo Created  ***********");
+		
 		
 		IntegrationResult integrationResult=patientADTService.insertPatADTA01Info(patientInfo, patientAdm,patientTransferInfo);
-		logger.debug("*********  insertPatientAndVisitInfo  ***********");
-		logger.debug(integrationResult);
+		logger.debug("*********  insertPatADTA01Info  ***********");
+		logger.debug(integrationResult.toString());
 	}
 }

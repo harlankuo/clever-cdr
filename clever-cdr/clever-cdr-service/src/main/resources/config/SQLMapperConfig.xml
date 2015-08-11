@@ -29,5 +29,6 @@
 	    <mapper resource="mapper/PatientAdtMapper.xml" />
 	    <mapper resource="mapper/PatientDiagnosisMapper.xml" />
 	    <mapper resource="mapper/OrderInfoMapper.xml" />
+	    <mapper resource="mapper/OrderExecutePaperMapper.xml" />
 	</mappers>
 </configuration>
