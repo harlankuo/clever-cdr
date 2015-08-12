@@ -6,15 +6,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="PatientDischargeInfo")
 public class PatientDischargeInfo {
 	private String guid;//主键
-	public String patientID;//病人号(*)
-	public String visitID;//就诊号(*)
-	public String orderID;//医嘱ID
-	public Date dateOfCharge;//离院日期时间
-	public String disChargeWard;//出院病区
-	public String dischargeDept;//离院科室
-	public String dischargeDestinationType;//离院目的地类型
-	public String dischargeDestination;//离院目的地
-	public String dischargeDescripition;//离院概述
+	private String patientID;//病人号(*)
+	private String visitID;//就诊号(*)
+	private String orderID;//医嘱ID
+	private Date dateOfCharge;//离院日期时间
+	private String disChargeWard;//出院病区
+	private String dischargeDept;//离院科室
+	private String dischargeDestinationType;//离院目的地类型
+	private String dischargeDestination;//离院目的地
+	private String dischargeDescripition;//离院概述
 	public PatientDischargeInfo() {
 		super();
 	}

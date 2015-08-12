@@ -5,18 +5,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name="OrderInfo")
 public class OrderInfo {
-	public String orderID;//医嘱ID,(*)
-	public String patientID;//病人ID,(*)
-	public String visitID;//就诊ID,(*);
-	public String orderNO;//医嘱序号,(*)
-	public String  orderSubNO;//医嘱子序号(*)
-	public int emergency;//紧急医嘱属性,0-普通，1-紧急，默认为0
-	public String motherOrBaby;//母婴属性,0-母亲，从1开始表示第几个婴儿
-	public int reservedOrder;//备用医嘱属性,0-正常医嘱，1-备用医嘱
-	public int subsequentOrder;//补录医嘱属性,0-正常医嘱，1-后来补录的医嘱
-	public int repeatOrder;//是否长期医嘱,1-长期，0-临时索引(*)
-	public String orderClassCode;//医嘱类别代码
-	public String orderClassName;//医嘱类别
+	private String orderID;//医嘱ID,(*)
+	private String patientID;//病人ID,(*)
+	private String visitID;//就诊ID,(*);
+	private String orderNO;//医嘱序号,(*)
+	private String  orderSubNO;//医嘱子序号(*)
+	private int emergency;//紧急医嘱属性,0-普通，1-紧急，默认为0
+	private String motherOrBaby;//母婴属性,0-母亲，从1开始表示第几个婴儿
+	private int reservedOrder;//备用医嘱属性,0-正常医嘱，1-备用医嘱
+	private int subsequentOrder;//补录医嘱属性,0-正常医嘱，1-后来补录的医嘱
+	private int repeatOrder;//是否长期医嘱,1-长期，0-临时索引(*)
+	private String orderClassCode;//医嘱类别代码
+	private String orderClassName;//医嘱类别
 	public OrderInfo() {
 		super();
 	}

@@ -1,8 +1,10 @@
 package com.vico.clever.cdr;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
+import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -17,8 +19,8 @@ import com.vico.clever.cdr.service.model.PatientInfo;
 /**
  * Root resource (exposed at "myresource" path)
  */
-@Path("myresourceJson")
-public class MyResourceTestJson {
+@Path("myresourceTest")
+public class MyResourceTest {
 	protected final Logger logger =Logger.getLogger(this.getClass()) ;
 
     /**
@@ -30,7 +32,7 @@ public class MyResourceTestJson {
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     //@Consumes(MediaType.APPLICATION_JSON)
-    public PatientInfo getPatientInfo() {
+    public List<PatientInfo> getPatientInfo() {
     	Random random = new Random();
 		int num=random.nextInt();
 		PatientInfo patientInfo=new PatientInfo();
@@ -62,6 +64,8 @@ public class MyResourceTestJson {
 		patientInfo.setProfession("程序员");
 		logger.debug("*********  patientInfo Created  ***********");
 		logger.debug(patientInfo.toString());
-        return patientInfo;
+		List<PatientInfo> patientInfolist=new ArrayList<PatientInfo>();
+		patientInfolist.add(patientInfo);
+        return patientInfolist;
     }
 }

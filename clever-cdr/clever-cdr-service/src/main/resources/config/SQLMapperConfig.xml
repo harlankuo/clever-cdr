@@ -30,5 +30,7 @@
 	    <mapper resource="mapper/PatientDiagnosisMapper.xml" />
 	    <mapper resource="mapper/OrderInfoMapper.xml" />
 	    <mapper resource="mapper/OrderExecutePaperMapper.xml" />
+	    <mapper resource="mapper/MedcationOrderInfoMapper.xml" />
+	    <mapper resource="mapper/DrugsDispenseInfoMapper.xml" />
 	</mappers>
 </configuration>
