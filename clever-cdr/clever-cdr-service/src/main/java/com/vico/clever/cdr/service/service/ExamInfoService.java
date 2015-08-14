@@ -112,7 +112,7 @@ public class ExamInfoService {
 		return integrationResult;
 	}
 	
-	public IntegrationResult ExamReportExtract(ExamReportInfo  examReportInfo, ExamStatus examStatus){
+	public IntegrationResult examReportExtract(ExamReportInfo  examReportInfo, ExamStatus examStatus){
 		IntegrationResult integrationResult = new IntegrationResult();
 		/*
 		 * input object data integrity checking

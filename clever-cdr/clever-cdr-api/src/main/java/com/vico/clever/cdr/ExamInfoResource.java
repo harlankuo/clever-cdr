@@ -5,14 +5,17 @@ import java.util.List;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.vico.clever.cdr.service.entity.ExamDataEntity;
+import com.vico.clever.cdr.service.entity.ExamReportEntity;
 import com.vico.clever.cdr.service.entity.ExamReqEntity;
 import com.vico.clever.cdr.service.model.ExamDataInfo;
 import com.vico.clever.cdr.service.model.ExamItem;
+import com.vico.clever.cdr.service.model.ExamReportInfo;
 import com.vico.clever.cdr.service.model.ExamReqInfo;
 import com.vico.clever.cdr.service.model.ExamStatus;
 import com.vico.clever.cdr.service.model.IntegrationResult;
@@ -58,6 +61,28 @@ public class ExamInfoResource {
     	List<ExamDataInfo> examDataList=examDataEntity.getExamDataList();
     	ExamStatus examStatus=examDataEntity.getExamStatus();
     	integrationResult=examService.examDataExtract(examDataList, examStatus);
+    	return integrationResult;
+    }
+    
+    @POST
+    @Path("/examReport")
+    @Produces(MediaType.APPLICATION_XML)
+    @Consumes(MediaType.APPLICATION_XML)
+    public IntegrationResult examReportExtract(ExamReportEntity examReportEntity){
+    	IntegrationResult integrationResult = new IntegrationResult();
+    	ExamReportInfo  examReportInfo=examReportEntity.getExamReportInfo();
+    	ExamStatus examStatus=examReportEntity.getExamStatus();
+    	integrationResult=examService.examReportExtract(examReportInfo, examStatus);
+    	return integrationResult;
+    }
+    
+    @PUT
+    @Path("/examStatus")
+    @Produces(MediaType.APPLICATION_XML)
+    @Consumes(MediaType.APPLICATION_XML)
+    public IntegrationResult updateExamStatus(ExamStatus examStatus){
+    	IntegrationResult integrationResult = new IntegrationResult();
+    	integrationResult=examService.updateExamStatus(examStatus);
     	return integrationResult;
     }
     
