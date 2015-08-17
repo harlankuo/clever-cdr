@@ -20,57 +20,108 @@ import com.vico.clever.cdr.service.service.LabTestService;
 
 /**
  * Root resource (exposed at "labTestResource" path)
+ * 
+ * @author <a href="mailto:Yuan.Ziyang@vico-lab.com">Yuan.Ziyang</a>
+ * 
  */
 @Path("labTestResource")
 public class LabTestResource {
-	
-	private LabTestService labTestService= new LabTestService();
-	
-    /**
-     * Method handling HTTP GET requests. The returned object will be sent
-     * to the client as "text/plain" media type.
-     *
-     * @return String that will be returned as a text/plain response.
-     */
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getLabTestResource() {
-        return "Got LabTestResource!";
-    }
-    
-    @POST
-    @Path("/labTestRequest")
-    @Produces(MediaType.APPLICATION_XML)
-    @Consumes(MediaType.APPLICATION_XML)
-    public IntegrationResult labTestReqExtract(LabTestReqEntity labTestReqEntity){
-    	IntegrationResult integrationResult = new IntegrationResult();
-    	LabTestReqInfo labTestReqInfo=labTestReqEntity.getLabTestReqInfo();
-    	List<LabTestItem> labTestItemList=labTestReqEntity.getLabTestItemList();
-    	LabTestStatus labTestStatus=labTestReqEntity.getLabTestStatus();
-    	integrationResult=labTestService.labTestReqExtract(labTestReqInfo, labTestItemList, labTestStatus);
-    	return integrationResult;
-    }
-    
-    @POST
-    @Path("/labTestData")
-    @Produces(MediaType.APPLICATION_XML)
-    @Consumes(MediaType.APPLICATION_XML)
-    public IntegrationResult labTestDataExtract(LabTestDataEntity labTestDataEntity){
-    	IntegrationResult integrationResult = new IntegrationResult();
-    	List<LabTestData> labTestDataList=labTestDataEntity.getLabTestDataList();
-    	LabTestStatus labTestStatus=labTestDataEntity.getLabTestStatus();
-    	integrationResult=labTestService.labTestDataExtract(labTestDataList, labTestStatus);
-    	return integrationResult;
-    }
-    
-    @POST
-    @Path("/labTestStatus")
-    @Produces(MediaType.APPLICATION_XML)
-    @Consumes(MediaType.APPLICATION_XML)
-    public IntegrationResult labTestStatus(LabTestStatus labTestStatus){
-    	IntegrationResult integrationResult = new IntegrationResult();
-    	integrationResult=labTestService.labTestStatus(labTestStatus);
-    	return integrationResult;
-    }
-    
+
+	private LabTestService labTestService = new LabTestService();
+
+	/**
+	 * 
+	 * Method handling HTTP GET requests. The returned object will be sent to
+	 * the client as "text/plain" media type.
+	 *
+	 * @return String that will be returned as a text/plain response.
+	 */
+	@GET
+	@Produces(MediaType.TEXT_PLAIN)
+	public String getLabTestResource() {
+		return "Got LabTestResource!";
+	}
+
+	/**
+	 * Element resource (exposed at "labTestRequest" path);
+	 * 
+	 * Method handling HTTP POST requests to write lab test request information
+	 * into CDR;
+	 * 
+	 * @author Yuan.Ziyang
+	 * @param labTestReqEntity
+	 *            input json or xml object that contains
+	 *            labTestReqInfo,labTestItemList and labTestStatus information.
+	 * @return IntegrationResult that contains the handling result description
+	 *         as an application/json response.
+	 * 
+	 */
+	@POST
+	@Path("/labTestRequest")
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	public IntegrationResult labTestReqExtract(LabTestReqEntity labTestReqEntity) {
+		IntegrationResult integrationResult = new IntegrationResult();
+		LabTestReqInfo labTestReqInfo = labTestReqEntity.getLabTestReqInfo();
+		List<LabTestItem> labTestItemList = labTestReqEntity
+				.getLabTestItemList();
+		LabTestStatus labTestStatus = labTestReqEntity.getLabTestStatus();
+		integrationResult = labTestService.labTestReqExtract(labTestReqInfo,
+				labTestItemList, labTestStatus);
+		return integrationResult;
+	}
+
+	/**
+	 * Element resource (exposed at "labTestData" path);
+	 * 
+	 * Method handling HTTP POST requests to write lab test data information
+	 * into CDR;
+	 * 
+	 * @author Yuan.Ziyang
+	 * @param labTestDataEntity
+	 *            input json or xml object that contains labTestDataList and
+	 *            labTestStatus information;
+	 * @return IntegrationResult that contains the handling result description
+	 *         as an application/json response.
+	 * 
+	 */
+	@POST
+	@Path("/labTestData")
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	public IntegrationResult labTestDataExtract(
+			LabTestDataEntity labTestDataEntity) {
+		IntegrationResult integrationResult = new IntegrationResult();
+		List<LabTestData> labTestDataList = labTestDataEntity
+				.getLabTestDataList();
+		LabTestStatus labTestStatus = labTestDataEntity.getLabTestStatus();
+		integrationResult = labTestService.labTestDataExtract(labTestDataList,
+				labTestStatus);
+		return integrationResult;
+	}
+
+	/**
+	 * Element resource (exposed at "labTestStatus" path);
+	 * 
+	 * Method handling HTTP POST requests to write lab test status information
+	 * into CDR;
+	 * 
+	 * @author Yuan.Ziyang
+	 * @param labTestStatus
+	 *            input json or xml object that contains labTestStatus
+	 *            information;
+	 * @return IntegrationResult that contains the handling result description
+	 *         as an application/json response.
+	 * 
+	 */
+	@POST
+	@Path("/labTestStatus")
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	public IntegrationResult labTestStatus(LabTestStatus labTestStatus) {
+		IntegrationResult integrationResult = new IntegrationResult();
+		integrationResult = labTestService.labTestStatus(labTestStatus);
+		return integrationResult;
+	}
+
 }

@@ -30,11 +30,11 @@ public class MyResourceTest {
      * @return String that will be returned as a text/plain response.
      */
     @GET
-    @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+    @Produces(MediaType.APPLICATION_JSON)
     //@Consumes(MediaType.APPLICATION_JSON)
     public List<PatientInfo> getPatientInfo() {
     	Random random = new Random();
-		int num=random.nextInt();
+		int num=random.nextInt(100);
 		PatientInfo patientInfo=new PatientInfo();
 		String guid=UUID.randomUUID().toString();
 		patientInfo.setGuid(guid);
@@ -66,6 +66,15 @@ public class MyResourceTest {
 		logger.debug(patientInfo.toString());
 		List<PatientInfo> patientInfolist=new ArrayList<PatientInfo>();
 		patientInfolist.add(patientInfo);
+		
+		PatientInfo patientInfo2=new PatientInfo();
+		patientInfo2.setPatientID("M0000"+num+1);
+		patientInfo2.setPatientName("程序员"+num+"号");
+		patientInfo2.setPatientSexCode("01");
+		patientInfo2.setPatientSexName("男");
+		patientInfo2.setProfession("程序员");
+		patientInfolist.add(patientInfo2);
+		
         return patientInfolist;
     }
 }

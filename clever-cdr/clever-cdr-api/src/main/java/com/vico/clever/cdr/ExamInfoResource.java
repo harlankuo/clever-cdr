@@ -22,7 +22,8 @@ import com.vico.clever.cdr.service.model.IntegrationResult;
 import com.vico.clever.cdr.service.service.ExamInfoService;
 
 /**
- * Root resource (exposed at "myresource" path)
+ * Root resource (exposed at "examResource" path)
+ * @author Yuan.Ziyang
  */
 @Path("examResource")
 public class ExamInfoResource {
@@ -38,11 +39,24 @@ public class ExamInfoResource {
     public String getExamInfoResource() {
         return "Got ExamInfoResource!";
     }
-    
+    /**
+	 * Element resource (exposed at "examRequest" path);
+	 * 
+	 * Method handling HTTP POST requests to write exam request information
+	 * into CDR;
+	 * 
+	 * @author Yuan.Ziyang
+	 * @param examReqEntity
+	 *            input json or xml object that contains
+	 *            examReqInfo,examItemList and examStatus information.
+	 * @return IntegrationResult that contains the handling result description
+	 *         as an application/json response.
+	 * 
+	 */
     @POST
     @Path("/examRequest")
-    @Produces(MediaType.APPLICATION_XML)
-    @Consumes(MediaType.APPLICATION_XML)
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public IntegrationResult examReqInfoExtract(ExamReqEntity examReqEntity){
     	IntegrationResult integrationResult = new IntegrationResult();
     	ExamReqInfo examReqInfo=examReqEntity.getExamReqInfo();
@@ -51,11 +65,24 @@ public class ExamInfoResource {
     	integrationResult=examService.examReqInfoExtract(examReqInfo, examItemList, examStatus);
     	return integrationResult;
     }
-    
+    /**
+	 * Element resource (exposed at "examData" path);
+	 * 
+	 * Method handling HTTP POST requests to write exam data information
+	 * into CDR;
+	 * 
+	 * @author Yuan.Ziyang
+	 * @param examDataEntity
+	 *            input json or xml object that contains
+	 *            examDataList and examStatus information.
+	 * @return IntegrationResult that contains the handling result description
+	 *         as an application/json response.
+	 * 
+	 */
     @POST
     @Path("/examData")
-    @Produces(MediaType.APPLICATION_XML)
-    @Consumes(MediaType.APPLICATION_XML)
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public IntegrationResult examDataExtract(ExamDataEntity examDataEntity){
     	IntegrationResult integrationResult = new IntegrationResult();
     	List<ExamDataInfo> examDataList=examDataEntity.getExamDataList();
@@ -63,11 +90,24 @@ public class ExamInfoResource {
     	integrationResult=examService.examDataExtract(examDataList, examStatus);
     	return integrationResult;
     }
-    
+    /**
+	 * Element resource (exposed at "examReport" path);
+	 * 
+	 * Method handling HTTP POST requests to write exam report information
+	 * into CDR;
+	 * 
+	 * @author Yuan.Ziyang
+	 * @param examDataEntity
+	 *            input json or xml object that contains
+	 *            examReportInfo and examStatus information.
+	 * @return IntegrationResult that contains the handling result description
+	 *         as an application/json response.
+	 * 
+	 */
     @POST
     @Path("/examReport")
-    @Produces(MediaType.APPLICATION_XML)
-    @Consumes(MediaType.APPLICATION_XML)
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public IntegrationResult examReportExtract(ExamReportEntity examReportEntity){
     	IntegrationResult integrationResult = new IntegrationResult();
     	ExamReportInfo  examReportInfo=examReportEntity.getExamReportInfo();
@@ -75,11 +115,23 @@ public class ExamInfoResource {
     	integrationResult=examService.examReportExtract(examReportInfo, examStatus);
     	return integrationResult;
     }
-    
-    @PUT
+    /**
+   	 * Element resource (exposed at "examStatus" path);
+   	 * 
+   	 * Method handling HTTP POST requests to write exam status information
+   	 * into CDR;
+   	 * 
+   	 * @author Yuan.Ziyang
+   	 * @param examDataEntity
+   	 *            input json or xml object that contains examStatus information.
+   	 * @return IntegrationResult that contains the handling result description
+   	 *         as an application/json response.
+   	 * 
+   	 */
+    @POST
     @Path("/examStatus")
-    @Produces(MediaType.APPLICATION_XML)
-    @Consumes(MediaType.APPLICATION_XML)
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public IntegrationResult updateExamStatus(ExamStatus examStatus){
     	IntegrationResult integrationResult = new IntegrationResult();
     	integrationResult=examService.updateExamStatus(examStatus);
