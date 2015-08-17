@@ -35,5 +35,6 @@
 	    <mapper resource="mapper/PrescriptionInfoMapper.xml" />
 	    <mapper resource="mapper/ExamInfoMapper.xml" />
 	    <mapper resource="mapper/LabTestInfoMapper.xml" />
+	    <mapper resource="mapper/FareInfoMapper.xml" />
 	</mappers>
 </configuration>
