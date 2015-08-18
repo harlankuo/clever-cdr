@@ -4,43 +4,45 @@ import java.util.Date;
 import java.util.UUID;
 
 import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement(name="PatientInfo")
+
+@XmlRootElement(name = "PatientInfo")
 public class PatientInfo {
-	private String guid;//主键自增
-	private String patientID;//病人号（*）
-	private String patientName;//病人姓名（*）
-	private String patientSexCode;//病人性别，M：男、F:女、U：未知、O：未说明(*)
-	private String patientSexName;//性别名称
-	private Date dateOfBirth;//出生日期
-	private String nationality;//国籍
-	private String ethnicCode;//民族代码
-	private String ethnic;//民族
-	private String maritalStatusCode;//婚姻状况代码
-	private String maritalStatus;//婚姻状况
-	private String profession;//职业
-	private String educationBackground;//文化程度
-	private String bloodTypeABO;//ABO血型
-    private String bloodTypeRH;//RH血型
-    private String patientIdNO;//居民身份证号码
-    private String healthNO;//居民健康卡号码
-    private String birthPlace;//出生详细地址
-    private String birthPlaceCountryCode;//出生地址-国代码
-    private String birthPlaceCountry;//出生地址-国
-    private String birthPlaceProvinceCode;//出生地址-省代码
-    private String birthPlaceProvince;//出生地址-省
-    private String birthPlaceCityCode;//出生地址-市）镇代码
-    private String birthPlaceCity;//出生地址-市）镇
-    private Date dateOfDeath;//患者死亡时间
-    private String deathCountryCode;//死亡地址-国代码
-    private String deathCountry;//死亡地址-国
-    private String deathProvinceCode;//死亡地址-省代码
-    private String deathProvince;//死亡地址-省
-    private String deathCityCode;//死亡地址-市代码
-    private String deathCity;//死亡地址-市
+	private String guid;// 主键自增
+	private String patientID;// 病人号（*）
+	private String patientName;// 病人姓名（*）
+	private String patientSexCode;// 病人性别，M：男、F:女、U：未知、O：未说明(*)
+	private String patientSexName;// 性别名称
+	private Date dateOfBirth;// 出生日期
+	private String nationality;// 国籍
+	private String ethnicCode;// 民族代码
+	private String ethnic;// 民族
+	private String maritalStatusCode;// 婚姻状况代码
+	private String maritalStatus;// 婚姻状况
+	private String profession;// 职业
+	private String educationBackground;// 文化程度
+	private String bloodTypeABO;// ABO血型
+	private String bloodTypeRH;// RH血型
+	private String patientIdNO;// 居民身份证号码
+	private String healthNO;// 居民健康卡号码
+	private String birthPlace;// 出生详细地址
+	private String birthPlaceCountryCode;// 出生地址-国代码
+	private String birthPlaceCountry;// 出生地址-国
+	private String birthPlaceProvinceCode;// 出生地址-省代码
+	private String birthPlaceProvince;// 出生地址-省
+	private String birthPlaceCityCode;// 出生地址-市）镇代码
+	private String birthPlaceCity;// 出生地址-市）镇
+	private Date dateOfDeath;// 患者死亡时间
+	private String deathCountryCode;// 死亡地址-国代码
+	private String deathCountry;// 死亡地址-国
+	private String deathProvinceCode;// 死亡地址-省代码
+	private String deathProvince;// 死亡地址-省
+	private String deathCityCode;// 死亡地址-市代码
+	private String deathCity;// 死亡地址-市
+
 	public PatientInfo() {
 		super();
-		//guid=UUID.randomUUID().toString();
 	}
+
 	public PatientInfo(String guid, String patientID, String patientName,
 			String patientSexCode, String patientSexName, Date dateOfBirth,
 			String nationality, String ethnicCode, String ethnic,
@@ -90,189 +92,251 @@ public class PatientInfo {
 	public String getGuid() {
 		return guid;
 	}
+
 	public void setGuid(String guid) {
 		this.guid = guid;
 	}
+
 	public String getPatientID() {
 		return patientID;
 	}
+
 	public void setPatientID(String patientID) {
 		this.patientID = patientID;
 	}
+
 	public String getPatientName() {
 		return patientName;
 	}
+
 	public void setPatientName(String patientName) {
 		this.patientName = patientName;
 	}
+
 	public String getPatientSexCode() {
 		return patientSexCode;
 	}
+
 	public void setPatientSexCode(String patientSexCode) {
 		this.patientSexCode = patientSexCode;
 	}
+
 	public String getPatientSexName() {
 		return patientSexName;
 	}
+
 	public void setPatientSexName(String patientSexName) {
 		this.patientSexName = patientSexName;
 	}
+
 	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
+
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
+
 	public String getNationality() {
 		return nationality;
 	}
+
 	public void setNationality(String nationality) {
 		this.nationality = nationality;
 	}
+
 	public String getEthnicCode() {
 		return ethnicCode;
 	}
+
 	public void setEthnicCode(String ethnicCode) {
 		this.ethnicCode = ethnicCode;
 	}
+
 	public String getEthnic() {
 		return ethnic;
 	}
+
 	public void setEthnic(String ethnic) {
 		this.ethnic = ethnic;
 	}
+
 	public String getMaritalStatusCode() {
 		return maritalStatusCode;
 	}
+
 	public void setMaritalStatusCode(String maritalStatusCode) {
 		this.maritalStatusCode = maritalStatusCode;
 	}
+
 	public String getMaritalStatus() {
 		return maritalStatus;
 	}
+
 	public void setMaritalStatus(String maritalStatus) {
 		this.maritalStatus = maritalStatus;
 	}
+
 	public String getProfession() {
 		return profession;
 	}
+
 	public void setProfession(String profession) {
 		this.profession = profession;
 	}
+
 	public String getEducationBackground() {
 		return educationBackground;
 	}
+
 	public void setEducationBackground(String educationBackground) {
 		this.educationBackground = educationBackground;
 	}
+
 	public String getBloodTypeABO() {
 		return bloodTypeABO;
 	}
+
 	public void setBloodTypeABO(String bloodTypeABO) {
 		this.bloodTypeABO = bloodTypeABO;
 	}
+
 	public String getBloodTypeRH() {
 		return bloodTypeRH;
 	}
+
 	public void setBloodTypeRH(String bloodTypeRH) {
 		this.bloodTypeRH = bloodTypeRH;
 	}
+
 	public String getPatientIdNO() {
 		return patientIdNO;
 	}
+
 	public void setPatientIdNO(String patientIdNO) {
 		this.patientIdNO = patientIdNO;
 	}
+
 	public String getHealthNO() {
 		return healthNO;
 	}
+
 	public void setHealthNO(String healthNO) {
 		this.healthNO = healthNO;
 	}
+
 	public String getBirthPlace() {
 		return birthPlace;
 	}
+
 	public void setBirthPlace(String birthPlace) {
 		this.birthPlace = birthPlace;
 	}
+
 	public String getBirthPlaceCountryCode() {
 		return birthPlaceCountryCode;
 	}
+
 	public void setBirthPlaceCountryCode(String birthPlaceCountryCode) {
 		this.birthPlaceCountryCode = birthPlaceCountryCode;
 	}
+
 	public String getBirthPlaceCountry() {
 		return birthPlaceCountry;
 	}
+
 	public void setBirthPlaceCountry(String birthPlaceCountry) {
 		this.birthPlaceCountry = birthPlaceCountry;
 	}
+
 	public String getBirthPlaceProvinceCode() {
 		return birthPlaceProvinceCode;
 	}
+
 	public void setBirthPlaceProvinceCode(String birthPlaceProvinceCode) {
 		this.birthPlaceProvinceCode = birthPlaceProvinceCode;
 	}
+
 	public String getBirthPlaceProvince() {
 		return birthPlaceProvince;
 	}
+
 	public void setBirthPlaceProvince(String birthPlaceProvince) {
 		this.birthPlaceProvince = birthPlaceProvince;
 	}
+
 	public String getBirthPlaceCityCode() {
 		return birthPlaceCityCode;
 	}
+
 	public void setBirthPlaceCityCode(String birthPlaceCityCode) {
 		this.birthPlaceCityCode = birthPlaceCityCode;
 	}
+
 	public String getBirthPlaceCity() {
 		return birthPlaceCity;
 	}
+
 	public void setBirthPlaceCity(String birthPlaceCity) {
 		this.birthPlaceCity = birthPlaceCity;
 	}
+
 	public Date getDateOfDeath() {
 		return dateOfDeath;
 	}
+
 	public void setDateOfDeath(Date dateOfDeath) {
 		this.dateOfDeath = dateOfDeath;
 	}
+
 	public String getDeathCountryCode() {
 		return deathCountryCode;
 	}
+
 	public void setDeathCountryCode(String deathCountryCode) {
 		this.deathCountryCode = deathCountryCode;
 	}
+
 	public String getDeathCountry() {
 		return deathCountry;
 	}
+
 	public void setDeathCountry(String deathCountry) {
 		this.deathCountry = deathCountry;
 	}
+
 	public String getDeathProvinceCode() {
 		return deathProvinceCode;
 	}
+
 	public void setDeathProvinceCode(String deathProvinceCode) {
 		this.deathProvinceCode = deathProvinceCode;
 	}
+
 	public String getDeathProvince() {
 		return deathProvince;
 	}
+
 	public void setDeathProvince(String deathProvince) {
 		this.deathProvince = deathProvince;
 	}
+
 	public String getDeathCityCode() {
 		return deathCityCode;
 	}
+
 	public void setDeathCityCode(String deathCityCode) {
 		this.deathCityCode = deathCityCode;
 	}
+
 	public String getDeathCity() {
 		return deathCity;
 	}
+
 	public void setDeathCity(String deathCity) {
 		this.deathCity = deathCity;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -356,6 +420,7 @@ public class PatientInfo {
 				+ ((profession == null) ? 0 : profession.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -522,6 +587,7 @@ public class PatientInfo {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -558,6 +624,5 @@ public class PatientInfo {
 				.append("]");
 		return builder.toString();
 	}
-	
 
 }

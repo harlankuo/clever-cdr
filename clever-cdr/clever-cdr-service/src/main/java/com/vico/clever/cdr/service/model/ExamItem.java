@@ -3,24 +3,27 @@ package com.vico.clever.cdr.service.model;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement(name="ExamItem")
+
+@XmlRootElement(name = "ExamItem")
 public class ExamItem {
-	private String examReqID;//检查申请号(*)
-	private int itemNO;//项目序号
-	private String examClass;//检查类别
-	private String examClassCode;//检查类别代码
-	private String examSubClass;//检查子类
-	private String examSubClassCode;//检查子类代码
-	private String itemName;//检查项目名称
-	private String itemCode;//检查项目代码
-	private Date scheduleDate;//预约时间
-	private String scheduleDeptCode;//预约科室代码
-	private String scheduleDeptName;//预约科室名称
-	private String scheduleDoctorCode;//预约医生代码
-	private String scheduleDoctorName;//预约医生名称
+	private String examReqID;// 检查申请号(*)
+	private int itemNO;// 项目序号
+	private String examClass;// 检查类别
+	private String examClassCode;// 检查类别代码
+	private String examSubClass;// 检查子类
+	private String examSubClassCode;// 检查子类代码
+	private String itemName;// 检查项目名称
+	private String itemCode;// 检查项目代码
+	private Date scheduleDate;// 预约时间
+	private String scheduleDeptCode;// 预约科室代码
+	private String scheduleDeptName;// 预约科室名称
+	private String scheduleDoctorCode;// 预约医生代码
+	private String scheduleDoctorName;// 预约医生名称
+
 	public ExamItem() {
 		super();
 	}
+
 	public ExamItem(String examReqID, int itemNO, String examClass,
 			String examClassCode, String examSubClass, String examSubClassCode,
 			String itemName, String itemCode, Date scheduleDate,
@@ -41,84 +44,111 @@ public class ExamItem {
 		this.scheduleDoctorCode = scheduleDoctorCode;
 		this.scheduleDoctorName = scheduleDoctorName;
 	}
+
 	public String getExamReqID() {
 		return examReqID;
 	}
+
 	public void setExamReqID(String examReqID) {
 		this.examReqID = examReqID;
 	}
+
 	public int getItemNO() {
 		return itemNO;
 	}
+
 	public void setItemNO(int itemNO) {
 		this.itemNO = itemNO;
 	}
+
 	public String getExamClass() {
 		return examClass;
 	}
+
 	public void setExamClass(String examClass) {
 		this.examClass = examClass;
 	}
+
 	public String getExamClassCode() {
 		return examClassCode;
 	}
+
 	public void setExamClassCode(String examClassCode) {
 		this.examClassCode = examClassCode;
 	}
+
 	public String getExamSubClass() {
 		return examSubClass;
 	}
+
 	public void setExamSubClass(String examSubClass) {
 		this.examSubClass = examSubClass;
 	}
+
 	public String getExamSubClassCode() {
 		return examSubClassCode;
 	}
+
 	public void setExamSubClassCode(String examSubClassCode) {
 		this.examSubClassCode = examSubClassCode;
 	}
+
 	public String getItemName() {
 		return itemName;
 	}
+
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
+
 	public String getItemCode() {
 		return itemCode;
 	}
+
 	public void setItemCode(String itemCode) {
 		this.itemCode = itemCode;
 	}
+
 	public Date getScheduleDate() {
 		return scheduleDate;
 	}
+
 	public void setScheduleDate(Date scheduleDate) {
 		this.scheduleDate = scheduleDate;
 	}
+
 	public String getScheduleDeptCode() {
 		return scheduleDeptCode;
 	}
+
 	public void setScheduleDeptCode(String scheduleDeptCode) {
 		this.scheduleDeptCode = scheduleDeptCode;
 	}
+
 	public String getScheduleDeptName() {
 		return scheduleDeptName;
 	}
+
 	public void setScheduleDeptName(String scheduleDeptName) {
 		this.scheduleDeptName = scheduleDeptName;
 	}
+
 	public String getScheduleDoctorCode() {
 		return scheduleDoctorCode;
 	}
+
 	public void setScheduleDoctorCode(String scheduleDoctorCode) {
 		this.scheduleDoctorCode = scheduleDoctorCode;
 	}
+
 	public String getScheduleDoctorName() {
 		return scheduleDoctorName;
 	}
+
 	public void setScheduleDoctorName(String scheduleDoctorName) {
 		this.scheduleDoctorName = scheduleDoctorName;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -157,6 +187,7 @@ public class ExamItem {
 						.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -230,6 +261,7 @@ public class ExamItem {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "ExamItem [examReqID=" + examReqID + ", itemNO=" + itemNO

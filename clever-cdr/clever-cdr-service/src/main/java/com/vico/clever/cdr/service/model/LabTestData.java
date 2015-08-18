@@ -3,35 +3,38 @@ package com.vico.clever.cdr.service.model;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement(name="LabTestData")
+
+@XmlRootElement(name = "LabTestData")
 public class LabTestData {
-	private String patientID;//病人号(*)
-	private String visitID;//就诊号(*)
-	private String testReqID;//检验申请号(*)
-	private String reportID;//检验报告号
-	private String deviceID;//检验设备号
-	private String itemNO;//项目序号
-	private String itemCode;//项目代码
-	private String itemName;//项目名称
-	private Date executeDate;//检验日期时间
-	private String result;//项目结果值
-	private String resultUnit;//项目结果单位
-	private String normallIndicator;//项目结果正常标志,N-正常 L-低 H-高
-	private String referenceValue;//正常参考值
-	private Date resultDate;//检验报告日期及时间
-	private String overallInterpretation;//检验报告结果
-	private String receiverDoctorID;//检验医师代码
-	private String receiverDoctorName;//检验医师名称
-	private String reporterID;//报告医师代码
-	private String reporterName;//报告医师姓名
-	private String auditingPhysicianID;//审核医师代码
-	private String auditingPhysicianName;//审核医师姓名
-	private String receiverDeptID;//报告科室代码
-	private String receiverDeptName;//报告科室名称
-	private String memo;//报告备注
+	private String patientID;// 病人号(*)
+	private String visitID;// 就诊号(*)
+	private String testReqID;// 检验申请号(*)
+	private String reportID;// 检验报告号
+	private String deviceID;// 检验设备号
+	private String itemNO;// 项目序号
+	private String itemCode;// 项目代码
+	private String itemName;// 项目名称
+	private Date executeDate;// 检验日期时间
+	private String result;// 项目结果值
+	private String resultUnit;// 项目结果单位
+	private String normallIndicator;// 项目结果正常标志,N-正常 L-低 H-高
+	private String referenceValue;// 正常参考值
+	private Date resultDate;// 检验报告日期及时间
+	private String overallInterpretation;// 检验报告结果
+	private String receiverDoctorID;// 检验医师代码
+	private String receiverDoctorName;// 检验医师名称
+	private String reporterID;// 报告医师代码
+	private String reporterName;// 报告医师姓名
+	private String auditingPhysicianID;// 审核医师代码
+	private String auditingPhysicianName;// 审核医师姓名
+	private String receiverDeptID;// 报告科室代码
+	private String receiverDeptName;// 报告科室名称
+	private String memo;// 报告备注
+
 	public LabTestData() {
 		super();
 	}
+
 	public LabTestData(String patientID, String visitID, String testReqID,
 			String reportID, String deviceID, String itemNO, String itemCode,
 			String itemName, Date executeDate, String result,
@@ -67,150 +70,199 @@ public class LabTestData {
 		this.receiverDeptName = receiverDeptName;
 		this.memo = memo;
 	}
+
 	public String getPatientID() {
 		return patientID;
 	}
+
 	public void setPatientID(String patientID) {
 		this.patientID = patientID;
 	}
+
 	public String getVisitID() {
 		return visitID;
 	}
+
 	public void setVisitID(String visitID) {
 		this.visitID = visitID;
 	}
+
 	public String getTestReqID() {
 		return testReqID;
 	}
+
 	public void setTestReqID(String testReqID) {
 		this.testReqID = testReqID;
 	}
+
 	public String getReportID() {
 		return reportID;
 	}
+
 	public void setReportID(String reportID) {
 		this.reportID = reportID;
 	}
+
 	public String getDeviceID() {
 		return deviceID;
 	}
+
 	public void setDeviceID(String deviceID) {
 		this.deviceID = deviceID;
 	}
+
 	public String getItemNO() {
 		return itemNO;
 	}
+
 	public void setItemNO(String itemNO) {
 		this.itemNO = itemNO;
 	}
+
 	public String getItemCode() {
 		return itemCode;
 	}
+
 	public void setItemCode(String itemCode) {
 		this.itemCode = itemCode;
 	}
+
 	public String getItemName() {
 		return itemName;
 	}
+
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
+
 	public Date getExecuteDate() {
 		return executeDate;
 	}
+
 	public void setExecuteDate(Date executeDate) {
 		this.executeDate = executeDate;
 	}
+
 	public String getResult() {
 		return result;
 	}
+
 	public void setResult(String result) {
 		this.result = result;
 	}
+
 	public String getResultUnit() {
 		return resultUnit;
 	}
+
 	public void setResultUnit(String resultUnit) {
 		this.resultUnit = resultUnit;
 	}
+
 	public String getNormallIndicator() {
 		return normallIndicator;
 	}
+
 	public void setNormallIndicator(String normallIndicator) {
 		this.normallIndicator = normallIndicator;
 	}
+
 	public String getReferenceValue() {
 		return referenceValue;
 	}
+
 	public void setReferenceValue(String referenceValue) {
 		this.referenceValue = referenceValue;
 	}
+
 	public Date getResultDate() {
 		return resultDate;
 	}
+
 	public void setResultDate(Date resultDate) {
 		this.resultDate = resultDate;
 	}
+
 	public String getOverallInterpretation() {
 		return overallInterpretation;
 	}
+
 	public void setOverallInterpretation(String overallInterpretation) {
 		this.overallInterpretation = overallInterpretation;
 	}
+
 	public String getReceiverDoctorID() {
 		return receiverDoctorID;
 	}
+
 	public void setReceiverDoctorID(String receiverDoctorID) {
 		this.receiverDoctorID = receiverDoctorID;
 	}
+
 	public String getReceiverDoctorName() {
 		return receiverDoctorName;
 	}
+
 	public void setReceiverDoctorName(String receiverDoctorName) {
 		this.receiverDoctorName = receiverDoctorName;
 	}
+
 	public String getReporterID() {
 		return reporterID;
 	}
+
 	public void setReporterID(String reporterID) {
 		this.reporterID = reporterID;
 	}
+
 	public String getReporterName() {
 		return reporterName;
 	}
+
 	public void setReporterName(String reporterName) {
 		this.reporterName = reporterName;
 	}
+
 	public String getAuditingPhysicianID() {
 		return auditingPhysicianID;
 	}
+
 	public void setAuditingPhysicianID(String auditingPhysicianID) {
 		this.auditingPhysicianID = auditingPhysicianID;
 	}
+
 	public String getAuditingPhysicianName() {
 		return auditingPhysicianName;
 	}
+
 	public void setAuditingPhysicianName(String auditingPhysicianName) {
 		this.auditingPhysicianName = auditingPhysicianName;
 	}
+
 	public String getReceiverDeptID() {
 		return receiverDeptID;
 	}
+
 	public void setReceiverDeptID(String receiverDeptID) {
 		this.receiverDeptID = receiverDeptID;
 	}
+
 	public String getReceiverDeptName() {
 		return receiverDeptName;
 	}
+
 	public void setReceiverDeptName(String receiverDeptName) {
 		this.receiverDeptName = receiverDeptName;
 	}
+
 	public String getMemo() {
 		return memo;
 	}
+
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -273,6 +325,7 @@ public class LabTestData {
 		result = prime * result + ((visitID == null) ? 0 : visitID.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -404,6 +457,7 @@ public class LabTestData {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -431,5 +485,5 @@ public class LabTestData {
 				.append("]");
 		return builder.toString();
 	}
-    
+
 }

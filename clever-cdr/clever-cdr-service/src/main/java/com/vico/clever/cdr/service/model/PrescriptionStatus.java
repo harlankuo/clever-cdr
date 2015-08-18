@@ -3,27 +3,30 @@ package com.vico.clever.cdr.service.model;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement(name="PrescriptionStatus")
+
+@XmlRootElement(name = "PrescriptionStatus")
 public class PrescriptionStatus {
 
-	private String patientID;//病人号(*)
-	private String visitID;//就诊号(*)
-	private String orderID;//医嘱申请号
-	private String prescriptionID;//处方ID(*)
-	private String prescriptionContent;//处方内容
-	private String curStateCode;//标准状态代码
-	private String curStateName;//标准状态
-	private String careflowStepCode;//实际状态代码
-	private String careflowStepName;//实际状态
-	private Date performDateTime;//执行时间
-	private String performDeptCode;//执行科室代码
-	private String performDeptName;//执行科室名称
-	private String performDoctorCode;//执行人员代码
-	private String performDoctorName;//执行人员名称
-	private String memo;//备注
+	private String patientID;// 病人号(*)
+	private String visitID;// 就诊号(*)
+	private String orderID;// 医嘱申请号
+	private String prescriptionID;// 处方ID(*)
+	private String prescriptionContent;// 处方内容
+	private String curStateCode;// 标准状态代码
+	private String curStateName;// 标准状态
+	private String careflowStepCode;// 实际状态代码
+	private String careflowStepName;// 实际状态
+	private Date performDateTime;// 执行时间
+	private String performDeptCode;// 执行科室代码
+	private String performDeptName;// 执行科室名称
+	private String performDoctorCode;// 执行人员代码
+	private String performDoctorName;// 执行人员名称
+	private String memo;// 备注
+
 	public PrescriptionStatus() {
 		super();
 	}
+
 	public PrescriptionStatus(String patientID, String visitID, String orderID,
 			String prescriptionID, String prescriptionContent,
 			String curStateCode, String curStateName, String careflowStepCode,
@@ -47,96 +50,127 @@ public class PrescriptionStatus {
 		this.performDoctorName = performDoctorName;
 		this.memo = memo;
 	}
+
 	public String getPatientID() {
 		return patientID;
 	}
+
 	public void setPatientID(String patientID) {
 		this.patientID = patientID;
 	}
+
 	public String getVisitID() {
 		return visitID;
 	}
+
 	public void setVisitID(String visitID) {
 		this.visitID = visitID;
 	}
+
 	public String getOrderID() {
 		return orderID;
 	}
+
 	public void setOrderID(String orderID) {
 		this.orderID = orderID;
 	}
+
 	public String getPrescriptionID() {
 		return prescriptionID;
 	}
+
 	public void setPrescriptionID(String prescriptionID) {
 		this.prescriptionID = prescriptionID;
 	}
+
 	public String getPrescriptionContent() {
 		return prescriptionContent;
 	}
+
 	public void setPrescriptionContent(String prescriptionContent) {
 		this.prescriptionContent = prescriptionContent;
 	}
+
 	public String getCurStateCode() {
 		return curStateCode;
 	}
+
 	public void setCurStateCode(String curStateCode) {
 		this.curStateCode = curStateCode;
 	}
+
 	public String getCurStateName() {
 		return curStateName;
 	}
+
 	public void setCurStateName(String curStateName) {
 		this.curStateName = curStateName;
 	}
+
 	public String getCareflowStepCode() {
 		return careflowStepCode;
 	}
+
 	public void setCareflowStepCode(String careflowStepCode) {
 		this.careflowStepCode = careflowStepCode;
 	}
+
 	public String getCareflowStepName() {
 		return careflowStepName;
 	}
+
 	public void setCareflowStepName(String careflowStepName) {
 		this.careflowStepName = careflowStepName;
 	}
+
 	public Date getPerformDateTime() {
 		return performDateTime;
 	}
+
 	public void setPerformDateTime(Date performDateTime) {
 		this.performDateTime = performDateTime;
 	}
+
 	public String getPerformDeptCode() {
 		return performDeptCode;
 	}
+
 	public void setPerformDeptCode(String performDeptCode) {
 		this.performDeptCode = performDeptCode;
 	}
+
 	public String getPerformDeptName() {
 		return performDeptName;
 	}
+
 	public void setPerformDeptName(String performDeptName) {
 		this.performDeptName = performDeptName;
 	}
+
 	public String getPerformDoctorCode() {
 		return performDoctorCode;
 	}
+
 	public void setPerformDoctorCode(String performDoctorCode) {
 		this.performDoctorCode = performDoctorCode;
 	}
+
 	public String getPerformDoctorName() {
 		return performDoctorName;
 	}
+
 	public void setPerformDoctorName(String performDoctorName) {
 		this.performDoctorName = performDoctorName;
 	}
+
 	public String getMemo() {
 		return memo;
 	}
+
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -178,6 +212,7 @@ public class PrescriptionStatus {
 		result = prime * result + ((visitID == null) ? 0 : visitID.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -264,6 +299,7 @@ public class PrescriptionStatus {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "PrescriptionStatus [patientID=" + patientID + ", visitID="

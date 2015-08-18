@@ -3,66 +3,69 @@ package com.vico.clever.cdr.service.model;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement(name="PatientAdmission")
+
+@XmlRootElement(name = "PatientAdmission")
 public class PatientAdmission {
-	private long uid;//主键自增
-	private String patientID;//病人号(*)
-	private String patientClassCode;//病人类型,I代表住院，O代表门诊，E代表急诊，P代表体检(*)
-	private String patientClassName;//病人类型
-	private String visitID;//就诊号(*)
-	private String deptCode;//科室代码
-	private String deptName;//科室名称
-	private String wardCode;//病区编号,即护理站编号
-	private String wardName;//病区名称,即护理站名称
-	private String roomCode;//病房号
-	private String roomName;//病房名称
-	private String bedCode;//病床号
-	private String bedName;//病床名称
-	private Date  admitDateTime;//就诊时间(*)
-    private String admitIntent;//就诊目的
-    private String admitDoctorID;//门诊的接诊医生编码
-    private String admitDoctorName;//门诊的接诊医生姓名
-    private String residentDoctorID;//住院医师编码
-    private String residentDoctorName;//住院医师姓名
-    private String attendingDoctorID;//主治医师编码
-    private String attendingDoctorName;//主治医师姓名
-    private String direcotrID;//主任医师编码
-    private String direcotrName;//主任医师姓名
-    private String deputyDoctorID;//副主任医师编码
-    private String deputyDoctorName;//副主任医师姓名
-    private String admitSource;//入院来源
-    private String patientCondition;//入院病情
-    private String admissionTypeCode;//入院途径代码
-    private String admissionType;//入院途径
-    private String financialClassCode;//费别代码
-    private String financialClass;//费别
-    private String nursingClass;//护理等级
-    private String doctorGroupID;//医生组ID
-    private String nursingGroupID;//护理组ID
-    private String firstAdmissionIndicator;//首次入院标志
-    private String specialDepartmentCode;//特殊科室代码
-    private String specialDepartment;//特殊科室
-    private String insuranceID;//医疗保险证号码
-    private String insuranceType;//医疗保险类型
-    private String insuranceTypeCode;//医疗保险类型代码
-    private String insuranceInformation;//医疗保险信息内容
-    private String insurancePropety;//医疗保险属性
-    private String insurancePropetyCode;//医疗保险属性代码
-    private String emailAdress;//电子邮件地址
-    private String mailingAdress;//通讯地址
-    private String maillingAdressProvince;//通信地址(省、自治区、直辖市)
-    private String maillingAdressCity;//通信地址市（地区）
-    private String maillingAdressDistrict;//通信地址县（地区）
-    private String maillingAdressTownLocality;//通信地址乡（镇、街道办事处）
-    private String maillingAdressStreetName;//通信地址村（街、路、弄等）
-    private String maillingAdressNumber;//通信地址-门牌号码
-    private String maillingAdressPostalCode;//邮政编码
-    private String mobelPhone;//移动电话号码
-    private String homePhone;//家庭电话号码
-    private String businessPhone;//单位电话号码 
+	private long uid;// 主键自增
+	private String patientID;// 病人号(*)
+	private String patientClassCode;// 病人类型,I代表住院，O代表门诊，E代表急诊，P代表体检(*)
+	private String patientClassName;// 病人类型
+	private String visitID;// 就诊号(*)
+	private String deptCode;// 科室代码
+	private String deptName;// 科室名称
+	private String wardCode;// 病区编号,即护理站编号
+	private String wardName;// 病区名称,即护理站名称
+	private String roomCode;// 病房号
+	private String roomName;// 病房名称
+	private String bedCode;// 病床号
+	private String bedName;// 病床名称
+	private Date admitDateTime;// 就诊时间(*)
+	private String admitIntent;// 就诊目的
+	private String admitDoctorID;// 门诊的接诊医生编码
+	private String admitDoctorName;// 门诊的接诊医生姓名
+	private String residentDoctorID;// 住院医师编码
+	private String residentDoctorName;// 住院医师姓名
+	private String attendingDoctorID;// 主治医师编码
+	private String attendingDoctorName;// 主治医师姓名
+	private String direcotrID;// 主任医师编码
+	private String direcotrName;// 主任医师姓名
+	private String deputyDoctorID;// 副主任医师编码
+	private String deputyDoctorName;// 副主任医师姓名
+	private String admitSource;// 入院来源
+	private String patientCondition;// 入院病情
+	private String admissionTypeCode;// 入院途径代码
+	private String admissionType;// 入院途径
+	private String financialClassCode;// 费别代码
+	private String financialClass;// 费别
+	private String nursingClass;// 护理等级
+	private String doctorGroupID;// 医生组ID
+	private String nursingGroupID;// 护理组ID
+	private String firstAdmissionIndicator;// 首次入院标志
+	private String specialDepartmentCode;// 特殊科室代码
+	private String specialDepartment;// 特殊科室
+	private String insuranceID;// 医疗保险证号码
+	private String insuranceType;// 医疗保险类型
+	private String insuranceTypeCode;// 医疗保险类型代码
+	private String insuranceInformation;// 医疗保险信息内容
+	private String insurancePropety;// 医疗保险属性
+	private String insurancePropetyCode;// 医疗保险属性代码
+	private String emailAdress;// 电子邮件地址
+	private String mailingAdress;// 通讯地址
+	private String maillingAdressProvince;// 通信地址(省、自治区、直辖市)
+	private String maillingAdressCity;// 通信地址市（地区）
+	private String maillingAdressDistrict;// 通信地址县（地区）
+	private String maillingAdressTownLocality;// 通信地址乡（镇、街道办事处）
+	private String maillingAdressStreetName;// 通信地址村（街、路、弄等）
+	private String maillingAdressNumber;// 通信地址-门牌号码
+	private String maillingAdressPostalCode;// 邮政编码
+	private String mobelPhone;// 移动电话号码
+	private String homePhone;// 家庭电话号码
+	private String businessPhone;// 单位电话号码
+
 	public PatientAdmission() {
 		super();
 	}
+
 	public PatientAdmission(long uid, String patientID,
 			String patientClassCode, String patientClassName, String visitID,
 			String deptCode, String deptName, String wardCode, String wardName,
@@ -142,336 +145,447 @@ public class PatientAdmission {
 		this.homePhone = homePhone;
 		this.businessPhone = businessPhone;
 	}
+
 	public long getUid() {
 		return uid;
 	}
+
 	public void setUid(long uid) {
 		this.uid = uid;
 	}
+
 	public String getPatientID() {
 		return patientID;
 	}
+
 	public void setPatientID(String patientID) {
 		this.patientID = patientID;
 	}
+
 	public String getPatientClassCode() {
 		return patientClassCode;
 	}
+
 	public void setPatientClassCode(String patientClassCode) {
 		this.patientClassCode = patientClassCode;
 	}
+
 	public String getPatientClassName() {
 		return patientClassName;
 	}
+
 	public void setPatientClassName(String patientClassName) {
 		this.patientClassName = patientClassName;
 	}
+
 	public String getVisitID() {
 		return visitID;
 	}
+
 	public void setVisitID(String visitID) {
 		this.visitID = visitID;
 	}
+
 	public String getDeptCode() {
 		return deptCode;
 	}
+
 	public void setDeptCode(String deptCode) {
 		this.deptCode = deptCode;
 	}
+
 	public String getDeptName() {
 		return deptName;
 	}
+
 	public void setDeptName(String deptName) {
 		this.deptName = deptName;
 	}
+
 	public String getWardCode() {
 		return wardCode;
 	}
+
 	public void setWardCode(String wardCode) {
 		this.wardCode = wardCode;
 	}
+
 	public String getWardName() {
 		return wardName;
 	}
+
 	public void setWardName(String wardName) {
 		this.wardName = wardName;
 	}
+
 	public String getRoomCode() {
 		return roomCode;
 	}
+
 	public void setRoomCode(String roomCode) {
 		this.roomCode = roomCode;
 	}
+
 	public String getRoomName() {
 		return roomName;
 	}
+
 	public void setRoomName(String roomName) {
 		this.roomName = roomName;
 	}
+
 	public String getBedCode() {
 		return bedCode;
 	}
+
 	public void setBedCode(String bedCode) {
 		this.bedCode = bedCode;
 	}
+
 	public String getBedName() {
 		return bedName;
 	}
+
 	public void setBedName(String bedName) {
 		this.bedName = bedName;
 	}
+
 	public Date getAdmitDateTime() {
 		return admitDateTime;
 	}
+
 	public void setAdmitDateTime(Date admitDateTime) {
 		this.admitDateTime = admitDateTime;
 	}
+
 	public String getAdmitIntent() {
 		return admitIntent;
 	}
+
 	public void setAdmitIntent(String admitIntent) {
 		this.admitIntent = admitIntent;
 	}
+
 	public String getAdmitDoctorID() {
 		return admitDoctorID;
 	}
+
 	public void setAdmitDoctorID(String admitDoctorID) {
 		this.admitDoctorID = admitDoctorID;
 	}
+
 	public String getAdmitDoctorName() {
 		return admitDoctorName;
 	}
+
 	public void setAdmitDoctorName(String admitDoctorName) {
 		this.admitDoctorName = admitDoctorName;
 	}
+
 	public String getResidentDoctorID() {
 		return residentDoctorID;
 	}
+
 	public void setResidentDoctorID(String residentDoctorID) {
 		this.residentDoctorID = residentDoctorID;
 	}
+
 	public String getResidentDoctorName() {
 		return residentDoctorName;
 	}
+
 	public void setResidentDoctorName(String residentDoctorName) {
 		this.residentDoctorName = residentDoctorName;
 	}
+
 	public String getAttendingDoctorID() {
 		return attendingDoctorID;
 	}
+
 	public void setAttendingDoctorID(String attendingDoctorID) {
 		this.attendingDoctorID = attendingDoctorID;
 	}
+
 	public String getAttendingDoctorName() {
 		return attendingDoctorName;
 	}
+
 	public void setAttendingDoctorName(String attendingDoctorName) {
 		this.attendingDoctorName = attendingDoctorName;
 	}
+
 	public String getDirecotrID() {
 		return direcotrID;
 	}
+
 	public void setDirecotrID(String direcotrID) {
 		this.direcotrID = direcotrID;
 	}
+
 	public String getDirecotrName() {
 		return direcotrName;
 	}
+
 	public void setDirecotrName(String direcotrName) {
 		this.direcotrName = direcotrName;
 	}
+
 	public String getDeputyDoctorID() {
 		return deputyDoctorID;
 	}
+
 	public void setDeputyDoctorID(String deputyDoctorID) {
 		this.deputyDoctorID = deputyDoctorID;
 	}
+
 	public String getDeputyDoctorName() {
 		return deputyDoctorName;
 	}
+
 	public void setDeputyDoctorName(String deputyDoctorName) {
 		this.deputyDoctorName = deputyDoctorName;
 	}
+
 	public String getAdmitSource() {
 		return admitSource;
 	}
+
 	public void setAdmitSource(String admitSource) {
 		this.admitSource = admitSource;
 	}
+
 	public String getPatientCondition() {
 		return patientCondition;
 	}
+
 	public void setPatientCondition(String patientCondition) {
 		this.patientCondition = patientCondition;
 	}
+
 	public String getAdmissionTypeCode() {
 		return admissionTypeCode;
 	}
+
 	public void setAdmissionTypeCode(String admissionTypeCode) {
 		this.admissionTypeCode = admissionTypeCode;
 	}
+
 	public String getAdmissionType() {
 		return admissionType;
 	}
+
 	public void setAdmissionType(String admissionType) {
 		this.admissionType = admissionType;
 	}
+
 	public String getFinancialClassCode() {
 		return financialClassCode;
 	}
+
 	public void setFinancialClassCode(String financialClassCode) {
 		this.financialClassCode = financialClassCode;
 	}
+
 	public String getFinancialClass() {
 		return financialClass;
 	}
+
 	public void setFinancialClass(String financialClass) {
 		this.financialClass = financialClass;
 	}
+
 	public String getNursingClass() {
 		return nursingClass;
 	}
+
 	public void setNursingClass(String nursingClass) {
 		this.nursingClass = nursingClass;
 	}
+
 	public String getDoctorGroupID() {
 		return doctorGroupID;
 	}
+
 	public void setDoctorGroupID(String doctorGroupID) {
 		this.doctorGroupID = doctorGroupID;
 	}
+
 	public String getNursingGroupID() {
 		return nursingGroupID;
 	}
+
 	public void setNursingGroupID(String nursingGroupID) {
 		this.nursingGroupID = nursingGroupID;
 	}
+
 	public String getFirstAdmissionIndicator() {
 		return firstAdmissionIndicator;
 	}
+
 	public void setFirstAdmissionIndicator(String firstAdmissionIndicator) {
 		this.firstAdmissionIndicator = firstAdmissionIndicator;
 	}
+
 	public String getSpecialDepartmentCode() {
 		return specialDepartmentCode;
 	}
+
 	public void setSpecialDepartmentCode(String specialDepartmentCode) {
 		this.specialDepartmentCode = specialDepartmentCode;
 	}
+
 	public String getSpecialDepartment() {
 		return specialDepartment;
 	}
+
 	public void setSpecialDepartment(String specialDepartment) {
 		this.specialDepartment = specialDepartment;
 	}
+
 	public String getInsuranceID() {
 		return insuranceID;
 	}
+
 	public void setInsuranceID(String insuranceID) {
 		this.insuranceID = insuranceID;
 	}
+
 	public String getInsuranceType() {
 		return insuranceType;
 	}
+
 	public void setInsuranceType(String insuranceType) {
 		this.insuranceType = insuranceType;
 	}
+
 	public String getInsuranceTypeCode() {
 		return insuranceTypeCode;
 	}
+
 	public void setInsuranceTypeCode(String insuranceTypeCode) {
 		this.insuranceTypeCode = insuranceTypeCode;
 	}
+
 	public String getInsuranceInformation() {
 		return insuranceInformation;
 	}
+
 	public void setInsuranceInformation(String insuranceInformation) {
 		this.insuranceInformation = insuranceInformation;
 	}
+
 	public String getInsurancePropety() {
 		return insurancePropety;
 	}
+
 	public void setInsurancePropety(String insurancePropety) {
 		this.insurancePropety = insurancePropety;
 	}
+
 	public String getInsurancePropetyCode() {
 		return insurancePropetyCode;
 	}
+
 	public void setInsurancePropetyCode(String insurancePropetyCode) {
 		this.insurancePropetyCode = insurancePropetyCode;
 	}
+
 	public String getEmailAdress() {
 		return emailAdress;
 	}
+
 	public void setEmailAdress(String emailAdress) {
 		this.emailAdress = emailAdress;
 	}
+
 	public String getMailingAdress() {
 		return mailingAdress;
 	}
+
 	public void setMailingAdress(String mailingAdress) {
 		this.mailingAdress = mailingAdress;
 	}
+
 	public String getMaillingAdressProvince() {
 		return maillingAdressProvince;
 	}
+
 	public void setMaillingAdressProvince(String maillingAdressProvince) {
 		this.maillingAdressProvince = maillingAdressProvince;
 	}
+
 	public String getMaillingAdressCity() {
 		return maillingAdressCity;
 	}
+
 	public void setMaillingAdressCity(String maillingAdressCity) {
 		this.maillingAdressCity = maillingAdressCity;
 	}
+
 	public String getMaillingAdressDistrict() {
 		return maillingAdressDistrict;
 	}
+
 	public void setMaillingAdressDistrict(String maillingAdressDistrict) {
 		this.maillingAdressDistrict = maillingAdressDistrict;
 	}
+
 	public String getMaillingAdressTownLocality() {
 		return maillingAdressTownLocality;
 	}
+
 	public void setMaillingAdressTownLocality(String maillingAdressTownLocality) {
 		this.maillingAdressTownLocality = maillingAdressTownLocality;
 	}
+
 	public String getMaillingAdressStreetName() {
 		return maillingAdressStreetName;
 	}
+
 	public void setMaillingAdressStreetName(String maillingAdressStreetName) {
 		this.maillingAdressStreetName = maillingAdressStreetName;
 	}
+
 	public String getMaillingAdressNumber() {
 		return maillingAdressNumber;
 	}
+
 	public void setMaillingAdressNumber(String maillingAdressNumber) {
 		this.maillingAdressNumber = maillingAdressNumber;
 	}
+
 	public String getMaillingAdressPostalCode() {
 		return maillingAdressPostalCode;
 	}
+
 	public void setMaillingAdressPostalCode(String maillingAdressPostalCode) {
 		this.maillingAdressPostalCode = maillingAdressPostalCode;
 	}
+
 	public String getMobelPhone() {
 		return mobelPhone;
 	}
+
 	public void setMobelPhone(String mobelPhone) {
 		this.mobelPhone = mobelPhone;
 	}
+
 	public String getHomePhone() {
 		return homePhone;
 	}
+
 	public void setHomePhone(String homePhone) {
 		this.homePhone = homePhone;
 	}
+
 	public String getBusinessPhone() {
 		return businessPhone;
 	}
+
 	public void setBusinessPhone(String businessPhone) {
 		this.businessPhone = businessPhone;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -626,6 +740,7 @@ public class PatientAdmission {
 				+ ((wardName == null) ? 0 : wardName.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -913,6 +1028,7 @@ public class PatientAdmission {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

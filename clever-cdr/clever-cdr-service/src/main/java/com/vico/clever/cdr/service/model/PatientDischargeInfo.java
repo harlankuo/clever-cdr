@@ -3,21 +3,24 @@ package com.vico.clever.cdr.service.model;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement(name="PatientDischargeInfo")
+
+@XmlRootElement(name = "PatientDischargeInfo")
 public class PatientDischargeInfo {
-	private String guid;//主键
-	private String patientID;//病人号(*)
-	private String visitID;//就诊号(*)
-	private String orderID;//医嘱ID
-	private Date dateOfCharge;//离院日期时间
-	private String disChargeWard;//出院病区
-	private String dischargeDept;//离院科室
-	private String dischargeDestinationType;//离院目的地类型
-	private String dischargeDestination;//离院目的地
-	private String dischargeDescripition;//离院概述
+	private String guid;// 主键
+	private String patientID;// 病人号(*)
+	private String visitID;// 就诊号(*)
+	private String orderID;// 医嘱ID
+	private Date dateOfCharge;// 离院日期时间
+	private String disChargeWard;// 出院病区
+	private String dischargeDept;// 离院科室
+	private String dischargeDestinationType;// 离院目的地类型
+	private String dischargeDestination;// 离院目的地
+	private String dischargeDescripition;// 离院概述
+
 	public PatientDischargeInfo() {
 		super();
 	}
+
 	public PatientDischargeInfo(String guid, String patientID, String visitID,
 			String orderID, Date dateOfCharge, String disChargeWard,
 			String dischargeDept, String dischargeDestinationType,
@@ -34,66 +37,87 @@ public class PatientDischargeInfo {
 		this.dischargeDestination = dischargeDestination;
 		this.dischargeDescripition = dischargeDescripition;
 	}
+
 	public String getGuid() {
 		return guid;
 	}
+
 	public void setGuid(String guid) {
 		this.guid = guid;
 	}
+
 	public String getPatientID() {
 		return patientID;
 	}
+
 	public void setPatientID(String patientID) {
 		this.patientID = patientID;
 	}
+
 	public String getVisitID() {
 		return visitID;
 	}
+
 	public void setVisitID(String visitID) {
 		this.visitID = visitID;
 	}
+
 	public String getOrderID() {
 		return orderID;
 	}
+
 	public void setOrderID(String orderID) {
 		this.orderID = orderID;
 	}
+
 	public Date getDateOfCharge() {
 		return dateOfCharge;
 	}
+
 	public void setDateOfCharge(Date dateOfCharge) {
 		this.dateOfCharge = dateOfCharge;
 	}
+
 	public String getDisChargeWard() {
 		return disChargeWard;
 	}
+
 	public void setDisChargeWard(String disChargeWard) {
 		this.disChargeWard = disChargeWard;
 	}
+
 	public String getDischargeDept() {
 		return dischargeDept;
 	}
+
 	public void setDischargeDept(String dischargeDept) {
 		this.dischargeDept = dischargeDept;
 	}
+
 	public String getDischargeDestinationType() {
 		return dischargeDestinationType;
 	}
+
 	public void setDischargeDestinationType(String dischargeDestinationType) {
 		this.dischargeDestinationType = dischargeDestinationType;
 	}
+
 	public String getDischargeDestination() {
 		return dischargeDestination;
 	}
+
 	public void setDischargeDestination(String dischargeDestination) {
 		this.dischargeDestination = dischargeDestination;
 	}
+
 	public String getDischargeDescripition() {
 		return dischargeDescripition;
 	}
+
 	public void setDischargeDescripition(String dischargeDescripition) {
 		this.dischargeDescripition = dischargeDescripition;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -123,6 +147,7 @@ public class PatientDischargeInfo {
 		result = prime * result + ((visitID == null) ? 0 : visitID.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -185,6 +210,7 @@ public class PatientDischargeInfo {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "PatientDischargeInfo [guid=" + guid + ", patientID="
@@ -195,5 +221,5 @@ public class PatientDischargeInfo {
 				+ ", dischargeDestination=" + dischargeDestination
 				+ ", dischargeDescripition=" + dischargeDescripition + "]";
 	}
-	
+
 }

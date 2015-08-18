@@ -2,109 +2,139 @@ package com.vico.clever.cdr.service.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="PrescriptionInfo")
+@XmlRootElement(name = "PrescriptionInfo")
 public class PrescriptionInfo {
-	private String presciptionID;//处方ID(*)
-	private String patientID;//病人ID(*)
-	private String visitID;//就诊ID(*)
-	private String orderID;//医嘱ID
-	private String mandatorName;//委托人姓名
-	private String mandatorIDCard;//委托人证件号
-	private String drugType;//药物类别,非空，0-西药，1-中成药，2-中药饮片，3-中药配方(*)
-	private String prescriptionType;//处方类型,0-普通处方，1-儿科处方，2-麻醉药品处方，3-一类精神药品处方，4-二类精神药品处方(*)
-	private String presciptionSource;//处方来源,0-门诊，1-住院，2-其他
-	private String destinationPharmacyCode;//发送药房代码
-	private String destinationPharmacyName;//发送药房名称
-	private String doseCount;//剂数
-	private String costs;//费用
-	private String memo;//备忘	
+	private String presciptionID;// 处方ID(*)
+	private String patientID;// 病人ID(*)
+	private String visitID;// 就诊ID(*)
+	private String orderID;// 医嘱ID
+	private String mandatorName;// 委托人姓名
+	private String mandatorIDCard;// 委托人证件号
+	private String drugType;// 药物类别,非空，0-西药，1-中成药，2-中药饮片，3-中药配方(*)
+	private String prescriptionType;// 处方类型,0-普通处方，1-儿科处方，2-麻醉药品处方，3-一类精神药品处方，4-二类精神药品处方(*)
+	private String presciptionSource;// 处方来源,0-门诊，1-住院，2-其他
+	private String destinationPharmacyCode;// 发送药房代码
+	private String destinationPharmacyName;// 发送药房名称
+	private String doseCount;// 剂数
+	private String costs;// 费用
+	private String memo;// 备忘
+
 	public PrescriptionInfo() {
 		super();
 	}
+
 	public String getPresciptionID() {
 		return presciptionID;
 	}
+
 	public void setPresciptionID(String presciptionID) {
 		this.presciptionID = presciptionID;
 	}
+
 	public String getPatientID() {
 		return patientID;
 	}
+
 	public void setPatientID(String patientID) {
 		this.patientID = patientID;
 	}
+
 	public String getVisitID() {
 		return visitID;
 	}
+
 	public void setVisitID(String visitID) {
 		this.visitID = visitID;
 	}
+
 	public String getOrderID() {
 		return orderID;
 	}
+
 	public void setOrderID(String orderID) {
 		this.orderID = orderID;
 	}
+
 	public String getMandatorName() {
 		return mandatorName;
 	}
+
 	public void setMandatorName(String mandatorName) {
 		this.mandatorName = mandatorName;
 	}
+
 	public String getMandatorIDCard() {
 		return mandatorIDCard;
 	}
+
 	public void setMandatorIDCard(String mandatorIDCard) {
 		this.mandatorIDCard = mandatorIDCard;
 	}
+
 	public String getDrugType() {
 		return drugType;
 	}
+
 	public void setDrugType(String drugType) {
 		this.drugType = drugType;
 	}
+
 	public String getPrescriptionType() {
 		return prescriptionType;
 	}
+
 	public void setPrescriptionType(String prescriptionType) {
 		this.prescriptionType = prescriptionType;
 	}
+
 	public String getPresciptionSource() {
 		return presciptionSource;
 	}
+
 	public void setPresciptionSource(String presciptionSource) {
 		this.presciptionSource = presciptionSource;
 	}
+
 	public String getDestinationPharmacyCode() {
 		return destinationPharmacyCode;
 	}
+
 	public void setDestinationPharmacyCode(String destinationPharmacyCode) {
 		this.destinationPharmacyCode = destinationPharmacyCode;
 	}
+
 	public String getDestinationPharmacyName() {
 		return destinationPharmacyName;
 	}
+
 	public void setDestinationPharmacyName(String destinationPharmacyName) {
 		this.destinationPharmacyName = destinationPharmacyName;
 	}
+
 	public String getDoseCount() {
 		return doseCount;
 	}
+
 	public void setDoseCount(String doseCount) {
 		this.doseCount = doseCount;
 	}
+
 	public String getCosts() {
 		return costs;
 	}
+
 	public void setCosts(String costs) {
 		this.costs = costs;
 	}
+
 	public String getMemo() {
 		return memo;
 	}
+
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -142,6 +172,7 @@ public class PrescriptionInfo {
 		result = prime * result + ((visitID == null) ? 0 : visitID.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -225,6 +256,7 @@ public class PrescriptionInfo {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "PrescriptionInfo [presciptionID=" + presciptionID

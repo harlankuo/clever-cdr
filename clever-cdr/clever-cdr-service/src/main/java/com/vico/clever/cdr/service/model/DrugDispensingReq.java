@@ -2,30 +2,32 @@ package com.vico.clever.cdr.service.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="DrugDispensingReq")
+@XmlRootElement(name = "DrugDispensingReq")
 public class DrugDispensingReq {
 	public String medicationID;// 药嘱ID(*)
-	public String patientID;//病人ID(*)
-	public String visitID;//就诊ID(*)
-	public String drugDispensingReqID;//摆药申请单号(*)
-	public String emergency;//紧急摆药属性(*),0-普通，1-紧急，默认为0
-	public String destinationPharmacyName;//发往药房名称
-	public String destinationPharmacyCode;//发往药房代码
-	public String reqDispensingAmount;//申请摆药量
-	public String reqDispensingAmountUnit;//申请摆药量单位
-	public String receiveDispensingAmount;//实际摆药量
-	public String receiveDispensingAmountUnit;//实际摆药量单位
-	public String medicineTradeName;//所摆药品的商品名
-	public String apprpvalNumber;//所摆药品的批准文号
-	public String manufacturer;//所摆药品的生产厂家
-	public String batchID;//所摆药品的生产批号
-	public String reqDeptCode;//摆药申请科室代码
-	public String reqDeptName;//摆药申请科室名称
-	public String reqWardCode;//摆药申请病区代码
-	public String reqWardName;//摆药申请病区名称
+	public String patientID;// 病人ID(*)
+	public String visitID;// 就诊ID(*)
+	public String drugDispensingReqID;// 摆药申请单号(*)
+	public String emergency;// 紧急摆药属性(*),0-普通，1-紧急，默认为0
+	public String destinationPharmacyName;// 发往药房名称
+	public String destinationPharmacyCode;// 发往药房代码
+	public String reqDispensingAmount;// 申请摆药量
+	public String reqDispensingAmountUnit;// 申请摆药量单位
+	public String receiveDispensingAmount;// 实际摆药量
+	public String receiveDispensingAmountUnit;// 实际摆药量单位
+	public String medicineTradeName;// 所摆药品的商品名
+	public String apprpvalNumber;// 所摆药品的批准文号
+	public String manufacturer;// 所摆药品的生产厂家
+	public String batchID;// 所摆药品的生产批号
+	public String reqDeptCode;// 摆药申请科室代码
+	public String reqDeptName;// 摆药申请科室名称
+	public String reqWardCode;// 摆药申请病区代码
+	public String reqWardName;// 摆药申请病区名称
+
 	public DrugDispensingReq() {
 		super();
 	}
+
 	public DrugDispensingReq(String medicationID, String patientID,
 			String visitID, String drugDispensingReqID, String emergency,
 			String destinationPharmacyName, String destinationPharmacyCode,
@@ -55,120 +57,160 @@ public class DrugDispensingReq {
 		this.reqWardCode = reqWardCode;
 		this.reqWardName = reqWardName;
 	}
+
 	public String getMedicationID() {
 		return medicationID;
 	}
+
 	public void setMedicationID(String medicationID) {
 		this.medicationID = medicationID;
 	}
+
 	public String getPatientID() {
 		return patientID;
 	}
+
 	public void setPatientID(String patientID) {
 		this.patientID = patientID;
 	}
+
 	public String getVisitID() {
 		return visitID;
 	}
+
 	public void setVisitID(String visitID) {
 		this.visitID = visitID;
 	}
+
 	public String getDrugDispensingReqID() {
 		return drugDispensingReqID;
 	}
+
 	public void setDrugDispensingReqID(String drugDispensingReqID) {
 		this.drugDispensingReqID = drugDispensingReqID;
 	}
+
 	public String getEmergency() {
 		return emergency;
 	}
+
 	public void setEmergency(String emergency) {
 		this.emergency = emergency;
 	}
+
 	public String getDestinationPharmacyName() {
 		return destinationPharmacyName;
 	}
+
 	public void setDestinationPharmacyName(String destinationPharmacyName) {
 		this.destinationPharmacyName = destinationPharmacyName;
 	}
+
 	public String getDestinationPharmacyCode() {
 		return destinationPharmacyCode;
 	}
+
 	public void setDestinationPharmacyCode(String destinationPharmacyCode) {
 		this.destinationPharmacyCode = destinationPharmacyCode;
 	}
+
 	public String getReqDispensingAmount() {
 		return reqDispensingAmount;
 	}
+
 	public void setReqDispensingAmount(String reqDispensingAmount) {
 		this.reqDispensingAmount = reqDispensingAmount;
 	}
+
 	public String getReqDispensingAmountUnit() {
 		return reqDispensingAmountUnit;
 	}
+
 	public void setReqDispensingAmountUnit(String reqDispensingAmountUnit) {
 		this.reqDispensingAmountUnit = reqDispensingAmountUnit;
 	}
+
 	public String getReceiveDispensingAmount() {
 		return receiveDispensingAmount;
 	}
+
 	public void setReceiveDispensingAmount(String receiveDispensingAmount) {
 		this.receiveDispensingAmount = receiveDispensingAmount;
 	}
+
 	public String getReceiveDispensingAmountUnit() {
 		return receiveDispensingAmountUnit;
 	}
-	public void setReceiveDispensingAmountUnit(String receiveDispensingAmountUnit) {
+
+	public void setReceiveDispensingAmountUnit(
+			String receiveDispensingAmountUnit) {
 		this.receiveDispensingAmountUnit = receiveDispensingAmountUnit;
 	}
+
 	public String getMedicineTradeName() {
 		return medicineTradeName;
 	}
+
 	public void setMedicineTradeName(String medicineTradeName) {
 		this.medicineTradeName = medicineTradeName;
 	}
+
 	public String getApprpvalNumber() {
 		return apprpvalNumber;
 	}
+
 	public void setApprpvalNumber(String apprpvalNumber) {
 		this.apprpvalNumber = apprpvalNumber;
 	}
+
 	public String getManufacturer() {
 		return manufacturer;
 	}
+
 	public void setManufacturer(String manufacturer) {
 		this.manufacturer = manufacturer;
 	}
+
 	public String getBatchID() {
 		return batchID;
 	}
+
 	public void setBatchID(String batchID) {
 		this.batchID = batchID;
 	}
+
 	public String getReqDeptCode() {
 		return reqDeptCode;
 	}
+
 	public void setReqDeptCode(String reqDeptCode) {
 		this.reqDeptCode = reqDeptCode;
 	}
+
 	public String getReqDeptName() {
 		return reqDeptName;
 	}
+
 	public void setReqDeptName(String reqDeptName) {
 		this.reqDeptName = reqDeptName;
 	}
+
 	public String getReqWardCode() {
 		return reqWardCode;
 	}
+
 	public void setReqWardCode(String reqWardCode) {
 		this.reqWardCode = reqWardCode;
 	}
+
 	public String getReqWardName() {
 		return reqWardName;
 	}
+
 	public void setReqWardName(String reqWardName) {
 		this.reqWardName = reqWardName;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -227,6 +269,7 @@ public class DrugDispensingReq {
 		result = prime * result + ((visitID == null) ? 0 : visitID.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -338,6 +381,7 @@ public class DrugDispensingReq {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "DrugDispensingReq [medicationID=" + medicationID

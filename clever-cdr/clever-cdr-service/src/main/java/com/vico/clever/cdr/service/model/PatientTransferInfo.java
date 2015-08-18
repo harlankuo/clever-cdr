@@ -3,334 +3,347 @@ package com.vico.clever.cdr.service.model;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement(name="patientTransferInfo")
+
+@XmlRootElement(name = "patientTransferInfo")
 public class PatientTransferInfo {
-	private String guid;
-	private String patientID ;//病人号(*)
-    private String visitID;//就诊号(*)
-    private String orderID;//医嘱ID
-    private String sourceDeptCode;//原科室代码
-    private String sourceDeptName;//原科室名称
-    private String sourceWardCode;//原病区代码
-    private String sourceWardName;//原病区名称
-    private String sourceBedCode;//原床位编号
-    private String sourceBedName;//原床位标签
-    private String actionType;//动作类型(*)
-    private String destinationDeptCode;//新科室代码
-    private String destinationDeptName;//新科室名称
-    private String destinationWardCode;//新病区代码
-    private String destinationWardName;//新病区名称
-    private String destinationBedCode;//床位编号
-    private String destinationBedName;//新床位标签
-    private Date excuteDateTime;//操作日期及时间
-    private String status;//之前状态,0-未入院；1-已入院未入科；2-已入科；3-科室间转出未转入；4-同科室不同病区间转出未转入；5-待出院；6-出院中；7-已出院；8-病历已提交；9-病历被退回；10-病历已归档； 
-    private String preResidentDoctorCode;//原住院医师编码
-    private String preResidentDoctorName;//原住院医师姓名
-    private String preAttendingDoctorCode;//原主治医师编码
-    private String preAttendingDoctorName;//原主治医师姓名
-    private String preDirectorID;//原主任医师编码
-    private String preDirectorName;//原主任医师姓名
-    private String preDeputyDoctorID;//原副主任医师编码
-    private String preDeputyDoctorName;//原副主任医师姓名
-    private String curResidentDoctorCode;//新住院医师编码
-    private String curResidentDoctorName;//新住院医师姓名
-    private String curAttendingDoctorCode;//新主治医师编码
-    private String curAttendingDoctorName;//新主治医师姓名
-    private String curDirectorID;//新主任医师编码
-    private String curDirectorName;//新主任医师姓名
-    private String curDeputyDoctorID;//新副主任医师编码
-    private String curDeputyDoctorName;//新副主任医师姓名
-    private String memo;//转科备注
-    private String performerName;//操作者姓名
-    private String performerCode;//操作者工号
+	private String patientID;// 病人号(*)
+	private String visitID;// 就诊号(*)
+	private String orderID;// 医嘱ID
+	private String sourceDeptCode;// 原科室代码
+	private String sourceDeptName;// 原科室名称
+	private String sourceWardCode;// 原病区代码
+	private String sourceWardName;// 原病区名称
+	private String sourceBedCode;// 原床位编号
+	private String sourceBedName;// 原床位标签
+	private String actionType;// 动作类型(*)
+	private String destinationDeptCode;// 新科室代码
+	private String destinationDeptName;// 新科室名称
+	private String destinationWardCode;// 新病区代码
+	private String destinationWardName;// 新病区名称
+	private String destinationBedCode;// 床位编号
+	private String destinationBedName;// 新床位标签
+	private Date excuteDateTime;// 操作日期及时间
+	private String status;// 之前状态,0-未入院；1-已入院未入科；2-已入科；3-科室间转出未转入；4-同科室不同病区间转出未转入；5-待出院；6-出院中；7-已出院；8-病历已提交；9-病历被退回；10-病历已归档；
+	private String preResidentDoctorCode;// 原住院医师编码
+	private String preResidentDoctorName;// 原住院医师姓名
+	private String preAttendingDoctorCode;// 原主治医师编码
+	private String preAttendingDoctorName;// 原主治医师姓名
+	private String preDirectorID;// 原主任医师编码
+	private String preDirectorName;// 原主任医师姓名
+	private String preDeputyDoctorID;// 原副主任医师编码
+	private String preDeputyDoctorName;// 原副主任医师姓名
+	private String curResidentDoctorCode;// 新住院医师编码
+	private String curResidentDoctorName;// 新住院医师姓名
+	private String curAttendingDoctorCode;// 新主治医师编码
+	private String curAttendingDoctorName;// 新主治医师姓名
+	private String curDirectorID;// 新主任医师编码
+	private String curDirectorName;// 新主任医师姓名
+	private String curDeputyDoctorID;// 新副主任医师编码
+	private String curDeputyDoctorName;// 新副主任医师姓名
+	private String memo;// 转科备注
+	private String performerName;// 操作者姓名
+	private String performerCode;// 操作者工号
+
 	public PatientTransferInfo() {
 		super();
 	}
-	public PatientTransferInfo(String guid, String patientID, String visitID,
-			String orderID, String sourceDeptCode, String sourceDeptName,
-			String sourceWardCode, String sourceWardName, String sourceBedCode,
-			String sourceBedName, String actionType,
-			String destinationDeptCode, String destinationDeptName,
-			String destinationWardCode, String destinationWardName,
-			String destinationBedCode, String destinationBedName,
-			Date excuteDateTime, String status, String preResidentDoctorCode,
-			String preResidentDoctorName, String preAttendingDoctorCode,
-			String preAttendingDoctorName, String preDirectorID,
-			String preDirectorName, String preDeputyDoctorID,
-			String preDeputyDoctorName, String curResidentDoctorCode,
-			String curResidentDoctorName, String curAttendingDoctorCode,
-			String curAttendingDoctorName, String curDirectorID,
-			String curDirectorName, String curDeputyDoctorID,
-			String curDeputyDoctorName, String memo, String performerName,
-			String performerCode) {
-		super();
-		this.guid = guid;
-		this.patientID = patientID;
-		this.visitID = visitID;
-		this.orderID = orderID;
-		this.sourceDeptCode = sourceDeptCode;
-		this.sourceDeptName = sourceDeptName;
-		this.sourceWardCode = sourceWardCode;
-		this.sourceWardName = sourceWardName;
-		this.sourceBedCode = sourceBedCode;
-		this.sourceBedName = sourceBedName;
-		this.actionType = actionType;
-		this.destinationDeptCode = destinationDeptCode;
-		this.destinationDeptName = destinationDeptName;
-		this.destinationWardCode = destinationWardCode;
-		this.destinationWardName = destinationWardName;
-		this.destinationBedCode = destinationBedCode;
-		this.destinationBedName = destinationBedName;
-		this.excuteDateTime = excuteDateTime;
-		this.status = status;
-		this.preResidentDoctorCode = preResidentDoctorCode;
-		this.preResidentDoctorName = preResidentDoctorName;
-		this.preAttendingDoctorCode = preAttendingDoctorCode;
-		this.preAttendingDoctorName = preAttendingDoctorName;
-		this.preDirectorID = preDirectorID;
-		this.preDirectorName = preDirectorName;
-		this.preDeputyDoctorID = preDeputyDoctorID;
-		this.preDeputyDoctorName = preDeputyDoctorName;
-		this.curResidentDoctorCode = curResidentDoctorCode;
-		this.curResidentDoctorName = curResidentDoctorName;
-		this.curAttendingDoctorCode = curAttendingDoctorCode;
-		this.curAttendingDoctorName = curAttendingDoctorName;
-		this.curDirectorID = curDirectorID;
-		this.curDirectorName = curDirectorName;
-		this.curDeputyDoctorID = curDeputyDoctorID;
-		this.curDeputyDoctorName = curDeputyDoctorName;
-		this.memo = memo;
-		this.performerName = performerName;
-		this.performerCode = performerCode;
-	}
-	public String getGuid() {
-		return guid;
-	}
-	public void setGuid(String guid) {
-		this.guid = guid;
-	}
+
 	public String getPatientID() {
 		return patientID;
 	}
+
 	public void setPatientID(String patientID) {
 		this.patientID = patientID;
 	}
+
 	public String getVisitID() {
 		return visitID;
 	}
+
 	public void setVisitID(String visitID) {
 		this.visitID = visitID;
 	}
+
 	public String getOrderID() {
 		return orderID;
 	}
+
 	public void setOrderID(String orderID) {
 		this.orderID = orderID;
 	}
+
 	public String getSourceDeptCode() {
 		return sourceDeptCode;
 	}
+
 	public void setSourceDeptCode(String sourceDeptCode) {
 		this.sourceDeptCode = sourceDeptCode;
 	}
+
 	public String getSourceDeptName() {
 		return sourceDeptName;
 	}
+
 	public void setSourceDeptName(String sourceDeptName) {
 		this.sourceDeptName = sourceDeptName;
 	}
+
 	public String getSourceWardCode() {
 		return sourceWardCode;
 	}
+
 	public void setSourceWardCode(String sourceWardCode) {
 		this.sourceWardCode = sourceWardCode;
 	}
+
 	public String getSourceWardName() {
 		return sourceWardName;
 	}
+
 	public void setSourceWardName(String sourceWardName) {
 		this.sourceWardName = sourceWardName;
 	}
+
 	public String getSourceBedCode() {
 		return sourceBedCode;
 	}
+
 	public void setSourceBedCode(String sourceBedCode) {
 		this.sourceBedCode = sourceBedCode;
 	}
+
 	public String getSourceBedName() {
 		return sourceBedName;
 	}
+
 	public void setSourceBedName(String sourceBedName) {
 		this.sourceBedName = sourceBedName;
 	}
+
 	public String getActionType() {
 		return actionType;
 	}
+
 	public void setActionType(String actionType) {
 		this.actionType = actionType;
 	}
+
 	public String getDestinationDeptCode() {
 		return destinationDeptCode;
 	}
+
 	public void setDestinationDeptCode(String destinationDeptCode) {
 		this.destinationDeptCode = destinationDeptCode;
 	}
+
 	public String getDestinationDeptName() {
 		return destinationDeptName;
 	}
+
 	public void setDestinationDeptName(String destinationDeptName) {
 		this.destinationDeptName = destinationDeptName;
 	}
+
 	public String getDestinationWardCode() {
 		return destinationWardCode;
 	}
+
 	public void setDestinationWardCode(String destinationWardCode) {
 		this.destinationWardCode = destinationWardCode;
 	}
+
 	public String getDestinationWardName() {
 		return destinationWardName;
 	}
+
 	public void setDestinationWardName(String destinationWardName) {
 		this.destinationWardName = destinationWardName;
 	}
+
 	public String getDestinationBedCode() {
 		return destinationBedCode;
 	}
+
 	public void setDestinationBedCode(String destinationBedCode) {
 		this.destinationBedCode = destinationBedCode;
 	}
+
 	public String getDestinationBedName() {
 		return destinationBedName;
 	}
+
 	public void setDestinationBedName(String destinationBedName) {
 		this.destinationBedName = destinationBedName;
 	}
+
 	public Date getExcuteDateTime() {
 		return excuteDateTime;
 	}
+
 	public void setExcuteDateTime(Date excuteDateTime) {
 		this.excuteDateTime = excuteDateTime;
 	}
+
 	public String getStatus() {
 		return status;
 	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
 	public String getPreResidentDoctorCode() {
 		return preResidentDoctorCode;
 	}
+
 	public void setPreResidentDoctorCode(String preResidentDoctorCode) {
 		this.preResidentDoctorCode = preResidentDoctorCode;
 	}
+
 	public String getPreResidentDoctorName() {
 		return preResidentDoctorName;
 	}
+
 	public void setPreResidentDoctorName(String preResidentDoctorName) {
 		this.preResidentDoctorName = preResidentDoctorName;
 	}
+
 	public String getPreAttendingDoctorCode() {
 		return preAttendingDoctorCode;
 	}
+
 	public void setPreAttendingDoctorCode(String preAttendingDoctorCode) {
 		this.preAttendingDoctorCode = preAttendingDoctorCode;
 	}
+
 	public String getPreAttendingDoctorName() {
 		return preAttendingDoctorName;
 	}
+
 	public void setPreAttendingDoctorName(String preAttendingDoctorName) {
 		this.preAttendingDoctorName = preAttendingDoctorName;
 	}
+
 	public String getPreDirectorID() {
 		return preDirectorID;
 	}
+
 	public void setPreDirectorID(String preDirectorID) {
 		this.preDirectorID = preDirectorID;
 	}
+
 	public String getPreDirectorName() {
 		return preDirectorName;
 	}
+
 	public void setPreDirectorName(String preDirectorName) {
 		this.preDirectorName = preDirectorName;
 	}
+
 	public String getPreDeputyDoctorID() {
 		return preDeputyDoctorID;
 	}
+
 	public void setPreDeputyDoctorID(String preDeputyDoctorID) {
 		this.preDeputyDoctorID = preDeputyDoctorID;
 	}
+
 	public String getPreDeputyDoctorName() {
 		return preDeputyDoctorName;
 	}
+
 	public void setPreDeputyDoctorName(String preDeputyDoctorName) {
 		this.preDeputyDoctorName = preDeputyDoctorName;
 	}
+
 	public String getCurResidentDoctorCode() {
 		return curResidentDoctorCode;
 	}
+
 	public void setCurResidentDoctorCode(String curResidentDoctorCode) {
 		this.curResidentDoctorCode = curResidentDoctorCode;
 	}
+
 	public String getCurResidentDoctorName() {
 		return curResidentDoctorName;
 	}
+
 	public void setCurResidentDoctorName(String curResidentDoctorName) {
 		this.curResidentDoctorName = curResidentDoctorName;
 	}
+
 	public String getCurAttendingDoctorCode() {
 		return curAttendingDoctorCode;
 	}
+
 	public void setCurAttendingDoctorCode(String curAttendingDoctorCode) {
 		this.curAttendingDoctorCode = curAttendingDoctorCode;
 	}
+
 	public String getCurAttendingDoctorName() {
 		return curAttendingDoctorName;
 	}
+
 	public void setCurAttendingDoctorName(String curAttendingDoctorName) {
 		this.curAttendingDoctorName = curAttendingDoctorName;
 	}
+
 	public String getCurDirectorID() {
 		return curDirectorID;
 	}
+
 	public void setCurDirectorID(String curDirectorID) {
 		this.curDirectorID = curDirectorID;
 	}
+
 	public String getCurDirectorName() {
 		return curDirectorName;
 	}
+
 	public void setCurDirectorName(String curDirectorName) {
 		this.curDirectorName = curDirectorName;
 	}
+
 	public String getCurDeputyDoctorID() {
 		return curDeputyDoctorID;
 	}
+
 	public void setCurDeputyDoctorID(String curDeputyDoctorID) {
 		this.curDeputyDoctorID = curDeputyDoctorID;
 	}
+
 	public String getCurDeputyDoctorName() {
 		return curDeputyDoctorName;
 	}
+
 	public void setCurDeputyDoctorName(String curDeputyDoctorName) {
 		this.curDeputyDoctorName = curDeputyDoctorName;
 	}
+
 	public String getMemo() {
 		return memo;
 	}
+
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
+
 	public String getPerformerName() {
 		return performerName;
 	}
+
 	public void setPerformerName(String performerName) {
 		this.performerName = performerName;
 	}
+
 	public String getPerformerCode() {
 		return performerCode;
 	}
+
 	public void setPerformerCode(String performerCode) {
 		this.performerCode = performerCode;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -391,7 +404,6 @@ public class PatientTransferInfo {
 						.hashCode());
 		result = prime * result
 				+ ((excuteDateTime == null) ? 0 : excuteDateTime.hashCode());
-		result = prime * result + ((guid == null) ? 0 : guid.hashCode());
 		result = prime * result + ((memo == null) ? 0 : memo.hashCode());
 		result = prime * result + ((orderID == null) ? 0 : orderID.hashCode());
 		result = prime * result
@@ -444,6 +456,7 @@ public class PatientTransferInfo {
 		result = prime * result + ((visitID == null) ? 0 : visitID.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -532,11 +545,6 @@ public class PatientTransferInfo {
 			if (other.excuteDateTime != null)
 				return false;
 		} else if (!excuteDateTime.equals(other.excuteDateTime))
-			return false;
-		if (guid == null) {
-			if (other.guid != null)
-				return false;
-		} else if (!guid.equals(other.guid))
 			return false;
 		if (memo == null) {
 			if (other.memo != null)
@@ -645,28 +653,28 @@ public class PatientTransferInfo {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
-		return "PatientTransferInfo [guid=" + guid + ", patientID=" + patientID
-				+ ", visitID=" + visitID + ", orderID=" + orderID
-				+ ", sourceDeptCode=" + sourceDeptCode + ", sourceDeptName="
-				+ sourceDeptName + ", sourceWardCode=" + sourceWardCode
-				+ ", sourceWardName=" + sourceWardName + ", sourceBedCode="
-				+ sourceBedCode + ", sourceBedName=" + sourceBedName
-				+ ", actionType=" + actionType + ", destinationDeptCode="
-				+ destinationDeptCode + ", destinationDeptName="
-				+ destinationDeptName + ", destinationWardCode="
-				+ destinationWardCode + ", destinationWardName="
-				+ destinationWardName + ", destinationBedCode="
-				+ destinationBedCode + ", destinationBedName="
-				+ destinationBedName + ", excuteDateTime=" + excuteDateTime
-				+ ", status=" + status + ", preResidentDoctorCode="
-				+ preResidentDoctorCode + ", preResidentDoctorName="
-				+ preResidentDoctorName + ", preAttendingDoctorCode="
-				+ preAttendingDoctorCode + ", preAttendingDoctorName="
-				+ preAttendingDoctorName + ", preDirectorID=" + preDirectorID
-				+ ", preDirectorName=" + preDirectorName
-				+ ", preDeputyDoctorID=" + preDeputyDoctorID
+		return "PatientTransferInfo [patientID=" + patientID + ", visitID="
+				+ visitID + ", orderID=" + orderID + ", sourceDeptCode="
+				+ sourceDeptCode + ", sourceDeptName=" + sourceDeptName
+				+ ", sourceWardCode=" + sourceWardCode + ", sourceWardName="
+				+ sourceWardName + ", sourceBedCode=" + sourceBedCode
+				+ ", sourceBedName=" + sourceBedName + ", actionType="
+				+ actionType + ", destinationDeptCode=" + destinationDeptCode
+				+ ", destinationDeptName=" + destinationDeptName
+				+ ", destinationWardCode=" + destinationWardCode
+				+ ", destinationWardName=" + destinationWardName
+				+ ", destinationBedCode=" + destinationBedCode
+				+ ", destinationBedName=" + destinationBedName
+				+ ", excuteDateTime=" + excuteDateTime + ", status=" + status
+				+ ", preResidentDoctorCode=" + preResidentDoctorCode
+				+ ", preResidentDoctorName=" + preResidentDoctorName
+				+ ", preAttendingDoctorCode=" + preAttendingDoctorCode
+				+ ", preAttendingDoctorName=" + preAttendingDoctorName
+				+ ", preDirectorID=" + preDirectorID + ", preDirectorName="
+				+ preDirectorName + ", preDeputyDoctorID=" + preDeputyDoctorID
 				+ ", preDeputyDoctorName=" + preDeputyDoctorName
 				+ ", curResidentDoctorCode=" + curResidentDoctorCode
 				+ ", curResidentDoctorName=" + curResidentDoctorName
@@ -678,5 +686,4 @@ public class PatientTransferInfo {
 				+ memo + ", performerName=" + performerName
 				+ ", performerCode=" + performerCode + "]";
 	}
-	
 }

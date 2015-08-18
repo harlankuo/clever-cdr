@@ -2,21 +2,23 @@ package com.vico.clever.cdr.service.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="FareInfo")
+@XmlRootElement(name = "FareInfo")
 public class FareInfo {
-	private String patientID;//病人号(*)
-	private String visitID;//就诊号(*)
-	private String orderID;//医嘱ID
-	private String feeID;//费用申请号(*)
-	private String feeContent;//费用内容
-	private String dosage;//收费数量
-	private String dosageUnit;//数量单位
-	private String administration;//费用途径
-	private String administrationCode;//费用途径代码
-	private String memo;//备注
+	private String patientID;// 病人号(*)
+	private String visitID;// 就诊号(*)
+	private String orderID;// 医嘱ID
+	private String feeID;// 费用申请号(*)
+	private String feeContent;// 费用内容
+	private String dosage;// 收费数量
+	private String dosageUnit;// 数量单位
+	private String administration;// 费用途径
+	private String administrationCode;// 费用途径代码
+	private String memo;// 备注
+
 	public FareInfo() {
 		super();
 	}
+
 	public FareInfo(String patientID, String visitID, String orderID,
 			String feeID, String feeContent, String dosage, String dosageUnit,
 			String administration, String administrationCode, String memo) {
@@ -32,66 +34,87 @@ public class FareInfo {
 		this.administrationCode = administrationCode;
 		this.memo = memo;
 	}
+
 	public String getPatientID() {
 		return patientID;
 	}
+
 	public void setPatientID(String patientID) {
 		this.patientID = patientID;
 	}
+
 	public String getVisitID() {
 		return visitID;
 	}
+
 	public void setVisitID(String visitID) {
 		this.visitID = visitID;
 	}
+
 	public String getOrderID() {
 		return orderID;
 	}
+
 	public void setOrderID(String orderID) {
 		this.orderID = orderID;
 	}
+
 	public String getFeeID() {
 		return feeID;
 	}
+
 	public void setFeeID(String feeID) {
 		this.feeID = feeID;
 	}
+
 	public String getFeeContent() {
 		return feeContent;
 	}
+
 	public void setFeeContent(String feeContent) {
 		this.feeContent = feeContent;
 	}
+
 	public String getDosage() {
 		return dosage;
 	}
+
 	public void setDosage(String dosage) {
 		this.dosage = dosage;
 	}
+
 	public String getDosageUnit() {
 		return dosageUnit;
 	}
+
 	public void setDosageUnit(String dosageUnit) {
 		this.dosageUnit = dosageUnit;
 	}
+
 	public String getAdministration() {
 		return administration;
 	}
+
 	public void setAdministration(String administration) {
 		this.administration = administration;
 	}
+
 	public String getAdministrationCode() {
 		return administrationCode;
 	}
+
 	public void setAdministrationCode(String administrationCode) {
 		this.administrationCode = administrationCode;
 	}
+
 	public String getMemo() {
 		return memo;
 	}
+
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -115,6 +138,7 @@ public class FareInfo {
 		result = prime * result + ((visitID == null) ? 0 : visitID.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -176,6 +200,7 @@ public class FareInfo {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -191,4 +216,3 @@ public class FareInfo {
 	}
 
 }
-

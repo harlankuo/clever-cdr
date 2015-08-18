@@ -2,24 +2,25 @@ package com.vico.clever.cdr.service.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 
-
-@XmlRootElement(name="OrderInfo")
+@XmlRootElement(name = "OrderInfo")
 public class OrderInfo {
-	private String orderID;//医嘱ID,(*)
-	private String patientID;//病人ID,(*)
-	private String visitID;//就诊ID,(*);
-	private String orderNO;//医嘱序号,(*)
-	private String  orderSubNO;//医嘱子序号(*)
-	private int emergency;//紧急医嘱属性,0-普通，1-紧急，默认为0
-	private String motherOrBaby;//母婴属性,0-母亲，从1开始表示第几个婴儿
-	private int reservedOrder;//备用医嘱属性,0-正常医嘱，1-备用医嘱
-	private int subsequentOrder;//补录医嘱属性,0-正常医嘱，1-后来补录的医嘱
-	private int repeatOrder;//是否长期医嘱,1-长期，0-临时索引(*)
-	private String orderClassCode;//医嘱类别代码
-	private String orderClassName;//医嘱类别
+	private String orderID;// 医嘱ID,(*)
+	private String patientID;// 病人ID,(*)
+	private String visitID;// 就诊ID,(*);
+	private String orderNO;// 医嘱序号,(*)
+	private String orderSubNO;// 医嘱子序号(*)
+	private int emergency;// 紧急医嘱属性,0-普通，1-紧急，默认为0
+	private String motherOrBaby;// 母婴属性,0-母亲，从1开始表示第几个婴儿
+	private int reservedOrder;// 备用医嘱属性,0-正常医嘱，1-备用医嘱
+	private int subsequentOrder;// 补录医嘱属性,0-正常医嘱，1-后来补录的医嘱
+	private int repeatOrder;// 是否长期医嘱,1-长期，0-临时索引(*)
+	private String orderClassCode;// 医嘱类别代码
+	private String orderClassName;// 医嘱类别
+
 	public OrderInfo() {
 		super();
 	}
+
 	public OrderInfo(String orderID, String patientID, String visitID,
 			String orderNO, String orderSubNO, int emergency,
 			String motherOrBaby, int reservedOrder, int subsequentOrder,
@@ -38,78 +39,103 @@ public class OrderInfo {
 		this.orderClassCode = orderClassCode;
 		this.orderClassName = orderClassName;
 	}
+
 	public String getOrderID() {
 		return orderID;
 	}
+
 	public void setOrderID(String orderID) {
 		this.orderID = orderID;
 	}
+
 	public String getPatientID() {
 		return patientID;
 	}
+
 	public void setPatientID(String patientID) {
 		this.patientID = patientID;
 	}
+
 	public String getVisitID() {
 		return visitID;
 	}
+
 	public void setVisitID(String visitID) {
 		this.visitID = visitID;
 	}
+
 	public String getOrderNO() {
 		return orderNO;
 	}
+
 	public void setOrderNO(String orderNO) {
 		this.orderNO = orderNO;
 	}
+
 	public String getOrderSubNO() {
 		return orderSubNO;
 	}
+
 	public void setOrderSubNO(String orderSubNO) {
 		this.orderSubNO = orderSubNO;
 	}
+
 	public int getEmergency() {
 		return emergency;
 	}
+
 	public void setEmergency(int emergency) {
 		this.emergency = emergency;
 	}
+
 	public String getMotherOrBaby() {
 		return motherOrBaby;
 	}
+
 	public void setMotherOrBaby(String motherOrBaby) {
 		this.motherOrBaby = motherOrBaby;
 	}
+
 	public int getReservedOrder() {
 		return reservedOrder;
 	}
+
 	public void setReservedOrder(int reservedOrder) {
 		this.reservedOrder = reservedOrder;
 	}
+
 	public int getSubsequentOrder() {
 		return subsequentOrder;
 	}
+
 	public void setSubsequentOrder(int subsequentOrder) {
 		this.subsequentOrder = subsequentOrder;
 	}
+
 	public int getRepeatOrder() {
 		return repeatOrder;
 	}
+
 	public void setRepeatOrder(int repeatOrder) {
 		this.repeatOrder = repeatOrder;
 	}
+
 	public String getOrderClassCode() {
 		return orderClassCode;
 	}
+
 	public void setOrderClassCode(String orderClassCode) {
 		this.orderClassCode = orderClassCode;
 	}
+
 	public String getOrderClassName() {
 		return orderClassName;
 	}
+
 	public void setOrderClassName(String orderClassName) {
 		this.orderClassName = orderClassName;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -133,6 +159,7 @@ public class OrderInfo {
 		result = prime * result + ((visitID == null) ? 0 : visitID.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -192,6 +219,7 @@ public class OrderInfo {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "OrderInfo [orderID=" + orderID + ", patientID=" + patientID
@@ -202,6 +230,5 @@ public class OrderInfo {
 				+ ", repeatOrder=" + repeatOrder + ", orderClassCode="
 				+ orderClassCode + ", orderClassName=" + orderClassName + "]";
 	}
-	
 
 }

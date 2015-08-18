@@ -4,26 +4,29 @@ import java.util.Arrays;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement(name="ExamData")
+
+@XmlRootElement(name = "ExamData")
 public class ExamDataInfo {
-	private String examID;//检查号(*)
-	private String patientID;//病人号(*)
-	private String visitID;//就诊号(*)
-	private String orderID;//医嘱号码
-	private String examReqID;//检查申请号
-	private String imageView;//图像视图
-	private String imagePosition;//位置
-	private String dicomStudyID;//DICOM中study号
-	private String dicomSeriesID;//图像序列号
-	private Date imageDateTime;//检查日期及时间
-	private int imageID;//影像号
-	private int keyImage;//关键影像标识
-	private String imageAbsolutePath;//图像存储绝对路径
-	private String imageRelativePath;//图像存储相对路径
-	private byte[] imageUri;//图像
+	private String examID;// 检查号(*)
+	private String patientID;// 病人号(*)
+	private String visitID;// 就诊号(*)
+	private String orderID;// 医嘱号码
+	private String examReqID;// 检查申请号
+	private String imageView;// 图像视图
+	private String imagePosition;// 位置
+	private String dicomStudyID;// DICOM中study号
+	private String dicomSeriesID;// 图像序列号
+	private Date imageDateTime;// 检查日期及时间
+	private int imageID;// 影像号
+	private int keyImage;// 关键影像标识
+	private String imageAbsolutePath;// 图像存储绝对路径
+	private String imageRelativePath;// 图像存储相对路径
+	private byte[] imageUri;// 图像
+
 	public ExamDataInfo() {
 		super();
 	}
+
 	public ExamDataInfo(String examID, String patientID, String visitID,
 			String orderID, String examReqID, String imageView,
 			String imagePosition, String dicomStudyID, String dicomSeriesID,
@@ -46,96 +49,127 @@ public class ExamDataInfo {
 		this.imageRelativePath = imageRelativePath;
 		this.imageUri = imageUri;
 	}
+
 	public String getExamID() {
 		return examID;
 	}
+
 	public void setExamID(String examID) {
 		this.examID = examID;
 	}
+
 	public String getPatientID() {
 		return patientID;
 	}
+
 	public void setPatientID(String patientID) {
 		this.patientID = patientID;
 	}
+
 	public String getVisitID() {
 		return visitID;
 	}
+
 	public void setVisitID(String visitID) {
 		this.visitID = visitID;
 	}
+
 	public String getOrderID() {
 		return orderID;
 	}
+
 	public void setOrderID(String orderID) {
 		this.orderID = orderID;
 	}
+
 	public String getExamReqID() {
 		return examReqID;
 	}
+
 	public void setExamReqID(String examReqID) {
 		this.examReqID = examReqID;
 	}
+
 	public String getImageView() {
 		return imageView;
 	}
+
 	public void setImageView(String imageView) {
 		this.imageView = imageView;
 	}
+
 	public String getImagePosition() {
 		return imagePosition;
 	}
+
 	public void setImagePosition(String imagePosition) {
 		this.imagePosition = imagePosition;
 	}
+
 	public String getDicomStudyID() {
 		return dicomStudyID;
 	}
+
 	public void setDicomStudyID(String dicomStudyID) {
 		this.dicomStudyID = dicomStudyID;
 	}
+
 	public String getDicomSeriesID() {
 		return dicomSeriesID;
 	}
+
 	public void setDicomSeriesID(String dicomSeriesID) {
 		this.dicomSeriesID = dicomSeriesID;
 	}
+
 	public Date getImageDateTime() {
 		return imageDateTime;
 	}
+
 	public void setImageDateTime(Date imageDateTime) {
 		this.imageDateTime = imageDateTime;
 	}
+
 	public int getImageID() {
 		return imageID;
 	}
+
 	public void setImageID(int imageID) {
 		this.imageID = imageID;
 	}
+
 	public int getKeyImage() {
 		return keyImage;
 	}
+
 	public void setKeyImage(int keyImage) {
 		this.keyImage = keyImage;
 	}
+
 	public String getImageAbsolutePath() {
 		return imageAbsolutePath;
 	}
+
 	public void setImageAbsolutePath(String imageAbsolutePath) {
 		this.imageAbsolutePath = imageAbsolutePath;
 	}
+
 	public String getImageRelativePath() {
 		return imageRelativePath;
 	}
+
 	public void setImageRelativePath(String imageRelativePath) {
 		this.imageRelativePath = imageRelativePath;
 	}
+
 	public byte[] getImageUri() {
 		return imageUri;
 	}
+
 	public void setImageUri(byte[] imageUri) {
 		this.imageUri = imageUri;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -170,6 +204,7 @@ public class ExamDataInfo {
 		result = prime * result + ((visitID == null) ? 0 : visitID.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -247,6 +282,7 @@ public class ExamDataInfo {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "ExamDataInfo [examID=" + examID + ", patientID=" + patientID

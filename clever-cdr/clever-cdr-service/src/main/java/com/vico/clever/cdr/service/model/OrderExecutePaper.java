@@ -3,25 +3,28 @@ package com.vico.clever.cdr.service.model;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement(name="OrderExecutePaper")
+
+@XmlRootElement(name = "OrderExecutePaper")
 public class OrderExecutePaper {
-	private String orderExcuteID;//执行单号码(*)
-	private String orderID;//医嘱ID(*)
-	private String orderNO;//医嘱序号(*)
-	private String referenceID;//引用ID,对应各类医嘱主键，如检查申请号，检验申请号
-	private String patientID;//病人ID(*)
-	private String visitID;//就诊ID(*)
-	private String performClassName;//执行单类别名称,例如检查单、检验单
-	private String performClassCode;//执行单类别代码
-	private String orderItem;//医嘱内容
-	private Date scheduleDateTime;//计划执行日期时间
-	private int performSerialNumber;//执行序号,本条项目在患者某天执行单中的序号，从1开始。
-	private int performStepNumber;//执行步数,表示一条医嘱的第几步执行
-	private int schemaPrint;//执行单打印标记,0-未打印 1-打印
-	private int labelPrint;//标签打印标记,0-未打印 1-打印	
+	private String orderExcuteID;// 执行单号码(*)
+	private String orderID;// 医嘱ID(*)
+	private String orderNO;// 医嘱序号(*)
+	private String referenceID;// 引用ID,对应各类医嘱主键，如检查申请号，检验申请号
+	private String patientID;// 病人ID(*)
+	private String visitID;// 就诊ID(*)
+	private String performClassName;// 执行单类别名称,例如检查单、检验单
+	private String performClassCode;// 执行单类别代码
+	private String orderItem;// 医嘱内容
+	private Date scheduleDateTime;// 计划执行日期时间
+	private int performSerialNumber;// 执行序号,本条项目在患者某天执行单中的序号，从1开始。
+	private int performStepNumber;// 执行步数,表示一条医嘱的第几步执行
+	private int schemaPrint;// 执行单打印标记,0-未打印 1-打印
+	private int labelPrint;// 标签打印标记,0-未打印 1-打印
+
 	public OrderExecutePaper() {
 		super();
 	}
+
 	public OrderExecutePaper(String orderExcuteID, String orderID,
 			String orderNO, String referenceID, String patientID,
 			String visitID, String performClassName, String performClassCode,
@@ -43,90 +46,119 @@ public class OrderExecutePaper {
 		this.schemaPrint = schemaPrint;
 		this.labelPrint = labelPrint;
 	}
+
 	public String getOrderExcuteID() {
 		return orderExcuteID;
 	}
+
 	public void setOrderExcuteID(String orderExcuteID) {
 		this.orderExcuteID = orderExcuteID;
 	}
+
 	public String getOrderID() {
 		return orderID;
 	}
+
 	public void setOrderID(String orderID) {
 		this.orderID = orderID;
 	}
+
 	public String getOrderNO() {
 		return orderNO;
 	}
+
 	public void setOrderNO(String orderNO) {
 		this.orderNO = orderNO;
 	}
+
 	public String getReferenceID() {
 		return referenceID;
 	}
+
 	public void setReferenceID(String referenceID) {
 		this.referenceID = referenceID;
 	}
+
 	public String getPatientID() {
 		return patientID;
 	}
+
 	public void setPatientID(String patientID) {
 		this.patientID = patientID;
 	}
+
 	public String getVisitID() {
 		return visitID;
 	}
+
 	public void setVisitID(String visitID) {
 		this.visitID = visitID;
 	}
+
 	public String getPerformClassName() {
 		return performClassName;
 	}
+
 	public void setPerformClassName(String performClassName) {
 		this.performClassName = performClassName;
 	}
+
 	public String getPerformClassCode() {
 		return performClassCode;
 	}
+
 	public void setPerformClassCode(String performClassCode) {
 		this.performClassCode = performClassCode;
 	}
+
 	public String getOrderItem() {
 		return orderItem;
 	}
+
 	public void setOrderItem(String orderItem) {
 		this.orderItem = orderItem;
 	}
+
 	public Date getScheduleDateTime() {
 		return scheduleDateTime;
 	}
+
 	public void setScheduleDateTime(Date scheduleDateTime) {
 		this.scheduleDateTime = scheduleDateTime;
 	}
+
 	public int getPerformSerialNumber() {
 		return performSerialNumber;
 	}
+
 	public void setPerformSerialNumber(int performSerialNumber) {
 		this.performSerialNumber = performSerialNumber;
 	}
+
 	public int getPerformStepNumber() {
 		return performStepNumber;
 	}
+
 	public void setPerformStepNumber(int performStepNumber) {
 		this.performStepNumber = performStepNumber;
 	}
+
 	public int getSchemaPrint() {
 		return schemaPrint;
 	}
+
 	public void setSchemaPrint(int schemaPrint) {
 		this.schemaPrint = schemaPrint;
 	}
+
 	public int getLabelPrint() {
 		return labelPrint;
 	}
+
 	public void setLabelPrint(int labelPrint) {
 		this.labelPrint = labelPrint;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -157,6 +189,7 @@ public class OrderExecutePaper {
 		result = prime * result + ((visitID == null) ? 0 : visitID.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -226,6 +259,7 @@ public class OrderExecutePaper {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "OrderExecutePaper [orderExcuteID=" + orderExcuteID

@@ -3,25 +3,28 @@ package com.vico.clever.cdr.service.model;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement(name="LabTestItem")
+
+@XmlRootElement(name = "LabTestItem")
 public class LabTestItem {
-	private String tetReqID;//检验申请号(*)
-	private String itemNO;//项目序号(*)
-	private String itemClassCode;//检验类别代码
-	private String itemClassName;//检验类别名称
-	private String itemCode;//检验项目代码
-	private String itemName;//检验项目名称
-	private String specimenID;//检验标本号
-	private String specimenTypeCode;//检验样本类别代码
-	private String specimenTypeName;//检验样本类别名称
-	private Date specimenCollectionDate;//样本采样日期时间
-	private Date specimenReceiptDate;//样本收到日期时间
-	private String specimenStatus;//标本状态
-	private String transportMediumCode;//试管种类代码
-	private String transportMediumName;//试管种类名称
+	private String tetReqID;// 检验申请号(*)
+	private String itemNO;// 项目序号(*)
+	private String itemClassCode;// 检验类别代码
+	private String itemClassName;// 检验类别名称
+	private String itemCode;// 检验项目代码
+	private String itemName;// 检验项目名称
+	private String specimenID;// 检验标本号
+	private String specimenTypeCode;// 检验样本类别代码
+	private String specimenTypeName;// 检验样本类别名称
+	private Date specimenCollectionDate;// 样本采样日期时间
+	private Date specimenReceiptDate;// 样本收到日期时间
+	private String specimenStatus;// 标本状态
+	private String transportMediumCode;// 试管种类代码
+	private String transportMediumName;// 试管种类名称
+
 	public LabTestItem() {
 		super();
 	}
+
 	public LabTestItem(String tetReqID, String itemNO, String itemClassCode,
 			String itemClassName, String itemCode, String itemName,
 			String specimenID, String specimenTypeCode,
@@ -44,90 +47,119 @@ public class LabTestItem {
 		this.transportMediumCode = transportMediumCode;
 		this.transportMediumName = transportMediumName;
 	}
+
 	public String getTetReqID() {
 		return tetReqID;
 	}
+
 	public void setTetReqID(String tetReqID) {
 		this.tetReqID = tetReqID;
 	}
+
 	public String getItemNO() {
 		return itemNO;
 	}
+
 	public void setItemNO(String itemNO) {
 		this.itemNO = itemNO;
 	}
+
 	public String getItemClassCode() {
 		return itemClassCode;
 	}
+
 	public void setItemClassCode(String itemClassCode) {
 		this.itemClassCode = itemClassCode;
 	}
+
 	public String getItemClassName() {
 		return itemClassName;
 	}
+
 	public void setItemClassName(String itemClassName) {
 		this.itemClassName = itemClassName;
 	}
+
 	public String getItemCode() {
 		return itemCode;
 	}
+
 	public void setItemCode(String itemCode) {
 		this.itemCode = itemCode;
 	}
+
 	public String getItemName() {
 		return itemName;
 	}
+
 	public void setItemName(String itemName) {
 		this.itemName = itemName;
 	}
+
 	public String getSpecimenID() {
 		return specimenID;
 	}
+
 	public void setSpecimenID(String specimenID) {
 		this.specimenID = specimenID;
 	}
+
 	public String getSpecimenTypeCode() {
 		return specimenTypeCode;
 	}
+
 	public void setSpecimenTypeCode(String specimenTypeCode) {
 		this.specimenTypeCode = specimenTypeCode;
 	}
+
 	public String getSpecimenTypeName() {
 		return specimenTypeName;
 	}
+
 	public void setSpecimenTypeName(String specimenTypeName) {
 		this.specimenTypeName = specimenTypeName;
 	}
+
 	public Date getSpecimenCollectionDate() {
 		return specimenCollectionDate;
 	}
+
 	public void setSpecimenCollectionDate(Date specimenCollectionDate) {
 		this.specimenCollectionDate = specimenCollectionDate;
 	}
+
 	public Date getSpecimenReceiptDate() {
 		return specimenReceiptDate;
 	}
+
 	public void setSpecimenReceiptDate(Date specimenReceiptDate) {
 		this.specimenReceiptDate = specimenReceiptDate;
 	}
+
 	public String getSpecimenStatus() {
 		return specimenStatus;
 	}
+
 	public void setSpecimenStatus(String specimenStatus) {
 		this.specimenStatus = specimenStatus;
 	}
+
 	public String getTransportMediumCode() {
 		return transportMediumCode;
 	}
+
 	public void setTransportMediumCode(String transportMediumCode) {
 		this.transportMediumCode = transportMediumCode;
 	}
+
 	public String getTransportMediumName() {
 		return transportMediumName;
 	}
+
 	public void setTransportMediumName(String transportMediumName) {
 		this.transportMediumName = transportMediumName;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -171,6 +203,7 @@ public class LabTestItem {
 						.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -252,6 +285,7 @@ public class LabTestItem {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();

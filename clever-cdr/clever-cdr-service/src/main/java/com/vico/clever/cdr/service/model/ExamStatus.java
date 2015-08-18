@@ -3,23 +3,26 @@ package com.vico.clever.cdr.service.model;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement(name="ExamStatus")
+
+@XmlRootElement(name = "ExamStatus")
 public class ExamStatus {
-	private String patientID;//病人号(*)
-	private String visitID;//就诊号(*)
-	private String examReqID;//检查申请号
-	private String examItemName;//检查项目名称
-	private String curStateCode;//标准状态代码
-	private String curStateName;//标准状态
-	private String careflowStepCode;//实际状态代码
-	private String careflowStepName;//实际状态
-	private Date performDateTime;//执行时间
-	private String performDoctorCode;//执行人员代码
-	private String performDoctorName;//执行人员名称
-	private String memo;//备注
+	private String patientID;// 病人号(*)
+	private String visitID;// 就诊号(*)
+	private String examReqID;// 检查申请号
+	private String examItemName;// 检查项目名称
+	private String curStateCode;// 标准状态代码
+	private String curStateName;// 标准状态
+	private String careflowStepCode;// 实际状态代码
+	private String careflowStepName;// 实际状态
+	private Date performDateTime;// 执行时间
+	private String performDoctorCode;// 执行人员代码
+	private String performDoctorName;// 执行人员名称
+	private String memo;// 备注
+
 	public ExamStatus() {
 		super();
 	}
+
 	public ExamStatus(String patientID, String visitID, String examReqID,
 			String examItemName, String curStateCode, String curStateName,
 			String careflowStepCode, String careflowStepName,
@@ -39,78 +42,103 @@ public class ExamStatus {
 		this.performDoctorName = performDoctorName;
 		this.memo = memo;
 	}
+
 	public String getPatientID() {
 		return patientID;
 	}
+
 	public void setPatientID(String patientID) {
 		this.patientID = patientID;
 	}
+
 	public String getVisitID() {
 		return visitID;
 	}
+
 	public void setVisitID(String visitID) {
 		this.visitID = visitID;
 	}
+
 	public String getExamReqID() {
 		return examReqID;
 	}
+
 	public void setExamReqID(String examReqID) {
 		this.examReqID = examReqID;
 	}
+
 	public String getExamItemName() {
 		return examItemName;
 	}
+
 	public void setExamItemName(String examItemName) {
 		this.examItemName = examItemName;
 	}
+
 	public String getCurStateCode() {
 		return curStateCode;
 	}
+
 	public void setCurStateCode(String curStateCode) {
 		this.curStateCode = curStateCode;
 	}
+
 	public String getCurStateName() {
 		return curStateName;
 	}
+
 	public void setCurStateName(String curStateName) {
 		this.curStateName = curStateName;
 	}
+
 	public String getCareflowStepCode() {
 		return careflowStepCode;
 	}
+
 	public void setCareflowStepCode(String careflowStepCode) {
 		this.careflowStepCode = careflowStepCode;
 	}
+
 	public String getCareflowStepName() {
 		return careflowStepName;
 	}
+
 	public void setCareflowStepName(String careflowStepName) {
 		this.careflowStepName = careflowStepName;
 	}
+
 	public Date getPerformDateTime() {
 		return performDateTime;
 	}
+
 	public void setPerformDateTime(Date performDateTime) {
 		this.performDateTime = performDateTime;
 	}
+
 	public String getPerformDoctorCode() {
 		return performDoctorCode;
 	}
+
 	public void setPerformDoctorCode(String performDoctorCode) {
 		this.performDoctorCode = performDoctorCode;
 	}
+
 	public String getPerformDoctorName() {
 		return performDoctorName;
 	}
+
 	public void setPerformDoctorName(String performDoctorName) {
 		this.performDoctorName = performDoctorName;
 	}
+
 	public String getMemo() {
 		return memo;
 	}
+
 	public void setMemo(String memo) {
 		this.memo = memo;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -145,6 +173,7 @@ public class ExamStatus {
 		result = prime * result + ((visitID == null) ? 0 : visitID.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -216,6 +245,7 @@ public class ExamStatus {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "ExamStatus [patientID=" + patientID + ", visitID=" + visitID

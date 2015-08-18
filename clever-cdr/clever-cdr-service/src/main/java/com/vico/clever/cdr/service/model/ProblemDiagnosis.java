@@ -3,25 +3,28 @@ package com.vico.clever.cdr.service.model;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement(name="ProblemDiagnosis")
+
+@XmlRootElement(name = "ProblemDiagnosis")
 public class ProblemDiagnosis {
-	private String diagnosisID;//诊断ID(*)
-	private String patientID;//病人ID(*)
-	private String visitID;//就诊ID(*)
-	private String condition;//入院病情
-	private int dayOfTreatment;//治疗天数
-	private String result;//治疗结果
-	private String flagOfOperation;//是否手术治疗,0-否；1-是。
-	private String doctor;//诊断医生
-	private String classOfDiagnosisCode;//诊断类别ID
-	private String classOfDiagnosisName;//类别名称
-	private String diagnosisNO;//诊断序号(*)
-	private String problemDiagnosis;//诊断项目代码
-	private String description;//诊断项目名称
-	private Date dateOfDiagnosis;//诊断日期和时间
+	private String diagnosisID;// 诊断ID(*)
+	private String patientID;// 病人ID(*)
+	private String visitID;// 就诊ID(*)
+	private String condition;// 入院病情
+	private int dayOfTreatment;// 治疗天数
+	private String result;// 治疗结果
+	private String flagOfOperation;// 是否手术治疗,0-否；1-是。
+	private String doctor;// 诊断医生
+	private String classOfDiagnosisCode;// 诊断类别ID
+	private String classOfDiagnosisName;// 类别名称
+	private String diagnosisNO;// 诊断序号(*)
+	private String problemDiagnosis;// 诊断项目代码
+	private String description;// 诊断项目名称
+	private Date dateOfDiagnosis;// 诊断日期和时间
+
 	public ProblemDiagnosis() {
 		super();
 	}
+
 	public ProblemDiagnosis(String diagnosisID, String patientID,
 			String visitID, String condition, int dayOfTreatment,
 			String result, String flagOfOperation, String doctor,
@@ -44,90 +47,119 @@ public class ProblemDiagnosis {
 		this.description = description;
 		this.dateOfDiagnosis = dateOfDiagnosis;
 	}
+
 	public String getDiagnosisID() {
 		return diagnosisID;
 	}
+
 	public void setDiagnosisID(String diagnosisID) {
 		this.diagnosisID = diagnosisID;
 	}
+
 	public String getPatientID() {
 		return patientID;
 	}
+
 	public void setPatientID(String patientID) {
 		this.patientID = patientID;
 	}
+
 	public String getVisitID() {
 		return visitID;
 	}
+
 	public void setVisitID(String visitID) {
 		this.visitID = visitID;
 	}
+
 	public String getCondition() {
 		return condition;
 	}
+
 	public void setCondition(String condition) {
 		this.condition = condition;
 	}
+
 	public int getDayOfTreatment() {
 		return dayOfTreatment;
 	}
+
 	public void setDayOfTreatment(int dayOfTreatment) {
 		this.dayOfTreatment = dayOfTreatment;
 	}
+
 	public String getResult() {
 		return result;
 	}
+
 	public void setResult(String result) {
 		this.result = result;
 	}
+
 	public String getFlagOfOperation() {
 		return flagOfOperation;
 	}
+
 	public void setFlagOfOperation(String flagOfOperation) {
 		this.flagOfOperation = flagOfOperation;
 	}
+
 	public String getDoctor() {
 		return doctor;
 	}
+
 	public void setDoctor(String doctor) {
 		this.doctor = doctor;
 	}
+
 	public String getClassOfDiagnosisCode() {
 		return classOfDiagnosisCode;
 	}
+
 	public void setClassOfDiagnosisCode(String classOfDiagnosisCode) {
 		this.classOfDiagnosisCode = classOfDiagnosisCode;
 	}
+
 	public String getClassOfDiagnosisName() {
 		return classOfDiagnosisName;
 	}
+
 	public void setClassOfDiagnosisName(String classOfDiagnosisName) {
 		this.classOfDiagnosisName = classOfDiagnosisName;
 	}
+
 	public String getDiagnosisNO() {
 		return diagnosisNO;
 	}
+
 	public void setDiagnosisNO(String diagnosisNO) {
 		this.diagnosisNO = diagnosisNO;
 	}
+
 	public String getProblemDiagnosis() {
 		return problemDiagnosis;
 	}
+
 	public void setProblemDiagnosis(String problemDiagnosis) {
 		this.problemDiagnosis = problemDiagnosis;
 	}
+
 	public String getDescription() {
 		return description;
 	}
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 	public Date getDateOfDiagnosis() {
 		return dateOfDiagnosis;
 	}
+
 	public void setDateOfDiagnosis(Date dateOfDiagnosis) {
 		this.dateOfDiagnosis = dateOfDiagnosis;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -164,6 +196,7 @@ public class ProblemDiagnosis {
 		result = prime * result + ((visitID == null) ? 0 : visitID.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -242,6 +275,7 @@ public class ProblemDiagnosis {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "ProblemDiagnosis [diagnosisID=" + diagnosisID + ", patientID="
