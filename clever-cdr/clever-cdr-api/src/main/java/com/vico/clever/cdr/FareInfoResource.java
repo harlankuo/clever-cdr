@@ -47,8 +47,8 @@ public class FareInfoResource {
 	 */
     @POST
     @Path("/fareInfo")
-    @Produces(MediaType.APPLICATION_XML)
-    @Consumes(MediaType.APPLICATION_XML)
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public IntegrationResult fareInfoExtract(FareInfoEntity fareInfoEntity){
     	IntegrationResult integrationResult = new IntegrationResult();
     	FareInfo fareInfo=fareInfoEntity.getFareInfo();
@@ -71,8 +71,8 @@ public class FareInfoResource {
 	 */
     @POST
     @Path("/fareStatus")
-    @Produces(MediaType.APPLICATION_XML)
-    @Consumes(MediaType.APPLICATION_XML)
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public IntegrationResult updateFareStatus(FareStatus fareStatus){
     	IntegrationResult integrationResult = new IntegrationResult();
     	integrationResult=fareInfoService.updateFareStatus(fareStatus);

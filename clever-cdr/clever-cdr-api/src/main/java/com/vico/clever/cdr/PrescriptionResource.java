@@ -55,8 +55,8 @@ public class PrescriptionResource {
 	 */
 	@POST
 	@Path("/prescription")
-	@Produces(MediaType.APPLICATION_XML)
-	@Consumes(MediaType.APPLICATION_XML)
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public IntegrationResult prescriptionInfoExtract(
 			PrescriptionEntity prescriptionEntity) {
 		IntegrationResult integrationResult = new IntegrationResult();
@@ -86,8 +86,8 @@ public class PrescriptionResource {
 	 */
 	@POST
 	@Path("/prescriptionStatus")
-	@Produces(MediaType.APPLICATION_XML)
-	@Consumes(MediaType.APPLICATION_XML)
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public IntegrationResult updatePrescStatus(
 			PrescriptionStatus prescriptionStatus) {
 		IntegrationResult integrationResult = new IntegrationResult();

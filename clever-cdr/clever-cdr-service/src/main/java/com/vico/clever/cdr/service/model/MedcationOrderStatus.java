@@ -5,18 +5,18 @@ import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="MedcationOrderStatus")
 public class MedcationOrderStatus {
-	public String patientID;//病人号(*)
-	public String visitID;//就诊号(*)
-	public String medcationOrderID;//药嘱ID
-	public String medication;//药物名称
-	public String medicationCode;//药物代码
-	public String curStateCode;//标准状态代码
-	public String curStateName;//标准状态
-	public String careflowStepCode;//实际状态代码
-	public String careflowStepName;//实际状态
-	public Date performDateTime;//执行时间
-	public String performDoctorCode;//执行人员代码
-	public String performDoctorName;//执行人员名称
+	private String patientID;//病人号(*)
+	private String visitID;//就诊号(*)
+	private String medcationOrderID;//药嘱ID
+	private String medication;//药物名称
+	private String medicationCode;//药物代码
+	private String curStateCode;//标准状态代码
+	private String curStateName;//标准状态
+	private String careflowStepCode;//实际状态代码
+	private String careflowStepName;//实际状态
+	private Date performDateTime;//执行时间
+	private String performDoctorCode;//执行人员代码
+	private String performDoctorName;//执行人员名称
 	
 	public MedcationOrderStatus() {
 		super();

@@ -6,22 +6,22 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "DrugDispenseReqStatus")
 public class DrugDispenseReqStatus {
-	public String patientID;// 病人号(*)
-	public String visitID;// 就诊号(*)
-	public String drugDispensingReqID;// 摆药申请单号(*)
-	public String medicationCode;// 药物代码
-	public String medicationName;// 药物名称
-	public String performSerialNumber;// 执行单序号
-	public String curStateCode;// 标准状态代码
-	public String curStateName;// 标准状态
-	public String careflowStepCode;// 实际状态代码
-	public String careflowStepName;// 实际状态
-	public Date performDateTime;// 执行时间
-	public String performDeptCode;// 执行科室代码
-	public String performDeptName;// 执行科室名称
-	public String performDoctorCode;// 执行人员代码
-	public String performDoctorName;// 执行人员名称
-	public String memo;
+	private String patientID;// 病人号(*)
+	private String visitID;// 就诊号(*)
+	private String drugDispensingReqID;// 摆药申请单号(*)
+	private String medicationCode;// 药物代码
+	private String medicationName;// 药物名称
+	private String performSerialNumber;// 执行单序号
+	private String curStateCode;// 标准状态代码
+	private String curStateName;// 标准状态
+	private String careflowStepCode;// 实际状态代码
+	private String careflowStepName;// 实际状态
+	private Date performDateTime;// 执行时间
+	private String performDeptCode;// 执行科室代码
+	private String performDeptName;// 执行科室名称
+	private String performDoctorCode;// 执行人员代码
+	private String performDoctorName;// 执行人员名称
+	private String memo;
 
 	public DrugDispenseReqStatus() {
 		super();
