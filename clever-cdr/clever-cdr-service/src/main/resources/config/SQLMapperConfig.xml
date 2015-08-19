@@ -37,5 +37,6 @@
 	    <mapper resource="mapper/LabTestInfoMapper.xml" />
 	    <mapper resource="mapper/FareInfoMapper.xml" />
 	    <mapper resource="mapper/TransfusionInfoMapper.xml" />
+	    <mapper resource="mapper/NursingInfoMapper.xml" />
 	</mappers>
 </configuration>
