@@ -38,5 +38,6 @@
 	    <mapper resource="mapper/FareInfoMapper.xml" />
 	    <mapper resource="mapper/TransfusionInfoMapper.xml" />
 	    <mapper resource="mapper/NursingInfoMapper.xml" />
+	    <mapper resource="mapper/TherapyInfoMapper.xml" />
 	</mappers>
 </configuration>
