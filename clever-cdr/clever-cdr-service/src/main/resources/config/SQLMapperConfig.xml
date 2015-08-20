@@ -41,5 +41,6 @@
 	    <mapper resource="mapper/TherapyInfoMapper.xml" />
 	    <mapper resource="mapper/DietInfoMapper.xml" />
 	    <mapper resource="mapper/ManagementMapper.xml" />
+	    <mapper resource="mapper/DisposeInfoMapper.xml" />
 	</mappers>
 </configuration>

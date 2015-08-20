@@ -15,6 +15,7 @@ import com.vico.clever.cdr.service.service.DietInfoService;
 
 /**
  * Root resource (exposed at "dietResource" path)
+ * @author Yuan.Ziyang
  */
 @Path("dietResource")
 public class DietInfoResource {
