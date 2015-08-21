@@ -2,7 +2,10 @@ package com.vico.clever.cdr.test;
 
 import java.util.Date;
 import java.util.Random;
+
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Application;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.apache.log4j.Logger;
@@ -56,7 +59,7 @@ public class ConsultationResourceTest extends JerseyTest {
 		consultationAction.setCareflowStepCode(param);
 		consultationAction.setCareflowStepName(param);
 		consultationAction.setConsultContent(param);
-		consultationAction.setConsultRequestID(param);
+		consultationAction.setConsultRequestID("consul-"+num);
 		consultationAction.setCurStateCode(param);
 		consultationAction.setCurStateName(param);
 		consultationAction.setMemo(param);
@@ -70,13 +73,17 @@ public class ConsultationResourceTest extends JerseyTest {
 		ConsultationEntity consultationEntity=new ConsultationEntity();
 		consultationEntity.setConsultation(consultation);
 		consultationEntity.setConsultationAction(consultationAction);
-		//Response response = target("consultationResource").path("consultationRequest").request().buildPost(Entity.entity(consultationEntity, MediaType.APPLICATION_JSON)).invoke();
+		Response response = target("consultationResource").path("consultationRequest").request().buildPost(Entity.entity(consultationEntity, MediaType.APPLICATION_JSON)).invoke();
+		final IntegrationResult result=response.readEntity(IntegrationResult.class);
+		logger.debug(result.toString());
+		
+		
+		//Response response =target("consultationResource").path("consultationRequest").queryParam("consultRequestID", "consul-45").request().delete();
 		//final IntegrationResult result=response.readEntity(IntegrationResult.class);
 		//logger.debug(result.toString());
 		
-		
-		Response response =target("consultationResource").path("consultationRequest").queryParam("consultRequestID", "consul-59").request().delete();
-		final IntegrationResult result=response.readEntity(IntegrationResult.class);
-		logger.debug(result.toString());
+		//Response response =target("consultationResource").path("consultationRequest").request().buildPut(Entity.entity(consultationEntity, MediaType.APPLICATION_JSON)).invoke();
+		//final IntegrationResult result=response.readEntity(IntegrationResult.class);
+		//logger.debug(result.toString());
 	}
 }
