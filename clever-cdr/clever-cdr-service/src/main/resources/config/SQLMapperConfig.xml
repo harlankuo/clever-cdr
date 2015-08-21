@@ -43,5 +43,7 @@
 	    <mapper resource="mapper/ManagementMapper.xml" />
 	    <mapper resource="mapper/DisposeInfoMapper.xml" />
 	    <mapper resource="mapper/RemainInfoMapper.xml" />
+	    <mapper resource="mapper/BloodMatchingMapper.xml" />
+	    <mapper resource="mapper/ConsultationInfoMapper.xml" />
 	</mappers>
 </configuration>
