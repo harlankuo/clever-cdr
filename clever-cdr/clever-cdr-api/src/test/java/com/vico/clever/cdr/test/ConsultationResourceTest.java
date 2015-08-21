@@ -1,14 +1,8 @@
 package com.vico.clever.cdr.test;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.Date;
 import java.util.Random;
-import java.util.UUID;
-
-import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Application;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.apache.log4j.Logger;
@@ -18,13 +12,9 @@ import org.junit.Test;
 
 import com.vico.clever.cdr.CleverRestApplication;
 import com.vico.clever.cdr.service.entity.ConsultationEntity;
-import com.vico.clever.cdr.service.entity.RemainEntity;
 import com.vico.clever.cdr.service.model.Consultation;
 import com.vico.clever.cdr.service.model.ConsultationAction;
 import com.vico.clever.cdr.service.model.IntegrationResult;
-import com.vico.clever.cdr.service.model.PatientInfo;
-import com.vico.clever.cdr.service.model.Remain;
-import com.vico.clever.cdr.service.model.RemainAction;
 
 public class ConsultationResourceTest extends JerseyTest {
 	
@@ -85,7 +75,7 @@ public class ConsultationResourceTest extends JerseyTest {
 		//logger.debug(result.toString());
 		
 		
-		Response response =target("consultationResource").path("consultationRequest").queryParam("consultRequestID", "consul-13").request().delete();
+		Response response =target("consultationResource").path("consultationRequest").queryParam("consultRequestID", "consul-59").request().delete();
 		final IntegrationResult result=response.readEntity(IntegrationResult.class);
 		logger.debug(result.toString());
 	}
