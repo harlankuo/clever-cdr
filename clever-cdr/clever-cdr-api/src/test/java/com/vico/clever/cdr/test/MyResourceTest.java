@@ -1,10 +1,7 @@
 package com.vico.clever.cdr.test;
 
-import static org.junit.Assert.assertEquals;
-
 import java.util.Date;
 import java.util.Random;
-import java.util.UUID;
 
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Application;
@@ -17,11 +14,8 @@ import org.glassfish.jersey.test.TestProperties;
 import org.junit.Test;
 
 import com.vico.clever.cdr.CleverRestApplication;
-import com.vico.clever.cdr.service.entity.RemainEntity;
 import com.vico.clever.cdr.service.model.IntegrationResult;
-import com.vico.clever.cdr.service.model.PatientInfo;
-import com.vico.clever.cdr.service.model.Remain;
-import com.vico.clever.cdr.service.model.RemainAction;
+import com.vico.clever.cdr.service.model.NewBornMaster;
 
 public class MyResourceTest extends JerseyTest {
 	
@@ -34,61 +28,46 @@ public class MyResourceTest extends JerseyTest {
 	}
 	@Test
 	public void testMyResource(){
-		//final PatientInfo patientInfo=target("myresourceTest").request().get(PatientInfo.class);
-//		final String patientInfo=target("patientAdt").path("patientInfo").queryParam("patientId", "M000060").request().get(String.class);
-//		logger.debug(patientInfo.toString());
-		//assertEquals("Got it!", myresource);
-//		Response response = target("patientAdt").path("patientInfo").queryParam("patientId", "M000060").request().delete();
-//		final IntegrationResult result=response.readEntity(IntegrationResult.class); 
-//		logger.debug(result.toString());
-		//response.close();
-		
 		Date date=new Date();
 		Random random = new Random();
 		int num=random.nextInt(100);
-		String param="remain"+num;
+		String param="newborn"+num;
+		NewBornMaster newBornMaster=new NewBornMaster();
+		newBornMaster.setBirthDate(date);
+		newBornMaster.setBirthPlace(param);
+		newBornMaster.setBirthPlaceType(num);
+		newBornMaster.setCreateDate(date);
+		newBornMaster.setCreator(param);
+		newBornMaster.setPatientID("patient-"+num);
+		newBornMaster.setCreatorID(param);
+		newBornMaster.setDeliveringInstitutions(param);
+		newBornMaster.setFatherEthnicGroup(param);
+		newBornMaster.setFatherID(param);
+		newBornMaster.setFatherIDType(param);
+		newBornMaster.setFatherName(param);
+		newBornMaster.setFatherNation(param);
+		newBornMaster.setGender("F");
+		newBornMaster.setHealthState(param);
+		newBornMaster.setHeight(num);
+		newBornMaster.setHeightUnit(param);
+		newBornMaster.setLastModifiedDate(date);
+		newBornMaster.setLastModifierCode(param);
+		newBornMaster.setLastModifierName(param);
+		newBornMaster.setMotherEthnicGroup(param);
+		newBornMaster.setMotherID(param);
+		newBornMaster.setMotherIDType(param);
+		newBornMaster.setMotherName(param);
+		newBornMaster.setMotherNation(param);
+		newBornMaster.setName(param);
+		newBornMaster.setNewBornID(param);
+		newBornMaster.setStatus("0");
+		newBornMaster.setVisitID("visit-"+num);
+		newBornMaster.setWeight(num);
+		newBornMaster.setWeightUnit(param);
+		logger.debug(newBornMaster.toString());
 		
-		Remain remain=new Remain();
-		remain.setAdministrationCode(param);
-		remain.setAdministrationName(param);
-		remain.setDosage(""+num);
-		remain.setDosageUnit(param);
-		remain.setFrequencyDescription(param);
-		remain.setFrequencyInterval(num);
-		remain.setFrequencyIntervalUnit(param);
-		remain.setFrequencyUnit(param);
-		remain.setMemo(param);
-		remain.setOrderContent(param);
-		remain.setOrderID("order-"+num);
-		remain.setPatientID("patient-"+num);
-		remain.setPlannedExecDatetime(date);
-		remain.setPlannedStopDatetime(date);
-		remain.setRequestID("remain-"+num);
-		remain.setVisitID("visit-"+num);
-		logger.debug(remain.toString());
 		
-		RemainAction remainAction=new RemainAction();
-		remainAction.setActionDatetime(date);
-		remainAction.setCareflowStepCode(param);
-		remainAction.setCareflowStepName(param);
-		remainAction.setCurStateCode(param);
-		remainAction.setCurStateName(param);
-		remainAction.setMemo(param);
-		remainAction.setOrderContent(param);
-		remainAction.setPatientID("patient-"+num);
-		remainAction.setPerformDeptCode(param);
-		remainAction.setPerformDeptName(param);
-		remainAction.setPerformerCode(param);
-		remainAction.setPerformerName(param);
-		remainAction.setRequestID("remain-"+num);
-		remainAction.setVisitID("visit-"+num);
-		logger.debug(remainAction.toString());
-		
-		RemainEntity remainEntity=new RemainEntity();
-		remainEntity.setRemain(remain);
-		remainEntity.setRemainAction(remainAction);
-		
-		Response response = target("remainResource").path("remainRequest").request().buildPost(Entity.entity(remainEntity, MediaType.APPLICATION_JSON)).invoke();
+		Response response = target("newBornResource").path("newBornMaster").request().buildPost(Entity.entity(newBornMaster, MediaType.APPLICATION_JSON)).invoke();
 		final IntegrationResult result=response.readEntity(IntegrationResult.class);
 		logger.debug(result.toString());
 	}

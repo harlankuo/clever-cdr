@@ -45,5 +45,6 @@
 	    <mapper resource="mapper/RemainInfoMapper.xml" />
 	    <mapper resource="mapper/BloodMatchingMapper.xml" />
 	    <mapper resource="mapper/ConsultationInfoMapper.xml" />
+	    <mapper resource="mapper/NewBornInfoMapper.xml" />
 	</mappers>
 </configuration>
