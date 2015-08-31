@@ -46,7 +46,7 @@ public class ConsultationDaoTest {
 			consultationAction.setCareflowStepCode(param);
 			consultationAction.setCareflowStepName(param);
 			consultationAction.setConsultContent(param);
-			consultationAction.setConsultRequestID(param);
+			consultationAction.setConsultRequestID("consul-"+num);
 			consultationAction.setCurStateCode(param);
 			consultationAction.setCurStateName(param);
 			consultationAction.setMemo(param);

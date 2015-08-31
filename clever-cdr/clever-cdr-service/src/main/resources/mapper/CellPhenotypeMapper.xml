@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vico.clever.cdr.service.dao.CellPhenotypeDao">
+<resultMap type="com.vico.clever.cdr.service.model.CellPhenotype" id="CellPhenotypeMap">
+<result column = "PatientIdentifier_Id" property="patientID" jdbcType = "VARCHAR"/>
+<result column = "EncounterIdentifier" property="visitID" jdbcType = "VARCHAR"/>
+<result column = "OrderIdentifier" property="orderID" jdbcType = "VARCHAR"/>
+<result column = "CellPhenotypeIdentifier" property="cellPhenotypeID" jdbcType = "VARCHAR"/>
+<result column = "Classification" property="classification" jdbcType = "VARCHAR"/>
+<result column = "TestSample" property="testSample" jdbcType = "VARCHAR"/>
+<result column = "Items" property="items" jdbcType = "VARCHAR"/>
+<result column = "TestDatetime" property="testDatetime" jdbcType = "TIMESTAMP"/>
+</resultMap>
+
+<resultMap type="com.vico.clever.cdr.service.model.CellPhenotypeValue" id="CellPhenotypeValueMap">
+<result column = "Obsr_CellPhenotype$CellPhenotypeIdentifier" property="cellPhenotypeID" jdbcType = "VARCHAR"/>
+<result column = "Name" property="name" jdbcType = "VARCHAR"/>
+<result column = "AbsoluteNumber" property="absoluteNO" jdbcType = "VARCHAR"/>
+<result column = "AccountLymphocytesPercentage" property="accountLymphocytesPercentage" jdbcType = "VARCHAR"/>
+</resultMap>
+
+<sql id="CellPhenotypeList">
+[Guid]
+      ,[CellPhenotypeIdentifier]
+      ,[Classification]
+      ,[EncounterIdentifier]
+      ,[Items]
+      ,[OrderIdentifier]
+      ,[PatientIdentifier_Id]
+      ,[TestDatetime]
+      ,[TestSample]
+</sql>
+<sql id="CellPhenotypeValueList">
+[Guid]
+      ,[AbsoluteNumber]
+      ,[AccountLymphocytesPercentage]
+      ,[Name]
+      ,[Obsr_CellPhenotype$CellPhenotypeIdentifier]
+</sql>
+
+<!-- CellPhenotype -->
+<select id="selectCellPhenotype" parameterType="java.lang.String" resultMap="CellPhenotypeMap">
+select * from  Obsr_CellPhenotype where  CellPhenotypeIdentifier = #{cellPhenotypeID}
+</select>
+<insert id="insertCellPhenotype" parameterType = "com.vico.clever.cdr.service.model.CellPhenotype">
+insert into Obsr_CellPhenotype(<include refid="CellPhenotypeList"/>) values(
+newid(),
+#{cellPhenotypeID,jdbcType=VARCHAR},
+#{classification,jdbcType=VARCHAR},
+#{visitID,jdbcType=VARCHAR},
+#{items,jdbcType=VARCHAR},
+#{orderID,jdbcType=VARCHAR},
+#{patientID,jdbcType=VARCHAR},
+#{testDatetime,jdbcType=TIMESTAMP},
+#{testSample,jdbcType=VARCHAR}
+)
+</insert>
+<update id="updateCellPhenotype" parameterType = "com.vico.clever.cdr.service.model.CellPhenotype">
+update Obsr_CellPhenotype set
+Classification = #{classification,jdbcType=VARCHAR},
+EncounterIdentifier = #{visitID,jdbcType=VARCHAR},
+Items = #{items,jdbcType=VARCHAR},
+OrderIdentifier = #{orderID,jdbcType=VARCHAR},
+PatientIdentifier_Id = #{patientID,jdbcType=VARCHAR},
+TestDatetime = #{testDatetime,jdbcType=TIMESTAMP},
+TestSample = #{testSample,jdbcType=VARCHAR}
+where CellPhenotypeIdentifier = #{cellPhenotypeID,jdbcType=VARCHAR}
+</update>
+<delete id="deleteCellPhenotype" parameterType="java.lang.String">
+delete from Obsr_CellPhenotype where CellPhenotypeIdentifier = #{cellPhenotypeID,jdbcType=VARCHAR}
+ </delete>
+
+<!-- CellPhenotypeValue -->
+
+<select id="selectCellPhenotypeValue" parameterType="java.lang.String" resultMap="CellPhenotypeValueMap">
+select <include refid="CellPhenotypeValueList"/>  from Obsr_CellPhenotype_CellPhenotypeValue 
+where  Obsr_CellPhenotype$CellPhenotypeIdentifier = #{cellPhenotypeID}
+</select>
+<insert id="insertCellPhenotypeValue" parameterType="com.vico.clever.cdr.service.model.CellPhenotypeValue">
+insert into Obsr_CellPhenotype_CellPhenotypeValue (<include refid="CellPhenotypeValueList"/> )  values
+<foreach collection="list" item="item" index="index" separator=",">
+( 
+  newid(),
+  #{item.absoluteNO,jdbcType=VARCHAR},
+  #{item.accountLymphocytesPercentage,jdbcType=VARCHAR},
+  #{item.name,jdbcType=VARCHAR},
+  #{item.cellPhenotypeID,jdbcType=VARCHAR}
+)
+</foreach>
+</insert>
+<delete id="deleteCellPhenotypeValue" parameterType="java.lang.String"  >
+delete from Obsr_CellPhenotype_CellPhenotypeValue where  Obsr_CellPhenotype$CellPhenotypeIdentifier = #{cellPhenotypeID,jdbcType=VARCHAR}
+</delete>
+
+</mapper>

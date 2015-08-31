@@ -21,7 +21,7 @@ public class ExamReportInfo {
 	private String description;// 检查描述
 	private String reportAbsolutePath;// 报告存储绝对路径
 	private String reportRelatviePath;// 报告存储相对路径
-	private byte[] representationUri;// 报告内容
+	private String representationUri;// 报告内容
 
 	public ExamReportInfo() {
 		super();
@@ -31,7 +31,7 @@ public class ExamReportInfo {
 			String examReqID, String examID, String reportID, Date reportDate,
 			String resultValue, String findings, String conclusion,
 			String memo, String description, String reportAbsolutePath,
-			String reportRelatviePath, byte[] representationUri) {
+			String reportRelatviePath, String representationUri) {
 		super();
 		this.patentID = patentID;
 		this.visitID = visitID;
@@ -162,11 +162,11 @@ public class ExamReportInfo {
 		this.reportRelatviePath = reportRelatviePath;
 	}
 
-	public byte[] getRepresentationUri() {
+	public String getRepresentationUri() {
 		return representationUri;
 	}
 
-	public void setRepresentationUri(byte[] representationUri) {
+	public void setRepresentationUri(String representationUri) {
 		this.representationUri = representationUri;
 	}
 
@@ -174,34 +174,20 @@ public class ExamReportInfo {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((conclusion == null) ? 0 : conclusion.hashCode());
-		result = prime * result
-				+ ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((conclusion == null) ? 0 : conclusion.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((examID == null) ? 0 : examID.hashCode());
-		result = prime * result
-				+ ((examReqID == null) ? 0 : examReqID.hashCode());
-		result = prime * result
-				+ ((findings == null) ? 0 : findings.hashCode());
+		result = prime * result + ((examReqID == null) ? 0 : examReqID.hashCode());
+		result = prime * result + ((findings == null) ? 0 : findings.hashCode());
 		result = prime * result + ((memo == null) ? 0 : memo.hashCode());
 		result = prime * result + ((orderID == null) ? 0 : orderID.hashCode());
-		result = prime * result
-				+ ((patentID == null) ? 0 : patentID.hashCode());
-		result = prime
-				* result
-				+ ((reportAbsolutePath == null) ? 0 : reportAbsolutePath
-						.hashCode());
-		result = prime * result
-				+ ((reportDate == null) ? 0 : reportDate.hashCode());
-		result = prime * result
-				+ ((reportID == null) ? 0 : reportID.hashCode());
-		result = prime
-				* result
-				+ ((reportRelatviePath == null) ? 0 : reportRelatviePath
-						.hashCode());
-		result = prime * result + Arrays.hashCode(representationUri);
-		result = prime * result
-				+ ((resultValue == null) ? 0 : resultValue.hashCode());
+		result = prime * result + ((patentID == null) ? 0 : patentID.hashCode());
+		result = prime * result + ((reportAbsolutePath == null) ? 0 : reportAbsolutePath.hashCode());
+		result = prime * result + ((reportDate == null) ? 0 : reportDate.hashCode());
+		result = prime * result + ((reportID == null) ? 0 : reportID.hashCode());
+		result = prime * result + ((reportRelatviePath == null) ? 0 : reportRelatviePath.hashCode());
+		result = prime * result + ((representationUri == null) ? 0 : representationUri.hashCode());
+		result = prime * result + ((resultValue == null) ? 0 : resultValue.hashCode());
 		result = prime * result + ((visitID == null) ? 0 : visitID.hashCode());
 		return result;
 	}
@@ -275,7 +261,10 @@ public class ExamReportInfo {
 				return false;
 		} else if (!reportRelatviePath.equals(other.reportRelatviePath))
 			return false;
-		if (!Arrays.equals(representationUri, other.representationUri))
+		if (representationUri == null) {
+			if (other.representationUri != null)
+				return false;
+		} else if (!representationUri.equals(other.representationUri))
 			return false;
 		if (resultValue == null) {
 			if (other.resultValue != null)
@@ -292,15 +281,12 @@ public class ExamReportInfo {
 
 	@Override
 	public String toString() {
-		return "ExamReportInfo [patentID=" + patentID + ", visitID=" + visitID
-				+ ", orderID=" + orderID + ", examReqID=" + examReqID
-				+ ", examID=" + examID + ", reportID=" + reportID
-				+ ", reportDate=" + reportDate + ", resultValue=" + resultValue
-				+ ", findings=" + findings + ", conclusion=" + conclusion
-				+ ", memo=" + memo + ", description=" + description
-				+ ", reportAbsolutePath=" + reportAbsolutePath
-				+ ", reportRelatviePath=" + reportRelatviePath
-				+ ", representationUri=" + Arrays.toString(representationUri)
-				+ "]";
+		return "ExamReportInfo [patentID=" + patentID + ", visitID=" + visitID + ", orderID=" + orderID + ", examReqID="
+				+ examReqID + ", examID=" + examID + ", reportID=" + reportID + ", reportDate=" + reportDate
+				+ ", resultValue=" + resultValue + ", findings=" + findings + ", conclusion=" + conclusion + ", memo="
+				+ memo + ", description=" + description + ", reportAbsolutePath=" + reportAbsolutePath
+				+ ", reportRelatviePath=" + reportRelatviePath + ", representationUri=" + representationUri + "]";
 	}
+    
+
 }

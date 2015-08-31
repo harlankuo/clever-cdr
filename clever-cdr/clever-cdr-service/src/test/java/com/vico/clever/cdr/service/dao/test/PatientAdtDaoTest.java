@@ -2,7 +2,12 @@ package com.vico.clever.cdr.service.dao.test;
 
 import java.util.Date;
 import java.util.Random;
+import java.util.UUID;
+
+import javax.annotation.Resource;
+
 import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;

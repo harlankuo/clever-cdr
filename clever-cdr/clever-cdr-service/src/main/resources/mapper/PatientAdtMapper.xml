@@ -736,4 +736,8 @@
 	<select id="selectCountPatVisit" parameterType="String" resultType="int">
 		select count(*) from Admin_PatientAdmission where EncounterIdentifier_Id=#{visitID};
 	</select>
+	<select id="selectPatientDischargeInfo" parameterType="String" resultType="com.vico.clever.cdr.service.model.PatientDischargeInfo">
+		select * from Admin_DischargeAdministrativeInformation where PatientIdentifier_Id=#{patientID,jdbcType=VARCHAR} and
+		EncounterIdentifier = #{visitID,jdbcType=VARCHAR}
+	</select>
 </mapper>

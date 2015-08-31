@@ -2,248 +2,286 @@ package com.vico.clever.cdr.service.model;
 
 import java.util.Date;
 
-import javax.xml.bind.annotation.XmlRootElement;
-@XmlRootElement(name="MedcationOrder")
 public class MedcationOrder {
-	private String medicationOrderID;//药嘱ID(*)
-	private String patientID;//病人ID(*)
-	private String visitID;//就诊ID(*)
-	private String orderID;//医嘱ID
-	private int ownMedicine;//自带药属性,0-使用医院的药，1-使用自带药(*)
-	private String stCode;//皮试属性代码,0-不需要皮试，1-需要皮试但结果未知，2-皮试结果阳性，3-皮试结果阴性(*)
-	private String stName;//皮试属性
-	private String medicationName;//药物名称
-	private String medicationCode;//药嘱代码
-	private int doseAmount;//剂量数
-	private String doseUnitCode;//剂量单位代码
-	private String doseUnit;//剂量单位
-	private String medicineCompound;//药品规格
-	private int dailyCount;//24小时用量
-	private int numberAllOfMedicine;//药品使用总量
-	private String administrationRouteCode;//给药途径代码
-	private String administrationRouteName;//给药途径,如静脉注射、口服
-	private Date startDate;//计划用药开始日期
-    private Date stopDate;//计划用药停止日期
-    private String durationOfTreat;//用药持续时间
-    private String durationUnit;//持续时间单位
-    private String frequencyUnit;//执行频率单位
-    private int frequency;//频率次数
-    private int frequencyInterval;//频率间隔
-    private String frequencyIntervalUnit;//频率间隔单位
-    private String comment;//备注
-    private String formCode;//药物剂型代码
-    private String formName;//药物剂型名称
+	private String medicationOrderID;// 药嘱ID(*)
+	private String patientID;// 病人ID(*)
+	private String visitID;// 就诊ID(*)
+	private String orderID;// 医嘱ID
+	private int ownMedicine;// 自带药属性,0-使用医院的药，1-使用自带药(*)
+	private String stCode;// 皮试属性代码,0-不需要皮试，1-需要皮试但结果未知，2-皮试结果阳性，3-皮试结果阴性(*)
+	private String stName;// 皮试属性
+	private String medicationName;// 药物名称
+	private String medicationCode;// 药嘱代码
+	private int doseAmount;// 剂量数
+	private String doseUnitCode;// 剂量单位代码
+	private String doseUnit;// 剂量单位
+	private String medicineCompound;// 药品规格
+	private int dailyCount;// 24小时用量
+	private int numberAllOfMedicine;// 药品使用总量
+	private String administrationRouteCode;// 给药途径代码
+	private String administrationRouteName;// 给药途径,如静脉注射、口服
+	private Date startDate;// 计划用药开始日期
+	private Date stopDate;// 计划用药停止日期
+	private String durationOfTreat;// 用药持续时间
+	private String durationUnit;// 持续时间单位
+	private String frequencyUnit;// 执行频率单位
+	private int frequency;// 频率次数
+	private int frequencyInterval;// 频率间隔
+	private String frequencyIntervalUnit;// 频率间隔单位
+	private String comment;// 备注
+	private String formCode;// 药物剂型代码
+	private String formName;// 药物剂型名称
+
 	public MedcationOrder() {
 		super();
 	}
-	public MedcationOrder(String medicationOrderID, String patientID,
-			String visitID, String orderID, int ownMedicine, String stCode,
-			String stName, String medicationName, String medicationCode,
-			int doseAmount, String doseUnitCode, String doseUnit,
-			String medicineCompound, int dailyCount, int numberAllOfMedicine,
-			String administrationRouteCode, String administrationRouteName,
-			Date startDate, Date stopDate, String durationOfTreat,
-			String durationUnit, String frequencyUnit, int frequency,
-			int frequencyInterval, String frequencyIntervalUnit,
-			String comment, String formCode, String formName) {
-		super();
-		this.medicationOrderID = medicationOrderID;
-		this.patientID = patientID;
-		this.visitID = visitID;
-		this.orderID = orderID;
-		this.ownMedicine = ownMedicine;
-		this.stCode = stCode;
-		this.stName = stName;
-		this.medicationName = medicationName;
-		this.medicationCode = medicationCode;
-		this.doseAmount = doseAmount;
-		this.doseUnitCode = doseUnitCode;
-		this.doseUnit = doseUnit;
-		this.medicineCompound = medicineCompound;
-		this.dailyCount = dailyCount;
-		this.numberAllOfMedicine = numberAllOfMedicine;
-		this.administrationRouteCode = administrationRouteCode;
-		this.administrationRouteName = administrationRouteName;
-		this.startDate = startDate;
-		this.stopDate = stopDate;
-		this.durationOfTreat = durationOfTreat;
-		this.durationUnit = durationUnit;
-		this.frequencyUnit = frequencyUnit;
-		this.frequency = frequency;
-		this.frequencyInterval = frequencyInterval;
-		this.frequencyIntervalUnit = frequencyIntervalUnit;
-		this.comment = comment;
-		this.formCode = formCode;
-		this.formName = formName;
-	}
+
 	public String getMedicationOrderID() {
 		return medicationOrderID;
 	}
+
 	public void setMedicationOrderID(String medicationOrderID) {
 		this.medicationOrderID = medicationOrderID;
 	}
+
 	public String getPatientID() {
 		return patientID;
 	}
+
 	public void setPatientID(String patientID) {
 		this.patientID = patientID;
 	}
+
 	public String getVisitID() {
 		return visitID;
 	}
+
 	public void setVisitID(String visitID) {
 		this.visitID = visitID;
 	}
+
 	public String getOrderID() {
 		return orderID;
 	}
+
 	public void setOrderID(String orderID) {
 		this.orderID = orderID;
 	}
+
 	public int getOwnMedicine() {
 		return ownMedicine;
 	}
+
 	public void setOwnMedicine(int ownMedicine) {
 		this.ownMedicine = ownMedicine;
 	}
+
 	public String getStCode() {
 		return stCode;
 	}
+
 	public void setStCode(String stCode) {
 		this.stCode = stCode;
 	}
+
 	public String getStName() {
 		return stName;
 	}
+
 	public void setStName(String stName) {
 		this.stName = stName;
 	}
+
 	public String getMedicationName() {
 		return medicationName;
 	}
+
 	public void setMedicationName(String medicationName) {
 		this.medicationName = medicationName;
 	}
+
 	public String getMedicationCode() {
 		return medicationCode;
 	}
+
 	public void setMedicationCode(String medicationCode) {
 		this.medicationCode = medicationCode;
 	}
+
 	public int getDoseAmount() {
 		return doseAmount;
 	}
+
 	public void setDoseAmount(int doseAmount) {
 		this.doseAmount = doseAmount;
 	}
+
 	public String getDoseUnitCode() {
 		return doseUnitCode;
 	}
+
 	public void setDoseUnitCode(String doseUnitCode) {
 		this.doseUnitCode = doseUnitCode;
 	}
+
 	public String getDoseUnit() {
 		return doseUnit;
 	}
+
 	public void setDoseUnit(String doseUnit) {
 		this.doseUnit = doseUnit;
 	}
+
 	public String getMedicineCompound() {
 		return medicineCompound;
 	}
+
 	public void setMedicineCompound(String medicineCompound) {
 		this.medicineCompound = medicineCompound;
 	}
+
 	public int getDailyCount() {
 		return dailyCount;
 	}
+
 	public void setDailyCount(int dailyCount) {
 		this.dailyCount = dailyCount;
 	}
+
 	public int getNumberAllOfMedicine() {
 		return numberAllOfMedicine;
 	}
+
 	public void setNumberAllOfMedicine(int numberAllOfMedicine) {
 		this.numberAllOfMedicine = numberAllOfMedicine;
 	}
+
 	public String getAdministrationRouteCode() {
 		return administrationRouteCode;
 	}
+
 	public void setAdministrationRouteCode(String administrationRouteCode) {
 		this.administrationRouteCode = administrationRouteCode;
 	}
+
 	public String getAdministrationRouteName() {
 		return administrationRouteName;
 	}
+
 	public void setAdministrationRouteName(String administrationRouteName) {
 		this.administrationRouteName = administrationRouteName;
 	}
+
 	public Date getStartDate() {
 		return startDate;
 	}
+
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
+
 	public Date getStopDate() {
 		return stopDate;
 	}
+
 	public void setStopDate(Date stopDate) {
 		this.stopDate = stopDate;
 	}
+
 	public String getDurationOfTreat() {
 		return durationOfTreat;
 	}
+
 	public void setDurationOfTreat(String durationOfTreat) {
 		this.durationOfTreat = durationOfTreat;
 	}
+
 	public String getDurationUnit() {
 		return durationUnit;
 	}
+
 	public void setDurationUnit(String durationUnit) {
 		this.durationUnit = durationUnit;
 	}
+
 	public String getFrequencyUnit() {
 		return frequencyUnit;
 	}
+
 	public void setFrequencyUnit(String frequencyUnit) {
 		this.frequencyUnit = frequencyUnit;
 	}
+
 	public int getFrequency() {
 		return frequency;
 	}
+
 	public void setFrequency(int frequency) {
 		this.frequency = frequency;
 	}
+
 	public int getFrequencyInterval() {
 		return frequencyInterval;
 	}
+
 	public void setFrequencyInterval(int frequencyInterval) {
 		this.frequencyInterval = frequencyInterval;
 	}
+
 	public String getFrequencyIntervalUnit() {
 		return frequencyIntervalUnit;
 	}
+
 	public void setFrequencyIntervalUnit(String frequencyIntervalUnit) {
 		this.frequencyIntervalUnit = frequencyIntervalUnit;
 	}
+
 	public String getComment() {
 		return comment;
 	}
+
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
+
 	public String getFormCode() {
 		return formCode;
 	}
+
 	public void setFormCode(String formCode) {
 		this.formCode = formCode;
 	}
+
 	public String getFormName() {
 		return formName;
 	}
+
 	public void setFormName(String formName) {
 		this.formName = formName;
 	}
+
+	@Override
+	public String toString() {
+		return "MedcationOrder [medicationOrderID=" + medicationOrderID
+				+ ", patientID=" + patientID + ", visitID=" + visitID
+				+ ", orderID=" + orderID + ", ownMedicine=" + ownMedicine
+				+ ", stCode=" + stCode + ", stName=" + stName
+				+ ", medicationName=" + medicationName + ", medicationCode="
+				+ medicationCode + ", doseAmount=" + doseAmount
+				+ ", doseUnitCode=" + doseUnitCode + ", doseUnit=" + doseUnit
+				+ ", medicineCompound=" + medicineCompound + ", dailyCount="
+				+ dailyCount + ", numberAllOfMedicine=" + numberAllOfMedicine
+				+ ", administrationRouteCode=" + administrationRouteCode
+				+ ", administrationRouteName=" + administrationRouteName
+				+ ", startDate=" + startDate + ", stopDate=" + stopDate
+				+ ", durationOfTreat=" + durationOfTreat + ", durationUnit="
+				+ durationUnit + ", frequencyUnit=" + frequencyUnit
+				+ ", frequency=" + frequency + ", frequencyInterval="
+				+ frequencyInterval + ", frequencyIntervalUnit="
+				+ frequencyIntervalUnit + ", comment=" + comment
+				+ ", formCode=" + formCode + ", formName=" + formName + "]";
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -304,6 +342,7 @@ public class MedcationOrder {
 		result = prime * result + ((visitID == null) ? 0 : visitID.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -439,27 +478,5 @@ public class MedcationOrder {
 			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		return "MedcationOrder [medicationOrderID=" + medicationOrderID
-				+ ", patientID=" + patientID + ", visitID=" + visitID
-				+ ", orderID=" + orderID + ", ownMedicine=" + ownMedicine
-				+ ", stCode=" + stCode + ", stName=" + stName
-				+ ", medicationName=" + medicationName + ", medicationCode="
-				+ medicationCode + ", doseAmount=" + doseAmount
-				+ ", doseUnitCode=" + doseUnitCode + ", doseUnit=" + doseUnit
-				+ ", medicineCompound=" + medicineCompound + ", dailyCount="
-				+ dailyCount + ", numberAllOfMedicine=" + numberAllOfMedicine
-				+ ", administrationRouteCode=" + administrationRouteCode
-				+ ", administrationRouteName=" + administrationRouteName
-				+ ", startDate=" + startDate + ", stopDate=" + stopDate
-				+ ", durationOfTreat=" + durationOfTreat + ", durationUnit="
-				+ durationUnit + ", frequencyUnit=" + frequencyUnit
-				+ ", frequency=" + frequency + ", frequencyInterval="
-				+ frequencyInterval + ", frequencyIntervalUnit="
-				+ frequencyIntervalUnit + ", comment=" + comment
-				+ ", formCode=" + formCode + ", formName=" + formName + "]";
-	}
-	
-	
+
 }

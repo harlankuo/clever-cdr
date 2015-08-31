@@ -22,24 +22,26 @@ import com.vico.clever.cdr.service.service.PatientADTService;
 
 /**
  * Root resource (exposed at "patientAdt" path)
+ * 
  * @author Yuan.Ziyang
  */
 @Path("patientAdt")
 public class PatientAdtResource {
 
 	protected final Logger logger = Logger.getLogger(this.getClass());
-	private PatientADTService patientAdtService=new PatientADTService();
-	
+	private PatientADTService patientAdtService = new PatientADTService();
+
 	/**
 	 * 
 	 * Element resource (exposed at "patientAdmission" path);
 	 * 
-	 * Method handling the data entry of patient Admission information into CDR with HTTP POST requests.
+	 * Method handling the data entry of patient Admission information into CDR
+	 * with HTTP POST requests.
 	 * 
 	 * @author Yuan.Ziyang
 	 * @param patientAdtEntity
-	 *            input json or xml object data that contains PatientInfo,PatientTransferInfo and 
-	 *            PatientAdmission info;
+	 *            input json or xml object data that contains
+	 *            PatientInfo,PatientTransferInfo and PatientAdmission info;
 	 * @return IntegrationResult that contains the handling result description
 	 *         as an application/json response.
 	 */
@@ -47,55 +49,28 @@ public class PatientAdtResource {
 	@Path("/patientAdmission")
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public IntegrationResult patientAdmission(
-			PatientAdtEntity patientAdtEntity) {
+	public IntegrationResult patientAdmission(PatientAdtEntity patientAdtEntity) {
 		IntegrationResult integrationResult = new IntegrationResult();
-		PatientInfo patientInfo=patientAdtEntity.getPatientInfo();
-		PatientAdmission patientAdmission=patientAdtEntity.getPatientAdmission();
-		PatientTransferInfo patientTransferInfo=patientAdtEntity.getPatientTransferInfo();
-		integrationResult=patientAdtService.insertPatADTA01Info(patientInfo, patientAdmission,patientTransferInfo);
+		PatientInfo patientInfo = patientAdtEntity.getPatientInfo();
+		PatientAdmission patientAdmission = patientAdtEntity
+				.getPatientAdmission();
+		PatientTransferInfo patientTransferInfo = patientAdtEntity
+				.getPatientTransferInfo();
+		integrationResult = patientAdtService.insertPatADTA01Info(patientInfo,
+				patientAdmission, patientTransferInfo);
 		return integrationResult;
 	}
-	/**
-	 * Not used , just an example
-	 * 
-	 * @author Yuan.Ziyang
-	 * @param patientId input String as patient identifier.
-	 * @return IntegrationResult that contains the handling result description
-	 *         as an application/xml response.
-	 */
-	@GET
-	@Path("/patientInfo")
-	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public PatientInfo queryPatientInfoById(
-			@QueryParam("patientId") String patientId) {
-		PatientInfo patientInfo=patientAdtService.getPatientInfoById(patientId);
-		return patientInfo;
-	}
-	/**
-	 * Not used , just an example
-	 * 
-	 * @author Yuan.Ziyang
-	 * @param patientId input String as patient identifier.
-	 * @return IntegrationResult that contains the handling result description
-	 *         as an application/xml response.
-	 */
-	@DELETE
-	@Path("/patientInfo")
-	@Produces({ MediaType.APPLICATION_XML })
-	public IntegrationResult removePatientInfo(
-			@QueryParam("patientId") String patientId) {
-		IntegrationResult integrationResult = new IntegrationResult();
-		integrationResult=patientAdtService.deletePatientInfoById(patientId);
-		return integrationResult;
-	}
+
 	/**
 	 * Element resource (exposed at "patientUpdate" path);
 	 * 
-	 * Method handling the data operation of updating patient basic information from CDR with HTTP POST requests.
+	 * Method handling the data operation of updating patient basic information
+	 * from CDR with HTTP POST requests.
 	 * 
 	 * @author Yuan.Ziyang
-	 * @param patientInfo input json or xml object data that contains patient basic information.
+	 * @param patientInfo
+	 *            input json or xml object data that contains patient basic
+	 *            information.
 	 * @return IntegrationResult that contains the handling result description
 	 *         as an application/json response.
 	 */
@@ -105,19 +80,22 @@ public class PatientAdtResource {
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	public IntegrationResult updatePatientInfo(PatientInfo patientInfo) {
 		IntegrationResult integrationResult = new IntegrationResult();
-		integrationResult=patientAdtService.updatePatientInfoById(patientInfo);
+		integrationResult = patientAdtService
+				.updatePatientInfoById(patientInfo);
 		return integrationResult;
 	}
-	
+
 	/**
 	 * 
 	 * Element resource (exposed at "patientTransfer" path);
 	 * 
-	 * Method handling the data entry of patient Admission information into CDR with HTTP POST requests.
+	 * Method handling the data entry of patient Admission information into CDR
+	 * with HTTP POST requests.
 	 * 
 	 * @author Yuan.Ziyang
 	 * @param patientTransferInfo
-	 *            input json or xml object data that contains PatientTransferInfo;
+	 *            input json or xml object data that contains
+	 *            PatientTransferInfo;
 	 * @return IntegrationResult that contains the handling result description
 	 *         as an application/json response.
 	 */
@@ -125,20 +103,28 @@ public class PatientAdtResource {
 	@Path("/patientTransfer")
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public IntegrationResult patientTransfer(PatientTransferInfo patientTransferInfo){
+	public IntegrationResult patientTransfer(PatientAdtEntity patientAdtEntity) {
 		IntegrationResult integrationResult = new IntegrationResult();
-		integrationResult=patientAdtService.insertPatTransferInfo(patientTransferInfo);
+		PatientTransferInfo patientTransferInfo = patientAdtEntity
+				.getPatientTransferInfo();
+		PatientAdmission patientAdmission = patientAdtEntity
+				.getPatientAdmission();
+		integrationResult = patientAdtService.insertPatTransferInfo(
+				patientAdmission, patientTransferInfo);
 		return integrationResult;
 	}
+
 	/**
 	 * 
 	 * Element resource (exposed at "patientDischarge" path);
 	 * 
-	 * Method handling the data entry of patient Discharge information into CDR with HTTP POST requests.
+	 * Method handling the data entry of patient Discharge information into CDR
+	 * with HTTP POST requests.
 	 * 
 	 * @author Yuan.Ziyang
 	 * @param patientAdtEntity
-	 *            input json or xml object data that contains PatientTransferInfo and PatientDischargeInfo;
+	 *            input json or xml object data that contains
+	 *            PatientTransferInfo and PatientDischargeInfo;
 	 * @return IntegrationResult that contains the handling result description
 	 *         as an application/json response.
 	 */
@@ -146,22 +132,40 @@ public class PatientAdtResource {
 	@Path("/patientDischarge")
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public IntegrationResult patientDischarge(PatientAdtEntity patientAdtEntity){
+	public IntegrationResult patientDischarge(PatientAdtEntity patientAdtEntity) {
 		IntegrationResult integrationResult = new IntegrationResult();
-		PatientTransferInfo patientTransferInfo=patientAdtEntity.getPatientTransferInfo();
-		PatientDischargeInfo patDischargeInfo=patientAdtEntity.getPatientDischargeInfo();
-		integrationResult=patientAdtService.patientDischarge(patientTransferInfo, patDischargeInfo);
+		PatientTransferInfo patientTransferInfo = patientAdtEntity
+				.getPatientTransferInfo();
+		PatientDischargeInfo patDischargeInfo = patientAdtEntity
+				.getPatientDischargeInfo();
+		integrationResult = patientAdtService.patientDischarge(
+				patientTransferInfo, patDischargeInfo);
 		return integrationResult;
 	}
+
+	@GET
+	@Path("/getPatientdischarge")
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	public PatientDischargeInfo getPatientdischarge(
+			@QueryParam("patientId") String patientId,
+			@QueryParam("visitId") String visitId) {
+		PatientDischargeInfo patientDischargeInfo = patientAdtService
+				.getPatientDischargeInfoById(patientId, visitId);
+		logger.debug(patientDischargeInfo);
+		return patientDischargeInfo;
+	}
+
 	/**
 	 * 
 	 * Element resource (exposed at "patientDischargeCancel" path);
 	 * 
-	 * Method handling the data entry of patient Discharge Cancel information into CDR with HTTP POST requests.
+	 * Method handling the data entry of patient Discharge Cancel information
+	 * into CDR with HTTP POST requests.
 	 * 
 	 * @author Yuan.Ziyang
 	 * @param patientTransferInfo
-	 *            input json or xml object data that contains PatientTransferInfo;
+	 *            input json or xml object data that contains
+	 *            PatientTransferInfo;
 	 * @return IntegrationResult that contains the handling result description
 	 *         as an application/json response.
 	 */
@@ -169,9 +173,11 @@ public class PatientAdtResource {
 	@Path("/patientDischargeCancel")
 	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
 	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-	public IntegrationResult patientDischargeCancel(PatientTransferInfo patientTransferInfo){
+	public IntegrationResult patientDischargeCancel(
+			PatientTransferInfo patientTransferInfo) {
 		IntegrationResult integrationResult = new IntegrationResult();
-		integrationResult=patientAdtService.patientDischargeCancel(patientTransferInfo);
+		integrationResult = patientAdtService
+				.patientDischargeCancel(patientTransferInfo);
 		return integrationResult;
 	}
 }

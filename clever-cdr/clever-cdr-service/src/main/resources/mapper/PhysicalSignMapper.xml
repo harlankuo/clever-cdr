@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vico.clever.cdr.service.dao.PhysicalSignDao">
+	<!-- model PhysicalSign & table Obsr_PhysicalSign -->
+	<resultMap type="com.vico.clever.cdr.service.model.PhysicalSign" id="PhysicalSignMap">
+		<result property="recordID" column="RecordIdentifier" jdbcType="VARCHAR" />
+		<result property="patientID" column="PatientIdentifier_Id" jdbcType="VARCHAR" />
+		<result property="visitID" column="EncounterIdentifier" jdbcType="VARCHAR" />
+		<result property="timePoint" column="TimePoint" jdbcType="TIMESTAMP" />
+		<result property="vitalItem" column="VitalItemValue" jdbcType="VARCHAR" />
+		<result property="value" column="VitalItem" jdbcType="VARCHAR" />
+		<result property="unit" column="Units" jdbcType="VARCHAR" />
+		<result property="recorderCode" column="Recorder_Code" jdbcType="VARCHAR" />
+		<result property="recorderName" column="Recorder_Name" jdbcType="VARCHAR" />
+		<result property="recordDatetime" column="RecordDatetime" jdbcType="TIMESTAMP" />
+		<result property="measuringMode" column="MeasuringMode" jdbcType="VARCHAR" />
+		<result property="memo" column="Memo" jdbcType="VARCHAR" />
+	</resultMap>
+	<!-- getPhysicalSignByRecordID -->
+	<select id="getPhysicalSignByRecordID" parameterType="java.lang.String" resultMap="PhysicalSignMap">
+		<![CDATA[
+			SELECT * from Obsr_PhysicalSign
+				WHERE RecordIdentifier = #{recordID} 
+		]]> 
+	</select>
+	<!-- getPhysicalSignByPatientID -->
+	<select id="getPhysicalSignByPatientID" parameterType="java.lang.String" resultMap="PhysicalSignMap">
+		<![CDATA[
+			SELECT * from Obsr_PhysicalSign
+				WHERE PatientIdentifier_Id = #{patientID} 
+		]]> 
+	</select>
+	<!-- getPhysicalSignByVisitID -->
+	<select id="getPhysicalSignByVisitID" parameterType="java.lang.String" resultMap="PhysicalSignMap">
+		<![CDATA[
+			SELECT * from Obsr_PhysicalSign
+				WHERE EncounterIdentifier = #{visitID} 
+		]]> 
+	</select>
+	
+	<!-- getAllPhysicalSigns -->
+	<select id="getAllPhysicalSigns" resultMap="PhysicalSignMap">
+	<![CDATA[
+			SELECT * from Obsr_PhysicalSign
+		]]> 
+	</select>
+	
+	<!-- insertPhysicalSign -->
+	<insert id="insertPhysicalSign" parameterType="com.vico.clever.cdr.service.model.PhysicalSign">
+		INSERT INTO Obsr_PhysicalSign(
+		    GUID,RecordIdentifier,PatientIdentifier_Id,EncounterIdentifier,TimePoint,VitalItemValue,VitalItem,
+		    Units,Recorder_Code,Recorder_Name,RecordDatetime,MeasuringMode,Memo
+	    )VALUES(
+			newid(),#{recordID,jdbcType=VARCHAR},#{patientID,jdbcType=VARCHAR},#{visitID,jdbcType=VARCHAR},
+		    #{timePoint,jdbcType=TIMESTAMP},#{vitalItem,jdbcType=VARCHAR},#{value,jdbcType=VARCHAR},
+			#{unit,jdbcType=VARCHAR},#{recorderCode,jdbcType=VARCHAR},#{recorderName,jdbcType=VARCHAR},
+			#{recordDatetime,jdbcType=TIMESTAMP},#{measuringMode,jdbcType=VARCHAR},#{memo,jdbcType=VARCHAR}
+	    )
+	</insert>
+	
+	<!-- updatePhysicalSign -->
+	<update id="updatePhysicalSign" parameterType="com.vico.clever.cdr.service.model.PhysicalSign">
+        UPDATE Obsr_PhysicalSign  SET
+            PatientIdentifier_Id=#{patientID,jdbcType=VARCHAR},EncounterIdentifier=#{visitID,jdbcType=VARCHAR},
+            TimePoint=#{timePoint,jdbcType=TIMESTAMP},VitalItemValue=#{vitalItem,jdbcType=VARCHAR},
+            VitalItem=#{value,jdbcType=VARCHAR},Units=#{unit,jdbcType=VARCHAR},
+            Recorder_Code=#{recorderCode,jdbcType=VARCHAR},Recorder_Name=#{recorderName,jdbcType=VARCHAR},
+            RecordDatetime=#{recordDatetime,jdbcType=TIMESTAMP},MeasuringMode=#{measuringMode,jdbcType=VARCHAR},
+            Memo=#{memo,jdbcType=VARCHAR}
+        WHERE RecordIdentifier=#{recordID,jdbcType=VARCHAR}
+    </update>
+    
+    <!-- deletePhysicalSign -->
+    <delete id="deletePhysicalSign" parameterType="com.vico.clever.cdr.service.model.PhysicalSign">
+  	    DELETE FROM Obsr_PhysicalSign
+  		WHERE RecordIdentifier=#{recordID,jdbcType=VARCHAR}
+ 	</delete>
+</mapper>

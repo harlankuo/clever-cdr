@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper  namespace="com.vico.clever.cdr.service.dao.PhysicalExaminationDao">
+
+<resultMap type="com.vico.clever.cdr.service.model.PhysicalExamination" id="PhysicalExaminationMap">
+<result  column="PatientIdentifier_Id" property="patientID" jdbcType="VARCHAR" />
+<result  column="EncounterIdentifier" property="visitID" jdbcType="VARCHAR" />
+<result  column="RequestedIdentifier_Id" property="requestID" jdbcType="VARCHAR" />
+<result  column="ExaminationItem_Code" property="examItemCode" jdbcType="VARCHAR" />
+<result  column="ExaminationItem_Name" property="examItemName" jdbcType="VARCHAR" />
+<result  column="ExaminationResult_Code" property="examResultCode" jdbcType="VARCHAR" />
+<result  column="ExaminationResult_Name" property="examResultName" jdbcType="VARCHAR" />
+<result  column="Performer_Code" property="performerCode" jdbcType="VARCHAR" />
+<result  column="Performer_Name" property="performerName" jdbcType="VARCHAR" />
+<result  column="RecordDatetime" property="recordDatetime" jdbcType="TIMESTAMP" />
+<result  column="Recorder_Code" property="recorderCode" jdbcType="VARCHAR" />
+<result  column="Recorder_Name" property="recorderName" jdbcType="VARCHAR" />
+</resultMap>
+
+<sql id="PhysicalExaminationList">
+[Guid]
+      ,[EncounterIdentifier]
+      ,[ExaminationItem_Code]
+      ,[ExaminationItem_Name]
+      ,[ExaminationResult_Code]
+      ,[ExaminationResult_Name]
+      ,[PatientIdentifier_Id]
+      ,[Performer_Code]
+      ,[Performer_Name]
+      ,[RecordDatetime]
+      ,[Recorder_Code]
+      ,[Recorder_Name]
+      ,[RequestedIdentifier_Id]
+
+</sql>
+
+<select id="selectPhysicalExamination"  parameterType="java.lang.String" resultMap="PhysicalExaminationMap">
+select * from Obsr_PhysicalExamination where RequestedIdentifier_Id = #{requestID}
+</select>
+<insert id="insertPhysicalExamination" parameterType = "com.vico.clever.cdr.service.model.PhysicalExamination">
+insert into Obsr_PhysicalExamination (<include refid="PhysicalExaminationList"/>)  values(
+newid(),
+#{visitID,jdbcType=VARCHAR},
+#{examItemCode,jdbcType=VARCHAR},
+#{examItemName,jdbcType=VARCHAR},
+#{examResultCode,jdbcType=VARCHAR},
+#{examResultName,jdbcType=VARCHAR},
+#{patientID,jdbcType=VARCHAR},
+#{performerCode,jdbcType=VARCHAR},
+#{performerName,jdbcType=VARCHAR},
+#{recordDatetime,jdbcType=TIMESTAMP},
+#{recorderCode,jdbcType=VARCHAR},
+#{recorderName,jdbcType=VARCHAR},
+#{requestID,jdbcType=VARCHAR}
+
+)
+
+</insert>
+
+<update id="updatePhysicalExamination" parameterType = "com.vico.clever.cdr.service.model.PhysicalExamination">
+update Obsr_PhysicalExamination set
+EncounterIdentifier = #{visitID,jdbcType=VARCHAR},
+ExaminationItem_Code = #{examItemCode,jdbcType=VARCHAR},
+ExaminationItem_Name = #{examItemName,jdbcType=VARCHAR},
+ExaminationResult_Code = #{examResultCode,jdbcType=VARCHAR},
+ExaminationResult_Name = #{examResultName,jdbcType=VARCHAR},
+PatientIdentifier_Id = #{patientID,jdbcType=VARCHAR},
+Performer_Code = #{performerCode,jdbcType=VARCHAR},
+Performer_Name = #{performerName,jdbcType=VARCHAR},
+RecordDatetime = #{recordDatetime,jdbcType=TIMESTAMP},
+Recorder_Code = #{recorderCode,jdbcType=VARCHAR},
+Recorder_Name = #{recorderName,jdbcType=VARCHAR}
+
+where RequestedIdentifier_Id = #{requestID,jdbcType=VARCHAR}
+
+</update>
+
+<delete id="deletePhysicalExamination" parameterType="java.lang.String"  >
+delete from Obsr_PhysicalExamination where RequestedIdentifier_Id = #{requestID,jdbcType=VARCHAR}
+</delete>
+
+</mapper>

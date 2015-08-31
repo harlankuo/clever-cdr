@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vico.clever.cdr.service.dao.EpigeneticTyerapyDao">
+<resultMap type="com.vico.clever.cdr.service.model.EpigeneticTyerapy" id="EpigeneticTyerapyMap">
+<result column="PatientIdentifier_Id" property="patientID" jdbcType="VARCHAR" />
+<result column="EncounterIdentifier" property="visitID" jdbcType="VARCHAR" />
+<result column="OrderIdentifier" property="orderID" jdbcType="VARCHAR" />
+<result column="EpigeneticTherapyIdentifier_Id" property="epigeneticTherapyID" jdbcType="VARCHAR" />
+<result column="ClinicalComment" property="clinicalComment" jdbcType="VARCHAR" />
+ <result column="StartDatetime" property="startDatetime" jdbcType="TIMESTAMP" />
+ <result column="EndDatetime" property="endDatetime" jdbcType="TIMESTAMP" />
+<result column="ContinuousDays" property="continuousDays" jdbcType="INTEGER" />
+<result column="AdverseReaction" property="adverseReaction" jdbcType="VARCHAR" />
+ <result column="AdverseReactionDegree" property="adverseReationDegree" jdbcType="VARCHAR" />
+ <result column="OtherInformation" property="otherInfomation" jdbcType="VARCHAR" />
+
+</resultMap>
+<sql id="EpigeneticTyerapyList">
+[Guid]
+      ,[AdverseReactionDegree]
+      ,[AdverseReaction]
+      ,[ClinicalComment]
+      ,[ContinuousDays]
+      ,[EncounterIdentifier]
+      ,[EndDatetime]
+      ,[EpigeneticTherapyIdentifier_Id]
+      ,[OrderIdentifier]
+      ,[OtherInformation]
+      ,[PatientIdentifier_Id]
+      ,[StartDatetime]
+</sql>
+<select id="selectEpigeneticTyerapy" parameterType="java.lang.String" resultMap="EpigeneticTyerapyMap">
+select * from Obsr_EpigeneticTherapy where EpigeneticTherapyIdentifier_Id = #{epigeneticTherapyID}
+</select>
+<insert id="insertEpigeneticTyerapy" parameterType="com.vico.clever.cdr.service.model.EpigeneticTyerapy">
+insert into Obsr_EpigeneticTherapy(<include refid="EpigeneticTyerapyList"/>) values(
+newid(),
+ #{adverseReationDegree,jdbcType=VARCHAR},
+   #{adverseReaction,jdbcType=VARCHAR},
+   #{clinicalComment,jdbcType=VARCHAR},
+   #{continuousDays,jdbcType=INTEGER},
+   #{visitID,jdbcType=VARCHAR},
+   #{endDatetime,jdbcType=TIMESTAMP},
+   #{epigeneticTherapyID,jdbcType=VARCHAR},
+   #{orderID,jdbcType=VARCHAR},
+   #{otherInfomation,jdbcType=VARCHAR},
+   #{patientID,jdbcType=VARCHAR},
+   #{startDatetime,jdbcType=TIMESTAMP}
+)
+</insert>
+
+<update id="updateEpigeneticTyerapy" parameterType="com.vico.clever.cdr.service.model.EpigeneticTyerapy">
+update Obsr_EpigeneticTherapy set 
+AdverseReactionDegree = #{adverseReationDegree,jdbcType=VARCHAR},
+AdverseReaction = #{adverseReaction,jdbcType=VARCHAR},
+ClinicalComment = #{clinicalComment,jdbcType=VARCHAR},
+EncounterIdentifier = #{visitID,jdbcType=VARCHAR},
+EndDatetime = #{endDatetime,jdbcType=TIMESTAMP},
+OrderIdentifier = #{orderID,jdbcType=VARCHAR},
+OtherInformation = #{otherInfomation,jdbcType=VARCHAR},
+PatientIdentifier_Id = #{patientID,jdbcType=VARCHAR},
+StartDatetime = #{startDatetime,jdbcType=TIMESTAMP}
+where EpigeneticTherapyIdentifier_Id = #{epigeneticTherapyID,jdbcType=VARCHAR}
+</update>
+
+<delete id="deleteEpigeneticTyerapy" parameterType="java.lang.String">
+delete from Obsr_EpigeneticTherapy where EpigeneticTherapyIdentifier_Id = #{epigeneticTherapyID,jdbcType=VARCHAR}
+</delete>
+
+</mapper>

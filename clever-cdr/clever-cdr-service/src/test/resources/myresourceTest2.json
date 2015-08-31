@@ -125,5 +125,15 @@
 		"memo":"test77",
 		"performerName":"test77",
 		"performerCode":"test77"},
-	"patientDischargeInfo":null
+	"patientDischargeInfo":
+		{"guid":null,
+		 "patientID":"patient-3",
+		 "visitID":"visit-3",
+		 "orderID":"1234",
+		 "dateOfCharge":1440985056569,
+		 "disChargeWard":"test3",
+		 "dischargeDept":"test3",
+		 "dischargeDestinationType":"test3",
+		 "dischargeDestination":"test",
+		 "dischargeDescripition":"test3"}
 }

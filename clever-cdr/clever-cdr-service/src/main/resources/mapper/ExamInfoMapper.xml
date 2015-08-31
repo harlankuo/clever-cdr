@@ -97,7 +97,7 @@
     <result column="PatientIdentifier_Id" jdbcType="VARCHAR" property="patientID" />
     <result column="ReceiverOrderIdentifier_Id" jdbcType="VARCHAR" property="examID" />
     <result column="RequesterOrderIdentifier" jdbcType="VARCHAR" property="examReqID" />
-    <result column="Images_Image_Uri" jdbcType="VARBINARY" property="imageUri" />
+    <result column="Images_Image_Uri" jdbcType="VARCHAR" property="imageUri" />
   </resultMap>
   
   <resultMap id="ExamReportInfoMap" type="com.vico.clever.cdr.service.model.ExamReportInfo">
@@ -123,7 +123,7 @@
 <!--     <result column="ResultGroup_ResultComment" jdbcType="VARCHAR" property="resultgroupResultcomment" /> -->
 <!--     <result column="ResultGroup_ResultItem" jdbcType="VARCHAR" property="resultgroupResultitem" /> -->
 <!--     <result column="ResultGroup_ResultValue" jdbcType="VARCHAR" property="resultgroupResultvalue" /> -->
-    <result column="Representation_Uri" jdbcType="VARBINARY" property="representationUri" />
+    <result column="Representation_Uri" jdbcType="VARCHAR" property="representationUri" />
   </resultMap>
   
   <sql id="ExamReqInfoColumnList">
@@ -426,7 +426,7 @@
       	#{imageRelativePath,jdbcType=VARCHAR}, #{keyImage,jdbcType=BIT}, #{imagePosition,jdbcType=VARCHAR}, 
       	#{imageView,jdbcType=VARCHAR}, #{orderID,jdbcType=VARCHAR}, #{patientID,jdbcType=VARCHAR}, 
       	#{examID,jdbcType=VARCHAR}, #{examReqID,jdbcType=VARCHAR}, 
-      	#{imageUri,jdbcType=VARBINARY})
+      	#{imageUri,jdbcType=VARCHAR})
      </foreach>
   </insert>
   
@@ -470,7 +470,7 @@
       		#{receiverorderidentifierId,jdbcType=VARCHAR}, 
       		#{examID,jdbcType=VARCHAR}, #{reportAbsolutePath,jdbcType=VARCHAR}, 
       		#{reportRelatviePath,jdbcType=VARCHAR}, #{examReqID,jdbcType=VARCHAR}, 
-      		#{representationUri,jdbcType=VARBINARY})
+      		#{representationUri,jdbcType=VARCHAR})
       	</foreach>
   </insert>
   <insert id="insertExamReport" parameterType="com.vico.clever.cdr.service.model.ExamReportInfo">
@@ -492,7 +492,7 @@
       #{examID,jdbcType=VARCHAR}, 
       #{reportID,jdbcType=VARCHAR}, #{reportAbsolutePath,jdbcType=VARCHAR}, 
       #{reportRelatviePath,jdbcType=VARCHAR}, #{examReqID,jdbcType=VARCHAR}, 
-      #{representationUri,jdbcType=VARBINARY}
+      #{representationUri,jdbcType=VARCHAR}
       )
   </insert>
   <update id="updateExamReport" parameterType="com.vico.clever.cdr.service.model.ExamReportInfo">
@@ -514,7 +514,7 @@
       RepresentationAbsolutePath = #{reportAbsolutePath,jdbcType=VARCHAR},
       RepresentationRelativePath = #{reportRelatviePath,jdbcType=VARCHAR},
       RequesterOrderIdentifier_Id = #{examReqID,jdbcType=VARCHAR},
-      Representation_Uri = #{representationUri,jdbcType=VARBINARY}
+      Representation_Uri = #{representationUri,jdbcType=VARCHAR}
     where ReceiverOrderIdentifier_Id = #{examID,jdbcType=VARCHAR}
   </update>
 </mapper>

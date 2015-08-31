@@ -31,6 +31,10 @@
     Description, DiagnosisIdentifier_Id, Doctor, EncounterIdentifier, FlagOfOperation, 
     PatientIdentifier_Id, ProblemDiagnosis, ResultOfTreatment, SequenceNumberOfDiagnosis
   </sql>
+  <select id="getProblemDiagnosisById" resultMap="PatientDiagnoseMap" parameterType="java.lang.String" >
+    select * from [clever-cdr-develop].[dbo].[Eval_ProblemDiagnosis]
+    where DiagnosisIdentifier_Id = #{problemDiagnosisId,jdbcType=CHAR}
+  </select>
   <select id="selectPatientDiagnose" resultMap="PatientDiagnoseMap" parameterType="java.lang.String" >
     <!--
       WARNING - @mbggenerated

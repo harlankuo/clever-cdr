@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace = "com.vico.clever.cdr.service.dao.FollowUpVisitDao">
+<resultMap type="com.vico.clever.cdr.service.model.FollowUpVisit" id="followUpVisitMap">
+<result column = "PatientIdentifier_Id" property="patientID" jdbcType="VARCHAR" />
+<result column = "EncounterIdentifier" property="visitID" jdbcType="VARCHAR" />
+<result column = "FollowUpIdentifier_Id" property="followUpID" jdbcType="VARCHAR" />
+<result column = "FollowUpMode" property="followUpMode" jdbcType="VARCHAR" />
+<result column = "FollowUpDatetime" property="followUpDatetime" jdbcType="TIMESTAMP" />
+<result column = "Assessment" property="assessment" jdbcType="VARCHAR" />
+</resultMap>
+<sql id="followUpVisitList">
+[Guid]
+      ,[Assessment]
+      ,[EncounterIdentifier]
+      ,[FollowUpDatetime]
+      ,[FollowUpIdentifier_Id]
+      ,[FollowUpMode]
+      ,[PatientIdentifier_Id]
+</sql>
+<select id="selectFollowUpVisit" parameterType = "java.lang.String" resultMap = "followUpVisitMap">
+select * from Obsr_FollowUpVisit where  FollowUpIdentifier_Id = #{followUpID}
+</select>
+<insert id="insertFollowUpVisit" parameterType = "com.vico.clever.cdr.service.model.FollowUpVisit">
+insert into Obsr_FollowUpVisit(<include refid="followUpVisitList"/>) values(
+ newid(),
+ #{assessment,jdbcType=VARCHAR},
+ #{visitID,jdbcType=VARCHAR},
+ #{followUpDatetime,jdbcType=TIMESTAMP},
+ #{followUpID,jdbcType=VARCHAR},
+ #{followUpMode,jdbcType=VARCHAR},
+ #{patientID,jdbcType=VARCHAR}
+)
+</insert>
+<update id="updateFollowUpVisit" parameterType = "com.vico.clever.cdr.service.model.FollowUpVisit">
+update Obsr_FollowUpVisit set
+Assessment =  #{assessment,jdbcType=VARCHAR},
+EncounterIdentifier =  #{visitID,jdbcType=VARCHAR},
+FollowUpDatetime = #{followUpDatetime,jdbcType=TIMESTAMP},
+FollowUpMode = #{followUpMode,jdbcType=VARCHAR},
+PatientIdentifier_Id = #{patientID,jdbcType=VARCHAR}
+where FollowUpIdentifier_Id = #{followUpID,jdbcType=VARCHAR}
+</update>
+
+<delete id="deleteFollowUpVisit" parameterType = "java.lang.String" >
+delete from Obsr_FollowUpVisit where FollowUpIdentifier_Id = #{followUpID,jdbcType=VARCHAR}
+</delete>
+</mapper>

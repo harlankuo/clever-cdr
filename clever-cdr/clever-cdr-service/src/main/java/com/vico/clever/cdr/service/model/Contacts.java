@@ -17,9 +17,6 @@ public class Contacts {
     private String mobilePhone;//移动电话号码
     private String homePhone;//家庭电话号码
     private String businessPhone;//单位电话号码
-	public Contacts() {
-		super();
-	}
 	public String getPatientID() {
 		return patientID;
 	}
@@ -116,4 +113,6 @@ public class Contacts {
 	public void setBusinessPhone(String businessPhone) {
 		this.businessPhone = businessPhone;
 	}
+    
+    
 }

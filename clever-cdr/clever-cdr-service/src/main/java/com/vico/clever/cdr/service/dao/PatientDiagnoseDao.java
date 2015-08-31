@@ -15,4 +15,6 @@ public interface PatientDiagnoseDao {
 	public int updatePatientDiagnose(ProblemDiagnosis problemDiagnosis);
 	
 	public int selectPatientDiagCount(@Param("patientID") String patientID,@Param("visitID") String visitID);
+
+	public ProblemDiagnosis getProblemDiagnosisById(String problemDiagnosisId);
 }

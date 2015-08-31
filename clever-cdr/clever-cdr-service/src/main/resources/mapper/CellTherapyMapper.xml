@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vico.clever.cdr.service.dao.CellTherapyDao">
+<resultMap type="com.vico.clever.cdr.service.model.CellTherapy" id="CellTherapyMap">
+<!-- <id column="Guid" property="guid" jdbcType="VARCHAR" /> -->
+<result column="PatientIdentifier_Id" property="patientID" jdbcType="VARCHAR" />
+<result column="EncounterIdentifier" property="visitID" jdbcType="VARCHAR" />
+<result column="OrderIdentifier" property="orderID" jdbcType="VARCHAR" />
+<result column="RequestedIdentifier_Id" property="requestID" jdbcType="VARCHAR" />
+<result column="CellTherapyType" property="cellTherapyType" jdbcType="VARCHAR" />
+<result column="PerKgAmounts" property="perKgAmount" jdbcType="VARCHAR" />
+<result column="InfusionAmount" property="infusionAmount" jdbcType="INTEGER" />
+<result column="InfusionAmount_Units" property="infusionAmountUnit" jdbcType="VARCHAR" />
+<result column="PreprocessFlag" property="preprocessFlag" jdbcType="VARCHAR" />
+<result column="UnburdingFlag" property="unburdingFlag" jdbcType="VARCHAR" />
+<result column="CartTransfectionEfficiency" property="cartTransfectionEfficiency" jdbcType="VARCHAR" />
+<result column="CartAmounts" property="cartAmount" jdbcType="VARCHAR" />
+</resultMap>
+
+<resultMap type="com.vico.clever.cdr.service.model.CellTherapyInfusion" id="CellTherapyInfusionMap">
+<!-- <id column = "Guid" property="guid" jdbcType="VARCHAR"/>  -->
+<result column = "Obsr_CellTherapy$RequestedIdentifier_Id" property="requestID" jdbcType="VARCHAR"/>
+<result column = "SequenceOfDays" property="sequencyOfDay" jdbcType="INTEGER"/>
+<result column = "Datetime" property="Datetime" jdbcType="TIMESTAMP"/>
+<result column = "Amounts" property="amount" jdbcType="VARCHAR"/>
+<result column = "Amounts_Units" property="amountUnit" jdbcType="VARCHAR"/>
+<result column = "Reaction" property="reaction" jdbcType="VARCHAR"/>
+<result column = "Classification" property="classification" jdbcType="VARCHAR"/>
+</resultMap>
+
+<resultMap type="com.vico.clever.cdr.service.model.CellTherapyPreprocess" id="CellTherapyPreprocessMap">
+<!-- <id column = "Guid" property="guid" jdbcType="VARCHAR"/>  -->
+<result column = "Obsr_CellTherapy$RequestedIdentifier_Id" property="requestID" jdbcType="VARCHAR"/>
+<result column = "PreprocessSolution" property="preprocessSolution" jdbcType="VARCHAR"/>
+<result column = "PreprocessDatetime" property="preprocessDatetime" jdbcType="TIMESTAMP"/>
+<result column = "UnburdingSolution" property="unburdingSolution" jdbcType="VARCHAR"/>
+<result column = "UnburdingDatetime" property="unburdingDatetime" jdbcType="TIMESTAMP"/>
+</resultMap>
+
+<resultMap type="com.vico.clever.cdr.service.model.CellTherapyReaction" id="CellTherapyReactionMap">
+<!-- <id column = "Guid" property="guid" jdbcType="VARCHAR"/>  -->
+<result column = "Obsr_CellTherapy$RequestedIdentifier_Id" property="requestID" jdbcType="VARCHAR"/>
+<result column = "ReactionLevel" property="reactionLevel" jdbcType="VARCHAR"/>
+<result column = "ReactionDispose" property="reactionDispose" jdbcType="VARCHAR"/>
+<result column = "ReactionResult" property="reactionResult" jdbcType="VARCHAR"/>
+</resultMap>
+
+<sql id="CellTherapyList">
+       [Guid]
+      ,[CartAmounts]
+      ,[CartTransfectionEfficiency]
+      ,[CellTherapyType]
+      ,[EncounterIdentifier]
+      ,[InfusionAmount]
+      ,[InfusionAmount_Units]
+      ,[PatientIdentifier_Id]
+      ,[PerKgAmounts]
+      ,[PreprocessFlag]
+      ,[RequestedIdentifier_Id]
+      ,[UnburdingFlag]
+      ,[OrderIdentifier]
+</sql>
+
+<sql id="CellTherapyInfusionList">
+       [Guid]
+      ,[Amounts]
+      ,[Classification]
+      ,[Datetime]
+      ,[Obsr_CellTherapy$RequestedIdentifier_Id]
+      ,[Reaction]
+      ,[Amounts_Units]
+      ,[SequenceOfDays]
+
+</sql>
+
+<sql id="CellTherapyPreprocessList">
+       [Guid]
+      ,[Obsr_CellTherapy$RequestedIdentifier_Id]
+      ,[PreprocessDatetime]
+      ,[PreprocessSolution]
+      ,[UnburdingDatetime]
+      ,[UnburdingSolution]
+</sql>
+
+<sql id="CellTherapyReactionList">
+       [Guid]
+      ,[Obsr_CellTherapy$RequestedIdentifier_Id]
+      ,[ReactionDispose]
+      ,[ReactionLevel]
+      ,[ReactionResult]
+</sql>
+
+<!-- CellTherapy -->
+<select id="selectCellTherapy" parameterType="java.lang.String" resultMap="CellTherapyMap">
+select * from  Obsr_CellTherapy where  RequestedIdentifier_Id = #{requestID,jdbcType=VARCHAR}
+</select>
+<insert id="insertCellTherapy" parameterType = "com.vico.clever.cdr.service.model.CellTherapy">
+insert into Obsr_CellTherapy(<include refid="CellTherapyList"/>) values(
+newid(),
+#{cartAmount,jdbcType=VARCHAR},
+#{cartTransfectionEfficiency,jdbcType=VARCHAR},
+#{cellTherapyType,jdbcType=VARCHAR},
+#{visitID,jdbcType=VARCHAR},
+#{infusionAmount,jdbcType=INTEGER},
+#{infusionAmountUnit,jdbcType=VARCHAR},
+#{patientID,jdbcType=VARCHAR},
+#{perKgAmount,jdbcType=VARCHAR},
+#{preprocessFlag,jdbcType=VARCHAR},
+#{requestID,jdbcType=VARCHAR},
+#{unburdingFlag,jdbcType=VARCHAR},
+#{orderID,jdbcType=VARCHAR}
+)
+</insert>
+
+<update id="updateCellTherapy" parameterType="com.vico.clever.cdr.service.model.CellTherapy">
+update Obsr_CellTherapy set
+CartAmounts = #{cartAmount,jdbcType=VARCHAR},
+CartTransfectionEfficiency = #{cartTransfectionEfficiency,jdbcType=VARCHAR},
+CellTherapyType = #{cellTherapyType,jdbcType=VARCHAR},
+EncounterIdentifier = #{visitID,jdbcType=VARCHAR},
+InfusionAmount = #{infusionAmount,jdbcType=INTEGER},
+InfusionAmount_Units = #{infusionAmountUnit,jdbcType=VARCHAR},
+PatientIdentifier_Id = #{patientID,jdbcType=VARCHAR},
+PerKgAmounts = #{perKgAmount,jdbcType=VARCHAR},
+PreprocessFlag = #{preprocessFlag,jdbcType=VARCHAR},
+UnburdingFlag = #{unburdingFlag,jdbcType=VARCHAR},
+OrderIdentifier = #{orderID,jdbcType=VARCHAR}
+where RequestedIdentifier_Id = #{requestID,jdbcType=VARCHAR}
+</update>
+
+<delete id="deleteCellTherapy" parameterType="java.lang.String" >
+delete from Obsr_CellTherapy where RequestedIdentifier_Id = #{requestID,jdbcType=VARCHAR}
+</delete>
+
+
+<!--  CellTherapyInfusion -->
+<select id="selectCellTherapyInfusion" parameterType="java.lang.String" resultMap="CellTherapyInfusionMap" >
+ select <include refid="CellTherapyInfusionList"/>  from  Obsr_CellTherapy_Infusion
+ where  Obsr_CellTherapy$RequestedIdentifier_Id = #{requestID,jdbcType=VARCHAR}
+</select>
+
+<insert id="insertCellTherapyInfusion" parameterType="com.vico.clever.cdr.service.model.CellTherapyInfusion">
+insert into Obsr_CellTherapy_Infusion(<include refid="CellTherapyInfusionList"/>) values
+<foreach collection="list" item="item" index="index" separator=",">
+(
+  newid(),
+  #{item.amount,jdbcType=VARCHAR},
+  #{item.classification,jdbcType=VARCHAR},
+  #{item.Datetime,jdbcType=TIMESTAMP},
+  #{item.requestID,jdbcType=VARCHAR},
+  #{item.reaction,jdbcType=VARCHAR},
+  #{item.amountUnit,jdbcType=VARCHAR},
+  #{item.sequencyOfDay,jdbcType=INTEGER}
+)
+</foreach>
+
+</insert>
+
+<delete id="deleteCellTherapyInfusion" parameterType = "java.lang.String">
+delete from Obsr_CellTherapy_Infusion where Obsr_CellTherapy$RequestedIdentifier_Id = #{requestID,jdbcType=VARCHAR}
+</delete>
+
+<!--  CellTherapyPreprocess  -->
+<select id="selectCellTherapyPreprocess" parameterType="java.lang.String" resultMap="CellTherapyPreprocessMap"  >
+
+select <include refid="CellTherapyPreprocessList"/>  from  Obsr_CellTherapy_PreprocessUnburding 
+where  Obsr_CellTherapy$RequestedIdentifier_Id = #{requestID,jdbcType=VARCHAR}
+</select>
+
+<insert id="insertCellTherapyPreprocess" parameterType = "com.vico.clever.cdr.service.model.CellTherapyPreprocess">
+insert into Obsr_CellTherapy_PreprocessUnburding(<include refid="CellTherapyPreprocessList"/> ) values
+<foreach collection="list" item="item" index = "index" separator=",">
+(
+ newid(),
+ #{item.requestID,jdbcType=VARCHAR},
+ #{item.preprocessDatetime,jdbcType=TIMESTAMP},
+ #{item.preprocessSolution,jdbcType=VARCHAR},
+ #{item.unburdingDatetime,jdbcType=TIMESTAMP},
+ #{item.unburdingSolution,jdbcType=VARCHAR}
+)
+</foreach>
+</insert>
+
+<delete id="deleteCellTherapyPreprocess" parameterType = "java.lang.String"  >
+delete from Obsr_CellTherapy_PreprocessUnburding where Obsr_CellTherapy$RequestedIdentifier_Id = #{requestID}
+</delete>
+
+<!-- CellTherapyReaction -->
+<select id="selectCellTherapyReaction" parameterType="java.lang.String" resultMap="CellTherapyReactionMap" >
+select  <include refid="CellTherapyReactionList"/>  from  Obsr_CellTherapy_Reaction 
+where  Obsr_CellTherapy$RequestedIdentifier_Id = #{requestID,jdbcType=VARCHAR}
+</select>
+
+<insert id="insertCellTherapyReaction" parameterType = "com.vico.clever.cdr.service.model.CellTherapyReaction">
+insert into Obsr_CellTherapy_Reaction(<include refid="CellTherapyReactionList"/> ) values
+<foreach collection="list" item="item" index = "index" separator="," >
+(
+ newid(),
+ #{item.requestID,jdbcType=VARCHAR},
+ #{item.reactionDispose,jdbcType=VARCHAR},
+ #{item.reactionLevel,jdbcType=VARCHAR},
+ #{item.reactionResult,jdbcType=VARCHAR}
+
+)
+</foreach>
+</insert>
+
+<delete id="deleteCellTherapyReaction" parameterType = "java.lang.String" >
+delete from Obsr_CellTherapy_Reaction where  Obsr_CellTherapy$RequestedIdentifier_Id = #{requestID,jdbcType=VARCHAR}
+</delete>
+</mapper>

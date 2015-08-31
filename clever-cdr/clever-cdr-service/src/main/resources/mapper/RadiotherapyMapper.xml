@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper  namespace="com.vico.clever.cdr.service.dao.RadiotherapyDao">
+<resultMap type="com.vico.clever.cdr.service.model.Radiotherapy" id="RadiotherapyMap">
+ <result column="PatientIdentifier_Id" property="patientID" jdbcType="VARCHAR" />
+ <result column="EncounterIdentifier" property="visitID" jdbcType="VARCHAR" />
+ <result column="OrderIdentifier" property="orderID" jdbcType="VARCHAR" />
+ <result column="RadiotherapyIdentifier_Id" property="radiotherapyID" jdbcType="VARCHAR" />
+ <result column="RadiotherapyCount" property="radiotherapyCount" jdbcType="INTEGER" />
+ <result column="ClinicalComment" property="clinicalComment" jdbcType="VARCHAR" />
+ <result column="StartDatetime" property="startDatetime" jdbcType="TIMESTAMP" />
+ <result column="EndDatetime" property="endDatetime" jdbcType="TIMESTAMP" />
+ <result column="Site" property="site" jdbcType="VARCHAR" />
+ <result column="TotalDose" property="totalDose" jdbcType="INTEGER" />
+ <result column="TotalDose_Units" property="totalDoseUnit" jdbcType="VARCHAR" />
+ <result column="AdverseReaction" property="adverseReaction" jdbcType="VARCHAR" />
+ <result column="AdverseReactionDegree" property="adverseReationDegree" jdbcType="VARCHAR" />
+ <result column="OtherInformation" property="otherInfomation" jdbcType="VARCHAR" />
+</resultMap>
+ <sql id = "RadiotherapyList">
+ [Guid]
+      ,[AdverseReactionDegree]
+      ,[AdverseReaction]
+      ,[ClinicalComment]
+      ,[EncounterIdentifier]
+      ,[EndDatetime]
+      ,[OrderIdentifier]
+      ,[OtherInformation]
+      ,[PatientIdentifier_Id]
+      ,[RadiotherapyCount]
+      ,[RadiotherapyIdentifier_Id]
+      ,[Site]
+      ,[StartDatetime]
+      ,[TotalDose]
+      ,[TotalDose_Units] 
+ </sql>
+
+<select id = "selectRadiotherapy"  parameterType="java.lang.String" resultMap="RadiotherapyMap">
+select * from Obsr_Radiotherapy where RadiotherapyIdentifier_Id = #{radiotherapyID}
+</select>
+
+<insert id ="insertRadiotherapy" parameterType = "com.vico.clever.cdr.service.model.Radiotherapy">
+   insert into Obsr_Radiotherapy (<include refid = "RadiotherapyList"/>) values(
+   newid(),
+   #{adverseReationDegree,jdbcType=VARCHAR},
+   #{adverseReaction,jdbcType=VARCHAR},
+   #{clinicalComment,jdbcType=VARCHAR},
+   #{visitID,jdbcType=VARCHAR},
+   #{endDatetime,jdbcType=TIMESTAMP},
+   #{orderID,jdbcType=VARCHAR},
+   #{otherInfomation,jdbcType=VARCHAR},
+   #{patientID,jdbcType=VARCHAR},
+   #{radiotherapyCount,jdbcType=INTEGER},
+   #{radiotherapyID,jdbcType=VARCHAR},
+   #{site,jdbcType=VARCHAR},
+   #{startDatetime,jdbcType=TIMESTAMP},
+   #{totalDose,jdbcType=INTEGER},
+   #{totalDoseUnit,jdbcType=VARCHAR}
+   
+   )
+
+ </insert>
+<update id ="updateRadiotherapy" parameterType = "com.vico.clever.cdr.service.model.Radiotherapy"> 
+update Obsr_Radiotherapy set 
+AdverseReactionDegree = #{adverseReationDegree,jdbcType=VARCHAR},
+AdverseReaction = #{adverseReaction,jdbcType=VARCHAR},
+ClinicalComment = #{clinicalComment,jdbcType=VARCHAR},
+EncounterIdentifier = #{visitID,jdbcType=VARCHAR},
+EndDatetime = #{endDatetime,jdbcType=TIMESTAMP},
+OrderIdentifier = #{orderID,jdbcType=VARCHAR},
+OtherInformation = #{otherInfomation,jdbcType=VARCHAR},
+PatientIdentifier_Id = #{patientID,jdbcType=VARCHAR},
+RadiotherapyCount = #{radiotherapyCount,jdbcType=INTEGER},
+Site = #{site,jdbcType=VARCHAR},
+StartDatetime = #{startDatetime,jdbcType=TIMESTAMP},
+TotalDose = #{totalDose,jdbcType=INTEGER},
+TotalDose_Units = #{totalDoseUnit,jdbcType=VARCHAR}
+where RadiotherapyIdentifier_Id = #{radiotherapyID,jdbcType=VARCHAR}
+</update>
+<delete id ="deleteRadiotherapy" parameterType="java.lang.String">
+delete from Obsr_Radiotherapy where RadiotherapyIdentifier_Id = #{radiotherapyID,jdbcType=VARCHAR}
+</delete>
+</mapper>

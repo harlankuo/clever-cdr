@@ -38,6 +38,7 @@
 	    <mapper resource="mapper/FareInfoMapper.xml" />
 	    <mapper resource="mapper/TransfusionInfoMapper.xml" />
 	    <mapper resource="mapper/NursingInfoMapper.xml" />
+	    <mapper resource="mapper/SurgeryMapper.xml" />
 	    <mapper resource="mapper/TherapyInfoMapper.xml" />
 	    <mapper resource="mapper/DietInfoMapper.xml" />
 	    <mapper resource="mapper/ManagementMapper.xml" />
@@ -45,6 +46,18 @@
 	    <mapper resource="mapper/RemainInfoMapper.xml" />
 	    <mapper resource="mapper/BloodMatchingMapper.xml" />
 	    <mapper resource="mapper/ConsultationInfoMapper.xml" />
-	    <mapper resource="mapper/NewBornInfoMapper.xml" />
+	    <mapper resource="mapper/EMRDocumentInfoMapper.xml"/>
+	   	<mapper resource="mapper/PhysicalSignMapper.xml"/>
+	   	<mapper resource="mapper/NewBornInfoMapper.xml" />
+	   	<mapper resource="mapper/EMRFirstPageInfoMapper.xml" />
+	   	<mapper resource="mapper/CellTherapyMapper.xml" />
+	   	<mapper resource="mapper/FollowUpVisitMapper.xml" />
+	   	<mapper resource="mapper/PhysicalExaminationMapper.xml" />
+	   	<mapper resource="mapper/ChemotherapyMapper.xml" />
+	   	<mapper resource="mapper/RadiotherapyMapper.xml"/>
+	   	<mapper resource="mapper/EpigeneticTherapyMapper.xml"/>
+	   	<mapper resource="mapper/CellPhenotypeMapper.xml"/>
+	   	
+	   	
 	</mappers>
 </configuration>

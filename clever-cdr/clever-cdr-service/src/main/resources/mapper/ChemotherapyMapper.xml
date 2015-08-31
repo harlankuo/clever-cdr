@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper  namespace="com.vico.clever.cdr.service.dao.ChemotherapyDao">
+
+<resultMap type="com.vico.clever.cdr.service.model.Chemotherapy" id="ChemotherapyMap">
+<result column="PatientIdentifier_Id" property="patientID" jdbcType="VARCHAR" />
+<result column="EncounterIdentifier" property="visitID" jdbcType="VARCHAR" />
+<result column="ChemotherapyIdentifier_Id" property="chemotherapyID" jdbcType="VARCHAR" />
+<result column="SolutionName" property="solutionName" jdbcType="VARCHAR" />
+<result column="StartDatetime" property="startDatetime" jdbcType="TIMESTAMP" />
+<result column="EndDatetime" property="endDatetime" jdbcType="TIMESTAMP" />
+<result column="Period" property="period" jdbcType="INTEGER" />
+<result column="CommentCount" property="commentCount" jdbcType="INTEGER" />
+<result column="Comment" property="comment" jdbcType="VARCHAR" />
+<result column="DoseAdjustmentFlag" property="doseAdjustmentFlag" jdbcType="BIT" />
+<result column="DoseAdjustmentReason" property="doseAdjustmentReason" jdbcType="VARCHAR" />
+<result column="ModifiedSolutionFlag" property="modifiedSolutionFlag" jdbcType="BIT" />
+<result column="ModifiedReason" property="modifiedReason" jdbcType="VARCHAR" />
+<result column="AdverseReaction" property="adverseReaction" jdbcType="VARCHAR" />
+<result column="AdverseReactionDegree" property="adverseReactionDegree" jdbcType="VARCHAR" />
+<result column="OtherInformation" property="otherInfomation" jdbcType="VARCHAR" />
+
+</resultMap>
+
+<resultMap type="com.vico.clever.cdr.service.model.ChemotherapyMedicine" id="ChemotherapyMedicineMap">
+<result column="Obsr_Chemotherapy$ChemotherapyIdentifier_Id" property="chemotherapyID" jdbcType="VARCHAR" />
+<result column="Name" property="name" jdbcType="VARCHAR" />
+<result column="MedicationOrderIdentifier" property="medicationOrderID" jdbcType="VARCHAR" />
+</resultMap>
+
+<sql id="ChemotherapyList">
+[Guid]
+      ,[AdverseReactionDegree]
+      ,[AdverseReaction]
+      ,[ChemotherapyIdentifier_Id]
+      ,[CommentCount]
+      ,[Comment]
+      ,[DoseAdjustmentFlag]
+      ,[DoseAdjustmentReason]
+      ,[EncounterIdentifier]
+      ,[EndDatetime]
+      ,[ModifiedReason]
+      ,[ModifiedSolutionFlag]
+      ,[OtherInformation]
+      ,[PatientIdentifier_Id]
+      ,[Period]
+      ,[SolutionName]
+      ,[StartDatetime]
+</sql>
+
+<sql id="ChemotherapyMedicineList">
+[Guid]
+      ,[MedicationOrderIdentifier]
+      ,[Name]
+      ,[Obsr_Chemotherapy$ChemotherapyIdentifier_Id]
+</sql>
+
+<!-- Chemotherapy -->
+
+<select id="selectChemotherapy" parameterType="java.lang.String" resultMap="ChemotherapyMap" >
+select * from Obsr_Chemotherapy where ChemotherapyIdentifier_Id = #{chemotherapyID}
+
+</select>
+
+<insert id="insertChemotherapy" parameterType = "com.vico.clever.cdr.service.model.Chemotherapy">
+insert into Obsr_Chemotherapy (<include refid="ChemotherapyList"/>) values(
+newid(),
+#{adverseReactionDegree,jdbcType=VARCHAR},
+#{adverseReaction,jdbcType=VARCHAR},
+#{chemotherapyID,jdbcType=VARCHAR},
+#{commentCount,jdbcType=INTEGER},
+#{comment,jdbcType=VARCHAR},
+#{doseAdjustmentFlag,jdbcType=BIT},
+#{doseAdjustmentReason,jdbcType=VARCHAR},
+#{visitID,jdbcType=VARCHAR},
+#{endDatetime,jdbcType=TIMESTAMP},
+#{modifiedReason,jdbcType=VARCHAR},
+#{modifiedSolutionFlag,jdbcType=BIT},
+#{otherInfomation,jdbcType=VARCHAR},
+#{patientID,jdbcType=VARCHAR},
+#{period,jdbcType=INTEGER},
+#{solutionName,jdbcType=INTEGER},
+#{startDatetime,jdbcType=TIMESTAMP}
+)
+
+</insert>
+
+<update id="updateChemotherapy" parameterType = "com.vico.clever.cdr.service.model.Chemotherapy" >
+update Obsr_Chemotherapy set
+AdverseReactionDegree = #{adverseReactionDegree,jdbcType=VARCHAR},
+AdverseReaction = #{adverseReaction,jdbcType=VARCHAR},
+CommentCount = #{commentCount,jdbcType=INTEGER},
+Comment = #{comment,jdbcType=VARCHAR},
+DoseAdjustmentFlag = #{doseAdjustmentFlag,jdbcType=BIT},
+DoseAdjustmentReason = #{doseAdjustmentReason,jdbcType=VARCHAR},
+EncounterIdentifier = #{visitID,jdbcType=VARCHAR},
+EndDatetime = #{endDatetime,jdbcType=TIMESTAMP},
+ModifiedReason = #{modifiedReason,jdbcType=VARCHAR},
+ModifiedSolutionFlag = #{modifiedSolutionFlag,jdbcType=BIT},
+OtherInformation = #{otherInfomation,jdbcType=VARCHAR},
+PatientIdentifier_Id = #{patientID,jdbcType=VARCHAR},
+Period = #{period,jdbcType=INTEGER},
+SolutionName = #{solutionName,jdbcType=INTEGER},
+StartDatetime = #{startDatetime,jdbcType=TIMESTAMP}
+where ChemotherapyIdentifier_Id = #{chemotherapyID,jdbcType=VARCHAR}
+</update>
+
+<delete id="deleteChemotherapy" parameterType="java.lang.String">
+delete from Obsr_Chemotherapy where ChemotherapyIdentifier_Id = #{chemotherapyID,jdbcType=VARCHAR}
+
+</delete>
+<!-- ChemotherapyMedicine -->
+
+<select id="selectChemotherapyMedicine" parameterType="java.lang.String" resultMap="ChemotherapyMedicineMap">
+select <include refid="ChemotherapyMedicineList"/>  from Obsr_Chemotherapy_Medicine 
+where Obsr_Chemotherapy$ChemotherapyIdentifier_Id = #{chemotherapyID}
+</select>
+
+<insert id="insertChemotherapyMedicine" parameterType = "com.vico.clever.cdr.service.model.ChemotherapyMedicine">
+insert into Obsr_Chemotherapy_Medicine(<include refid="ChemotherapyMedicineList"/>) values
+<foreach collection="list" item = "item" index = "index" separator=",">
+(newid(),
+#{item.medicationOrderID,jdbcType=VARCHAR},
+#{item.name,jdbcType=VARCHAR},
+#{item.chemotherapyID,jdbcType=VARCHAR}
+
+)
+</foreach>
+
+</insert>
+
+<delete id="deleteChemotherapyMedicine" parameterType="java.lang.String">
+delete from Obsr_Chemotherapy_Medicine where Obsr_Chemotherapy$ChemotherapyIdentifier_Id = #{chemotherapyID,jdbcType=VARCHAR}
+</delete>
+</mapper>

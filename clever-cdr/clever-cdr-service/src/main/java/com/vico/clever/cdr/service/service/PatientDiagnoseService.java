@@ -117,4 +117,15 @@ public class PatientDiagnoseService {
 		}
 		return integrationResult;
 	}
+
+	public ProblemDiagnosis getProblemDiagnosisById(String problemDiagnosisId) {
+		SqlSession sqlSession = SQLSessionConfig.getSqlSessionFactory()
+				.openSession();
+		PatientDiagnoseDao patientDiagDao = sqlSession
+				.getMapper(PatientDiagnoseDao.class);
+		ProblemDiagnosis problemDiagnosis = patientDiagDao.getProblemDiagnosisById(problemDiagnosisId);
+		sqlSession.commit();
+		sqlSession.close();
+		return problemDiagnosis;
+	}
 }

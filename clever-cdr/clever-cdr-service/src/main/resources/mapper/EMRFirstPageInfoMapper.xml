@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vico.clever.cdr.service.dao.EMRFirstPageDao">
+<resultMap type="com.vico.clever.cdr.service.model.EMRFirstPage" id="EMRFirstPageMap">
+<!-- <id column="Guid" property="guid" jdbcType="VARCHAR" /> -->
+<result column="PatientIdentifier_Id"	property="patientID" jdbcType="VARCHAR" />
+<result column="EncounterIdentifier"	property="visitID" jdbcType="VARCHAR" />
+<result column="EmrFirstPageId"	property="emrFirstPageID" jdbcType="VARCHAR" />
+<result column="TemplateId"	property="templateID" jdbcType="VARCHAR" />
+<result column="DocumentContent_Uri"	property="documentContentUri" jdbcType="VARCHAR" />
+<result column="ContentXml_Uri"	property="contentXMLUri" jdbcType="VARCHAR" />
+<result column="LastOperater_Code"	property="lastOperaterCode" jdbcType="VARCHAR" />
+<result column="LastOperater_Name"	property="lastOperaterName" jdbcType="VARCHAR" />
+<result column="LastModifiedTime"	property="lastModifiedTime" jdbcType="TIMESTAMP" />
+<result column="FirstCreateTime"	property="firstCreateTime" jdbcType="TIMESTAMP" />
+</resultMap>
+
+<resultMap type="com.vico.clever.cdr.service.model.EMRFirstPageAction" id="EMRFirstPageActionMap">
+<!-- <id column="Guid" property="guid" jdbcType="VARCHAR" /> -->
+<result column="PatientIdentifier_Id"	property="patientID" jdbcType="VARCHAR" />
+<result column="EmrFirstPageId"	property="emrFirstPageID" jdbcType="VARCHAR" />
+<result column="TitleName"	property="titleName" jdbcType="VARCHAR" />
+<result column="EncounterIdentifier"	property="visitID" jdbcType="VARCHAR" />
+<result column="IsmTransition_CurrentState_Code"	property="curStateCode" jdbcType="VARCHAR" />
+<result column="IsmTransition_CurrentState_Name"	property="curStateName" jdbcType="VARCHAR" />
+<result column="IsmTransition_CareflowStep_Code"	property="careflowStepCode" jdbcType="VARCHAR" />
+<result column="IsmTransition_CareflowStep_Name"	property="careflowStepName" jdbcType="VARCHAR" />
+<result column="Comment"	property="comment" jdbcType="VARCHAR" />
+<result column="EditDateTime"	property="actionDatetime" jdbcType="TIMESTAMP" />
+<result column="Performer_Code"	property="performerCode" jdbcType="VARCHAR" />
+<result column="Performer_Name"	property="performerName" jdbcType="VARCHAR" />
+<result column="Department_Code"	property="performDeptCode" jdbcType="VARCHAR" />
+<result column="Department_Name"	property="performDeptName" jdbcType="VARCHAR" />
+</resultMap>
+
+<sql id="EMRFirstPageList">
+       [Guid]
+      ,[ContentXml_Uri]
+      ,[DocumentContent_Uri]
+      ,[EmrFirstPageId]
+      ,[FirstCreateTime]
+      ,[LastModifiedTime]
+      ,[LastOperater_Code]
+      ,[LastOperater_Name]
+      ,[PatientIdentifier_Id]
+      ,[TemplateId]
+      ,[EncounterIdentifier]
+
+</sql>
+
+<sql id="EMRFirstPageActionList">
+        [Guid]
+      ,[Comment]
+      ,[EditDateTime]
+      ,[EmrFirstPageId]
+      ,[EncounterIdentifier]
+      ,[IsmTransition_CareflowStep_Code]
+      ,[IsmTransition_CareflowStep_Name]
+      ,[IsmTransition_CurrentState_Code]
+      ,[IsmTransition_CurrentState_Name]
+      ,[PatientIdentifier_Id]
+      ,[Performer_Code]
+      ,[Performer_Name]
+      ,[TitleName]
+      ,[Department_Code]
+      ,[Department_Name]
+
+</sql>
+
+<!--EMRFirstPage  -->
+<select id="selectEMRFirstPage" parameterType="java.lang.String" resultMap="EMRFirstPageMap">
+select * from Obsr_EmrFirstPage where EmrFirstPageId = #{emrFirstPageID}
+</select>
+
+<update id="updateEMRFirstPage" parameterType="com.vico.clever.cdr.service.model.EMRFirstPage" >
+update Obsr_EmrFirstPage set
+ContentXml_Uri = #{contentXMLUri,jdbcType=VARCHAR},
+DocumentContent_Uri = #{documentContentUri,jdbcType=VARCHAR},
+EmrFirstPageId = #{emrFirstPageID,jdbcType=VARCHAR},
+FirstCreateTime = #{firstCreateTime,jdbcType=TIMESTAMP},
+LastModifiedTime = #{lastModifiedTime,jdbcType=TIMESTAMP},
+LastOperater_Code = #{lastOperaterCode,jdbcType=VARCHAR},
+LastOperater_Name = #{lastOperaterName,jdbcType=VARCHAR},
+PatientIdentifier_Id = #{patientID,jdbcType=VARCHAR},
+TemplateId = #{templateID,jdbcType=VARCHAR},
+EncounterIdentifier = #{visitID,jdbcType=VARCHAR}
+where EmrFirstPageId = #{emrFirstPageID,jdbcType=VARCHAR}
+
+</update>
+
+<insert id="insertEMRFirstPage" parameterType="com.vico.clever.cdr.service.model.EMRFirstPage" >
+insert into Obsr_EmrFirstPage(<include refid="EMRFirstPageList"/>)
+values(newid(),
+#{contentXMLUri,jdbcType=VARCHAR},
+#{documentContentUri,jdbcType=VARCHAR},
+#{emrFirstPageID,jdbcType=VARCHAR},
+#{firstCreateTime,jdbcType=TIMESTAMP},
+#{lastModifiedTime,jdbcType=TIMESTAMP},
+#{lastOperaterCode,jdbcType=VARCHAR},
+#{lastOperaterName,jdbcType=VARCHAR},
+#{patientID,jdbcType=VARCHAR},
+#{templateID,jdbcType=VARCHAR},
+#{visitID,jdbcType=VARCHAR})
+</insert>
+
+<delete id="deleteEMRFirstPage" parameterType="java.lang.String" >
+delete from Obsr_EmrFirstPage where EmrFirstPageId = #{emrFirstPageID,jdbcType=VARCHAR} 
+</delete>
+
+<!-- EMRFirstPageAction -->
+<select id="selectEMRFirstPageAction" parameterType="java.lang.String" resultMap="EMRFirstPageActionMap" >
+select <include refid="EMRFirstPageActionList"/> from  Action_EmrFirstPage where EmrFirstPageId = #{emrFirstPageID}
+</select>
+
+<insert id="insertEMRFirstPageAction" parameterType="com.vico.clever.cdr.service.model.EMRFirstPageAction">
+insert into Action_EmrFirstPage (<include refid="EMRFirstPageActionList"/>) values(
+newid(),
+#{comment,jdbcType=VARCHAR},
+#{actionDatetime,jdbcType=TIMESTAMP},
+#{emrFirstPageID,jdbcType=VARCHAR},
+#{visitID,jdbcType=VARCHAR},
+#{careflowStepCode,jdbcType=VARCHAR},
+#{careflowStepName,jdbcType=VARCHAR},
+#{curStateCode,jdbcType=VARCHAR},
+#{curStateName,jdbcType=VARCHAR},
+#{patientID,jdbcType=VARCHAR},
+#{performerCode,jdbcType=VARCHAR},
+#{performerName,jdbcType=VARCHAR},
+#{titleName,jdbcType=VARCHAR},
+#{performDeptCode,jdbcType=VARCHAR},
+#{performDeptName,jdbcType=VARCHAR}
+)
+</insert>
+<delete id="deleteEMRFirstPageAction" parameterType="java.lang.String">
+delete from Action_EmrFirstPage where EmrFirstPageId = #{emrFirstPageID,jdbcType=VARCHAR}
+</delete>
+
+</mapper>

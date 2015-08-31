@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vico.clever.cdr.service.dao.SurgeryDao">
+	<!-- model SurgeryReqInfo & table Inst_OperationRequest -->
+	<resultMap type="com.vico.clever.cdr.service.model.SurgeryReqInfo" id="SurgeryReqInfoMap">
+		<result property="surgeryReqID" column="RequestorIdentifier" jdbcType="VARCHAR" />
+		<result property="patientID" column="PatientIdentifier_Id" jdbcType="VARCHAR" />
+		<result property="visitID" column="EncounterIdentifier" jdbcType="VARCHAR" />
+		<result property="orderID" column="OrderIdentifier" jdbcType="VARCHAR" />
+		<result property="diagnosisBefore" column="Diagnosis" jdbcType="VARCHAR" />
+		<result property="operativeDoctorID" column="OperativeDoctor_Code" jdbcType="VARCHAR" />
+		<result property="operativeDoctorName" column="OperativeDoctor_Name" jdbcType="VARCHAR" />
+		<result property="scheduleDate" column="DateAndOrTimeServiceRequired" jdbcType="TIMESTAMP" />
+		<result property="urgencyCode" column="Urgency_Code" jdbcType="VARCHAR" />
+		<result property="urgencyName" column="Urgency_Name" jdbcType="VARCHAR" />
+		<result property="isolationIndicatorCode" column="IsolationIndicator_Code" jdbcType="VARCHAR" />
+		<result property="isolationIndicator" column="IsolationIndicator_Name" jdbcType="VARCHAR" />
+		<result property="relevantLabTest" column="RelevantLabTest" jdbcType="VARCHAR" />
+		<result property="operativeDeptCode" column="OperativeDepartment_Code" jdbcType="VARCHAR" />
+		<result property="operativeDeptName" column="OperativeDepartment_Name" jdbcType="VARCHAR" />
+		<result property="comments" column="Comments" jdbcType="VARCHAR" />
+		<result property="reqDeptCode" column="RequestorDepartment_Code" jdbcType="VARCHAR" />
+		<result property="reqDeptName" column="RequestorDepartment_Name" jdbcType="VARCHAR" />
+		<result property="reqDoctorID" column="RequestDoctor_Code" jdbcType="VARCHAR" />
+		<result property="reqDoctorName" column="RequestDoctor_Name" jdbcType="VARCHAR" />
+		<result property="reqDate" column="RequestDatetime" jdbcType="TIMESTAMP" />
+		<result property="requestStatus" column="RequestStatus" jdbcType="VARCHAR" />
+		<result property="dosage" column="Dosage" jdbcType="VARCHAR" />
+		<result property="dosageUnit" column="DosageUnit" jdbcType="VARCHAR" />
+		<result property="administrationCode" column="Administration_Code" jdbcType="VARCHAR" />
+		<result property="administrationName" column="Administration_Name" jdbcType="VARCHAR" />
+		<result property="frequency" column="Frequency" jdbcType="INTEGER" />
+		<result property="frequencyUnit" column="Frequency_Units" jdbcType="VARCHAR" />
+		<result property="frequencyInterval" column="FrequencyInterval" jdbcType="INTEGER" />
+		<result property="frequencyIntervalUnit" column="FrequencyInterval_Units" jdbcType="VARCHAR" />
+	</resultMap>
+	<!-- model SurgeryReqItem & table Inst_OperationRequest_OperationItems -->
+	<resultMap type="com.vico.clever.cdr.service.model.SurgeryItem" id="SurgeryItemMap">
+		<result property="surgeryReqID" column="Inst_OperationRequest$RequestorIdentifier" jdbcType="VARCHAR" />
+		<result property="operationCode" column="OperationLevel_Code" jdbcType="VARCHAR" />
+		<result property="operationName" column="OperationLevel_Name" jdbcType="VARCHAR" />
+		<result property="locationName" column="Location_Name" jdbcType="VARCHAR" />
+		<result property="locationCode" column="Location_Code" jdbcType="VARCHAR" />
+		<result property="levelOfIncisionName" column="LevelOfIncision_Name" jdbcType="VARCHAR" />
+		<result property="levelOfIncisionCode" column="LevelOfIncision_Code" jdbcType="VARCHAR" />
+		<result property="operationLevelName" column="OperationLevel_Name" jdbcType="VARCHAR" />
+		<result property="operationLevelCode" column="OperationLevel_Code" jdbcType="VARCHAR" />
+		<result property="operationNO" column="OperationSerialNumber" jdbcType="VARCHAR" />
+		<result property="operationSerialNumberCode" column="OperationSerialNumber_Code" jdbcType="VARCHAR" />
+		<result property="operationSerialNumberName" column="OperationSerialNumber_Name" jdbcType="VARCHAR" />
+	</resultMap>
+	<!-- model SurgeryReqMaster & table Inst_OperationArrangement -->
+	<resultMap type="com.vico.clever.cdr.service.model.SurgeryMaster" id="SurgeryMasterMap">
+		<result property="surgeryReqID" column="RequestedIdentifier" jdbcType="VARCHAR" />
+		<result property="patientID" column="PatientIdentifier_Id" jdbcType="VARCHAR" />
+		<result property="visitID" column="EncounterIdentifier" jdbcType="VARCHAR" />
+		<result property="intervention" column="Intervention" jdbcType="VARCHAR" />
+		<result property="operateApproachCode" column="OperateApproach_Code" jdbcType="VARCHAR" />
+		<result property="operateApproachName" column="OperateApproach_Name" jdbcType="VARCHAR" />
+		<result property="numberOfOperation" column="NumberOfOperation" jdbcType="INTEGER" />
+		<result property="startDateTime" column="StartDatetime" jdbcType="TIMESTAMP" />
+		<result property="stopDateTime" column="EndDatetime" jdbcType="TIMESTAMP" />
+		<result property="surgicalDoctorOneCode" column="SurgicalDoctorOne_Id" jdbcType="VARCHAR" />
+		<result property="surgicalDoctorOneName" column="SurgicalDoctorOne_Name" jdbcType="VARCHAR" />
+		<result property="surgicalDoctorTwoCode" column="SurgicalDoctorTwo_Id" jdbcType="VARCHAR" />
+		<result property="surgicalDoctorTwoName" column="SurgicalDoctorTwo_Name" jdbcType="VARCHAR" />
+		<result property="assistantOperatorOneCode" column="AssistantOperatorOne_Id" jdbcType="VARCHAR" />
+		<result property="assistantOperatorOneName" column="AssistantOperatorOne_Name" jdbcType="VARCHAR" />
+		<result property="assistantOperatorTwoCode" column="AssistantOperatorTwo_Id" jdbcType="VARCHAR" />
+		<result property="assistantOperatorTwoName" column="AssistantOperatorTwo_Name" jdbcType="VARCHAR" />
+		<result property="assistantOperatorThreeCode" column="AssistantOperatorThree_Id" jdbcType="VARCHAR" />
+		<result property="assistantOperatorThreeName" column="AssistantOperatorThree_Name" jdbcType="VARCHAR" />
+		<result property="assistantOperatorFourCode" column="AssistantOperatorFour_Id" jdbcType="VARCHAR" />
+		<result property="assistantOperatorFourName" column="AssistantOperatorFour_Name" jdbcType="VARCHAR" />
+		<result property="instrumentNurseOneCode" column="InstrumentNurseOne_Id" jdbcType="VARCHAR" />
+		<result property="instrumentNurseOneName" column="InstrumentNurseOne_Name" jdbcType="VARCHAR" />
+		<result property="instrumentNurseTwoCode" column="InstrumentNurseTwo_Id" jdbcType="VARCHAR" />
+		<result property="instrumentNurseTwoName" column="InstrumentNurseTwo_Name" jdbcType="VARCHAR" />
+		<result property="inspectionNurseOneCode" column="InspectionNurseOne_Id" jdbcType="VARCHAR" />
+		<result property="inspectionNurseOneName" column="InspectionNurseOne_Name" jdbcType="VARCHAR" />
+		<result property="inspectionNurseTwoCode" column="InspectionNurseTwo_Id" jdbcType="VARCHAR" />
+		<result property="inspectionNurseTwoName" column="InspectionNurseTwo_Name" jdbcType="VARCHAR" />
+		<result property="operatingRoomNOCode" column="OperationOnSite_OperatingRoomNumber_Code" jdbcType="VARCHAR" />
+		<result property="operatingRoomNO" column="OperationOnSite_OperatingRoomNumber_Name" jdbcType="VARCHAR" />
+		<result property="operatingRoomCode" column="OperationOnSite_OperatingRoom_Code" jdbcType="VARCHAR" />
+		<result property="operatingRoom" column="OperationOnSite_OperatingRoom_Name" jdbcType="VARCHAR" />
+		<result property="operationTableCode" column="OperationOnSite_OperationTable_Code" jdbcType="VARCHAR" />
+		<result property="operationTable" column="OperationOnSite_OperationTable_Name" jdbcType="VARCHAR" />
+		<result property="sequence" column="OperationOnSite_Sequence" jdbcType="INTEGER" />
+		<result property="operationLevelCode" column="OperationLevel_Code" jdbcType="VARCHAR" />
+		<result property="operationLevelName" column="OperationLevel_Name" jdbcType="VARCHAR" />
+		<result property="anesthetistApproachCode" column="AnesthsiaApproach_Code" jdbcType="VARCHAR" />
+		<result property="anesthetistApproachName" column="AnesthsiaApproach_Name" jdbcType="VARCHAR" />
+		<result property="anestheistCode" column="Anesthetist_Id" jdbcType="VARCHAR" />
+		<result property="anestheistName" column="Anesthetist_Name" jdbcType="VARCHAR" />
+		<result property="assistantAnestheistOneCode" column="AssistantAnesthetistOne_Id" jdbcType="VARCHAR" />
+		<result property="assistantAnestheistOneName" column="AssistantAnesthetistOne_Name" jdbcType="VARCHAR" />
+		<result property="assistantAnestheistTwoCode" column="AssistantAnesthetistTwo_Id" jdbcType="VARCHAR" />
+		<result property="assistantAnestheistTwoName" column="AssistantAnesthetistTwo_Name" jdbcType="VARCHAR" />
+		<!--  <result property="surgicalPositionCode" column="" jdbcType="VARCHAR" /> -->
+		<!--  <result property="surgicalPositionName" column="" jdbcType="VARCHAR" /> -->
+		<result property="surgicalModeCode" column="SurgicalMode_Code" jdbcType="VARCHAR" />
+		<result property="surgicalModeName" column="SurgicalMode_Name" jdbcType="VARCHAR" />
+		<result property="operationSerialNO" column="OperationSerialNumber" jdbcType="VARCHAR" />
+		<result property="operationDateTime" column="OperationDatetime" jdbcType="TIMESTAMP" />
+	</resultMap>
+	<!-- model SurgeryReqRecord & table Obsr_OperationRecord -->
+	<resultMap type="com.vico.clever.cdr.service.model.SurgeryRecord" id="SurgeryRecordMap">
+		<result property="surgeryReqID" column="OperationIdentifier" jdbcType="VARCHAR" />
+		<result property="patientID" column="PatientIdentifier_Id" jdbcType="VARCHAR" />
+		<result property="visitID" column="EncounterIdentifier" jdbcType="VARCHAR" />
+		<result property="reportID" column="ReportIdentifier" jdbcType="VARCHAR" />
+		<result property="bleeding" column="OperativeDetails_Bleeding" jdbcType="INTEGER" />
+		<result property="bleedingUnit" column="OperativeDetails_Bleeding_Units" jdbcType="VARCHAR" />
+		<result property="surDescriptionCode" column="OperativeDetails_DetailsOfSurgeryPerformed_Description_Code" jdbcType="VARCHAR" />
+		<result property="surDescription" column="OperativeDetails_DetailsOfSurgeryPerformed_Description_Name" jdbcType="VARCHAR" />
+		<result property="skinDisinfection" column="OperativeDetails_SkinDisinfection" jdbcType="VARCHAR" />
+		<result property="incisionDescription" column="Incision_Description" jdbcType="VARCHAR" />
+		<result property="closureDrainsSign" column="Closure_Drains_Sign" jdbcType="BIT" />
+		<result property="closureDrainsMaterial" column="Closure_Drains_Material" jdbcType="VARCHAR" />
+		<result property="closureDrainsMaterialAmount" column="Closure_Drains_MaterialAmount" jdbcType="INTEGER" />
+		<result property="closureDrainsLocation" column="Closure_Drains_Location" jdbcType="VARCHAR" />
+		<result property="anesthesiaIndication" column="OperativeDetails_Anesthesia_Indication" jdbcType="VARCHAR" />
+		<result property="anesthesiaRecovery" column="OperativeDetails_Anesthesia_Recovery" jdbcType="VARCHAR" />
+		<result property="anesthesiaStartDate" column="OperativeDetails_Anesthesia_StartDatetime" jdbcType="TIMESTAMP" />
+		<result property="anesthesiaASACode" column="OperativeDetails_Anesthesia_Asa_Code" jdbcType="VARCHAR" />
+		<result property="anesthesiaASA" column="OperativeDetails_Anesthesia_Asa_Name" jdbcType="VARCHAR" />
+		<result property="anesthesiaMedicine" column="OperativeDetails_Anesthesia_Medicine" jdbcType="VARCHAR" />
+		<result property="anesthesiaPosition" column="OperativeDetails_Anesthesia_Position" jdbcType="VARCHAR" />
+		<result property="anesthesiaDescription" column="OperativeDetails_Anesthesia_Description" jdbcType="VARCHAR" />
+		<result property="anesthesiaComplication" column="OperativeDetails_Anesthesia_Complication" jdbcType="VARCHAR" />
+		<result property="anesthesiaEffect" column="OperativeDetails_Anesthesia_Effect" jdbcType="VARCHAR" />
+		<result property="anesthesiaPremediaine" column="OperativeDetails_Anesthesia_Premedication" jdbcType="VARCHAR" />
+		<result property="tracheaCannulaType" column="Closure_TracheaCannula_Type" jdbcType="VARCHAR" />
+		<result property="tracheaCannulaUnpin" column="Closure_TracheaCannula_UnpinCannula" jdbcType="VARCHAR" />
+		<result property="transfusionVolume" column="Transfusion_Volume" jdbcType="INTEGER" />
+		<result property="transfusionVolumeUnit" column="Transfusion_Volume_Units" jdbcType="VARCHAR" />
+		<result property="transfusionItem" column="Transfusion_Items" jdbcType="VARCHAR" />
+		<result property="incsionLevelCode" column="Incision_LevelOfIncision_Code" jdbcType="VARCHAR" />
+		<result property="incsionLevelName" column="Incision_LevelOfIncision_Name" jdbcType="VARCHAR" />
+		<result property="healLevel" column="Incision_HealingLevel" jdbcType="VARCHAR" />
+	</resultMap>
+	<!-- model SurgeryReqStatus & table Action_Operation -->
+	<resultMap type="com.vico.clever.cdr.service.model.SurgeryStatus" id="SurgeryStatusMap">
+		<result property="surgeryReqID" column="RequestedIdentifier" jdbcType="VARCHAR"></result>
+		<result property="patientID" column="PatientIdentifier_Id" jdbcType="VARCHAR"></result>
+		<result property="visitID" column="EncounterIdentifier" jdbcType="VARCHAR"></result>
+		<result property="operationName" column="OperationName" jdbcType="VARCHAR"></result>
+		<result property="curStateCode" column="IsmTransition_CurrentState_Code" jdbcType="VARCHAR"></result>
+		<result property="curStateName" column="IsmTransition_CurrentState_Name" jdbcType="VARCHAR"></result>
+		<result property="careflowStepCode" column="IsmTransition_CareflowStep_Code" jdbcType="VARCHAR"></result>
+		<result property="careflowStepName" column="IsmTransition_CareflowStep_Name" jdbcType="VARCHAR"></result>
+		<result property="comment" column="Comment" jdbcType="VARCHAR"></result>
+		<result property="performDateTime" column="StartDateTime" jdbcType="TIMESTAMP"></result>
+		<result property="performDoctorCode" column="Performer_Code" jdbcType="VARCHAR"></result>
+		<result property="performDoctorName" column="Performer_Name" jdbcType="VARCHAR"></result>
+	</resultMap>
+	
+	<!-- getSurgeryReqInfoBySurgeryReqID -->
+	<select id="getSurgeryReqInfoBySurgeryReqID" parameterType="java.lang.String" resultMap="SurgeryReqInfoMap">
+		<![CDATA[
+			SELECT * from Inst_OperationRequest
+				WHERE RequestorIdentifier = #{surgeryReqID} 
+		]]> 
+	</select>
+	<!-- getSurgeryReqInfoByPatientID -->
+	<select id="getSurgeryReqInfoByPatientID" parameterType="java.lang.String" resultMap="SurgeryReqInfoMap">
+		<![CDATA[
+			SELECT * from Inst_OperationRequest
+				WHERE PatientIdentifier_Id = #{patientID} 
+		]]> 
+	</select>
+	<!-- getSurgeryReqInfoByVisitID -->
+	<select id="getSurgeryReqInfoByVisitID" parameterType="java.lang.String" resultMap="SurgeryReqInfoMap">
+		<![CDATA[
+			SELECT * from Inst_OperationRequest
+				WHERE EncounterIdentifier = #{visitID} 
+		]]> 
+	</select>
+	<!-- getSurgeryReqInfoByOrderID -->
+	<select id="getSurgeryReqInfoByOrderID" parameterType="java.lang.String" resultMap="SurgeryReqInfoMap">
+		<![CDATA[
+			SELECT * from Inst_OperationRequest
+				WHERE OrderIdentifier = #{orderID} 
+		]]> 
+	</select>
+	
+	<!-- getAllSurgeryReqInfos -->
+	<select id="getAllSurgeryReqInfos" resultMap="SurgeryReqInfoMap">
+	<![CDATA[
+			SELECT * from Inst_OperationRequest
+		]]> 
+	</select>
+	
+	<!-- insertSurgeryReqInfo -->
+	<insert id="insertSurgeryReqInfo" parameterType="com.vico.clever.cdr.service.model.SurgeryReqInfo">
+		INSERT INTO Inst_OperationRequest(
+		    GUID,RequestorIdentifier,PatientIdentifier_Id,EncounterIdentifier,OrderIdentifier,Diagnosis,
+			OperativeDoctor_Code,OperativeDoctor_Name,DateAndOrTimeServiceRequired,Urgency_Code,Urgency_Name,
+			IsolationIndicator_Code,IsolationIndicator_Name,RelevantLabTest,OperativeDepartment_Code,
+		    OperativeDepartment_Name,Comments,RequestorDepartment_Code,RequestorDepartment_Name,
+			RequestDoctor_Code,RequestDoctor_Name,RequestDatetime,RequestStatus,Dosage,DosageUnit,
+			Administration_Code,Administration_Name,Frequency,Frequency_Units,FrequencyInterval,FrequencyInterval_Units
+	    )VALUES(
+			newid(),#{surgeryReqID,jdbcType=VARCHAR},#{patientID,jdbcType=VARCHAR},#{visitID,jdbcType=VARCHAR},
+		    #{orderID,jdbcType=VARCHAR},#{diagnosisBefore,jdbcType=VARCHAR},#{operativeDoctorID,jdbcType=VARCHAR},
+			#{operativeDoctorName,jdbcType=VARCHAR},#{scheduleDate,jdbcType=TIMESTAMP},#{urgencyCode,jdbcType=VARCHAR},
+			#{urgencyName,jdbcType=VARCHAR},#{isolationIndicatorCode,jdbcType=VARCHAR},#{isolationIndicator,jdbcType=VARCHAR},
+			#{relevantLabTest,jdbcType=VARCHAR},#{operativeDeptCode,jdbcType=VARCHAR},#{operativeDeptName,jdbcType=VARCHAR},
+			#{comments,jdbcType=VARCHAR},#{reqDeptCode,jdbcType=VARCHAR},#{reqDeptName,jdbcType=VARCHAR},
+			#{reqDoctorID,jdbcType=VARCHAR},#{reqDoctorName,jdbcType=VARCHAR},#{reqDate,jdbcType=TIMESTAMP},
+			#{requestStatus,jdbcType=VARCHAR},#{dosage,jdbcType=VARCHAR},#{dosageUnit,jdbcType=VARCHAR},
+			#{administrationCode,jdbcType=VARCHAR},#{administrationName,jdbcType=VARCHAR},#{frequency,jdbcType=INTEGER},
+			#{frequencyUnit,jdbcType=VARCHAR},#{frequencyInterval,jdbcType=INTEGER},#{frequencyIntervalUnit,jdbcType=VARCHAR}
+	    )
+	</insert>
+	
+	<!-- updateSurgeryReqInfo -->
+	<update id="updateSurgeryReqInfo" parameterType="com.vico.clever.cdr.service.model.SurgeryReqInfo">
+        UPDATE Inst_OperationRequest  SET
+            PatientIdentifier_Id=#{patientID,jdbcType=VARCHAR},EncounterIdentifier=#{visitID,jdbcType=VARCHAR},
+            OrderIdentifier=#{orderID,jdbcType=VARCHAR},Diagnosis=#{diagnosisBefore,jdbcType=VARCHAR},
+            OperativeDoctor_Code=#{operativeDoctorID,jdbcType=VARCHAR},OperativeDoctor_Name=#{operativeDoctorName,jdbcType=VARCHAR},
+            DateAndOrTimeServiceRequired=#{scheduleDate,jdbcType=TIMESTAMP},Urgency_Code=#{urgencyCode,jdbcType=VARCHAR},
+            Urgency_Name=#{urgencyName,jdbcType=VARCHAR},IsolationIndicator_Code=#{isolationIndicatorCode,jdbcType=VARCHAR},
+            IsolationIndicator_Name=#{isolationIndicator,jdbcType=VARCHAR},RelevantLabTest=#{relevantLabTest,jdbcType=VARCHAR},
+            OperativeDepartment_Code=#{operativeDeptCode,jdbcType=VARCHAR},OperativeDepartment_Name=#{operativeDeptName,jdbcType=VARCHAR},
+            Comments=#{comments,jdbcType=VARCHAR},RequestorDepartment_Code=#{reqDeptCode,jdbcType=VARCHAR},
+            RequestorDepartment_Name=#{reqDeptName,jdbcType=VARCHAR},RequestDoctor_Code=#{reqDoctorID,jdbcType=VARCHAR},
+            RequestDoctor_Name=#{reqDoctorName,jdbcType=VARCHAR},RequestDatetime=#{reqDate,jdbcType=TIMESTAMP},
+            RequestStatus=#{requestStatus,jdbcType=VARCHAR},Dosage=#{dosage,jdbcType=VARCHAR},
+            DosageUnit=#{dosageUnit,jdbcType=VARCHAR},Administration_Code=#{administrationCode,jdbcType=VARCHAR},
+            Administration_Name=#{administrationName,jdbcType=VARCHAR},Frequency=#{frequency,jdbcType=INTEGER},
+            Frequency_Units=#{frequencyUnit,jdbcType=VARCHAR},FrequencyInterval=#{frequencyInterval,jdbcType=INTEGER},
+            FrequencyInterval_Units=#{frequencyIntervalUnit,jdbcType=VARCHAR}
+        WHERE RequestorIdentifier=#{surgeryReqID,jdbcType=VARCHAR}
+    </update>
+    
+    <!-- deleteSurgeryReqInfo -->
+    <delete id="deleteSurgeryReqInfo" parameterType="com.vico.clever.cdr.service.model.SurgeryReqInfo">
+  	    DELETE FROM Inst_OperationRequest
+  		WHERE RequestorIdentifier=#{surgeryReqID,jdbcType=VARCHAR}
+ 	</delete>
+ 	
+ 	<!-- getSurgeryItem -->
+	<select id="getSurgeryItem" parameterType="java.lang.String" resultMap="SurgeryItemMap">
+		<![CDATA[
+			SELECT * from Inst_OperationRequest_OperationItems
+				WHERE Inst_OperationRequest$RequestorIdentifier = #{surgeryReqID} 
+		]]> 
+	</select>
+	<!-- getAllSurgeryItems -->
+	<select id="getAllSurgeryItems" resultMap="SurgeryItemMap">
+		<![CDATA[
+			SELECT * from Inst_OperationRequest_OperationItems
+		]]> 
+	</select>
+	
+	<!-- insertSurgeryItem -->
+	<insert id="insertSurgeryItem" parameterType="com.vico.clever.cdr.service.model.SurgeryItem">
+		INSERT INTO Inst_OperationRequest_OperationItems(
+		    GUID,Inst_OperationRequest$RequestorIdentifier,OperationRequested,DescriptionOfOperation,Location_Name,
+		    Location_Code,LevelOfIncision_Name,LevelOfIncision_Code,OperationLevel_Name,OperationLevel_Code,
+		    OperationSerialNumber,OperationSerialNumber_Code,OperationSerialNumber_Name
+	    )VALUES(
+			newid(),#{surgeryReqID,jdbcType=VARCHAR},#{operationCode,jdbcType=VARCHAR},#{operationName,jdbcType=VARCHAR},
+		    #{locationName,jdbcType=VARCHAR},#{locationCode,jdbcType=VARCHAR},#{levelOfIncisionName,jdbcType=VARCHAR},
+			#{levelOfIncisionCode,jdbcType=VARCHAR},#{operationLevelName,jdbcType=VARCHAR},
+			#{operationLevelCode,jdbcType=VARCHAR},#{operationNO,jdbcType=VARCHAR},
+			#{operationSerialNumberCode,jdbcType=VARCHAR},#{operationSerialNumberName,jdbcType=VARCHAR}
+	    )
+	</insert>
+	
+	<!-- updateSurgeryItem -->
+	<update id="updateSurgeryItem" parameterType="com.vico.clever.cdr.service.model.SurgeryItem">
+        UPDATE Inst_OperationRequest_OperationItems  SET
+            OperationRequested=#{operationCode,jdbcType=VARCHAR},DescriptionOfOperation=#{operationName,jdbcType=VARCHAR},
+            Location_Name=#{locationName,jdbcType=VARCHAR},Location_Code=#{locationCode,jdbcType=VARCHAR},
+            LevelOfIncision_Name=#{levelOfIncisionName,jdbcType=VARCHAR},
+            LevelOfIncision_Code=#{levelOfIncisionCode,jdbcType=VARCHAR},
+            OperationLevel_Name=#{operationLevelName,jdbcType=VARCHAR},
+            OperationLevel_Code=#{operationLevelCode,jdbcType=VARCHAR},
+            OperationSerialNumber=#{operationNO,jdbcType=VARCHAR},
+            OperationSerialNumber_Code=#{operationSerialNumberCode,jdbcType=VARCHAR},
+            OperationSerialNumber_Name=#{operationSerialNumberName,jdbcType=VARCHAR}
+        WHERE Inst_OperationRequest$RequestorIdentifier=#{surgeryReqID,jdbcType=VARCHAR}
+    </update>
+    
+    <!-- deleteSurgeryItem -->
+    <delete id="deleteSurgeryItem" parameterType="com.vico.clever.cdr.service.model.SurgeryItem">
+  	    DELETE FROM Inst_OperationRequest_OperationItems
+  		WHERE Inst_OperationRequest$RequestorIdentifier=#{surgeryReqID,jdbcType=VARCHAR}
+ 	</delete>
+ 	
+ 	<!-- getSurgeryMasterBySurgeryReqID -->
+	<select id="getSurgeryMasterBySurgeryReqID" parameterType="java.lang.String" resultMap="SurgeryMasterMap">
+		<![CDATA[
+			SELECT * from Inst_OperationArrangement
+				WHERE RequestedIdentifier = #{surgeryReqID} 
+		]]> 
+	</select>
+	<!-- getSurgeryMasterByPatientID -->
+	<select id="getSurgeryMasterByPatientID" parameterType="java.lang.String" resultMap="SurgeryMasterMap">
+		<![CDATA[
+			SELECT * from Inst_OperationArrangement
+				WHERE PatientIdentifier_Id = #{patientID} 
+		]]> 
+	</select>
+	<!-- getSurgeryMasterByVisitID -->
+	<select id="getSurgeryMasterByVisitID" parameterType="java.lang.String" resultMap="SurgeryMasterMap">
+		<![CDATA[
+			SELECT * from Inst_OperationArrangement
+				WHERE EncounterIdentifier = #{visitID} 
+		]]> 
+	</select>
+	
+	<!-- getAllSurgeryMasters -->
+	<select id="getAllSurgeryMasters" resultMap="SurgeryMasterMap">
+	<![CDATA[
+			SELECT * from Inst_OperationArrangement
+		]]> 
+	</select>
+	
+	<!-- insertSurgeryMaster -->
+	<insert id="insertSurgeryMaster" parameterType="com.vico.clever.cdr.service.model.SurgeryMaster">
+		INSERT INTO Inst_OperationArrangement(
+		    GUID,RequestedIdentifier,PatientIdentifier_Id,EncounterIdentifier,Intervention,OperateApproach_Code,
+			OperateApproach_Name,NumberOfOperation,StartDatetime,EndDatetime,SurgicalDoctorOne_Id,
+			SurgicalDoctorOne_Name,SurgicalDoctorTwo_Id,SurgicalDoctorTwo_Name,AssistantOperatorOne_Id,
+		    AssistantOperatorOne_Name,AssistantOperatorTwo_Id,AssistantOperatorTwo_Name,AssistantOperatorThree_Id,
+			AssistantOperatorThree_Name,AssistantOperatorFour_Id,AssistantOperatorFour_Name,InstrumentNurseOne_Id,
+			InstrumentNurseOne_Name,InstrumentNurseTwo_Id,InstrumentNurseTwo_Name,InspectionNurseOne_Id,
+			InspectionNurseOne_Name,InspectionNurseTwo_Id,InspectionNurseTwo_Name,OperationOnSite_OperatingRoomNumber_Code,
+			OperationOnSite_OperatingRoomNumber_Name,OperationOnSite_OperatingRoom_Code,OperationOnSite_OperatingRoom_Name,
+			OperationOnSite_OperationTable_Code,OperationOnSite_OperationTable_Name,OperationOnSite_Sequence,
+			OperationLevel_Code,OperationLevel_Name,AnesthsiaApproach_Code,AnesthsiaApproach_Name,Anesthetist_Id,
+			Anesthetist_Name,AssistantAnesthetistOne_Id,AssistantAnesthetistOne_Name,AssistantAnesthetistTwo_Id,
+			AssistantAnesthetistTwo_Name,SurgicalMode_Code,SurgicalMode_Name,OperationSerialNumber,OperationDatetime
+	    )VALUES(
+			newid(),#{surgeryReqID,jdbcType=VARCHAR},#{patientID,jdbcType=VARCHAR},#{visitID,jdbcType=VARCHAR},
+		    #{intervention,jdbcType=VARCHAR},#{operateApproachCode,jdbcType=VARCHAR},#{operateApproachName,jdbcType=VARCHAR},
+			#{numberOfOperation,jdbcType=INTEGER},#{startDateTime,jdbcType=TIMESTAMP},#{stopDateTime,jdbcType=TIMESTAMP},
+			#{surgicalDoctorOneCode,jdbcType=VARCHAR},#{surgicalDoctorOneName,jdbcType=VARCHAR},
+			#{surgicalDoctorTwoCode,jdbcType=VARCHAR},#{surgicalDoctorTwoName,jdbcType=VARCHAR},
+			#{assistantOperatorOneCode,jdbcType=VARCHAR},#{assistantOperatorOneName,jdbcType=VARCHAR},
+			#{assistantOperatorTwoCode,jdbcType=VARCHAR},#{assistantOperatorTwoName,jdbcType=VARCHAR},
+			#{assistantOperatorThreeCode,jdbcType=VARCHAR},#{assistantOperatorThreeName,jdbcType=VARCHAR},
+			#{assistantOperatorFourCode,jdbcType=VARCHAR},#{assistantOperatorFourName,jdbcType=VARCHAR},
+			#{instrumentNurseOneCode,jdbcType=VARCHAR},#{instrumentNurseOneName,jdbcType=VARCHAR},
+			#{instrumentNurseTwoCode,jdbcType=VARCHAR},#{instrumentNurseTwoName,jdbcType=VARCHAR},
+			#{inspectionNurseOneCode,jdbcType=VARCHAR},#{inspectionNurseOneName,jdbcType=VARCHAR},
+			#{inspectionNurseTwoCode,jdbcType=VARCHAR},#{inspectionNurseTwoName,jdbcType=VARCHAR},
+			#{operatingRoomNOCode,jdbcType=VARCHAR},#{operatingRoomNO,jdbcType=VARCHAR},
+			#{operatingRoomCode,jdbcType=VARCHAR},#{operatingRoom,jdbcType=VARCHAR},
+			#{operationTableCode,jdbcType=VARCHAR},#{operationTable,jdbcType=VARCHAR},#{sequence,jdbcType=INTEGER},
+			#{operationLevelCode,jdbcType=VARCHAR},#{operationLevelName,jdbcType=VARCHAR},
+			#{anesthetistApproachCode,jdbcType=VARCHAR},#{anesthetistApproachName,jdbcType=VARCHAR},
+			#{anestheistCode,jdbcType=VARCHAR},#{anestheistName,jdbcType=VARCHAR},
+			#{assistantAnestheistOneCode,jdbcType=VARCHAR},#{assistantAnestheistOneName,jdbcType=VARCHAR},
+			#{assistantAnestheistTwoCode,jdbcType=VARCHAR},#{assistantAnestheistTwoName,jdbcType=VARCHAR},
+			#{surgicalModeCode,jdbcType=VARCHAR},#{surgicalModeName,jdbcType=VARCHAR},
+			#{operationSerialNO,jdbcType=VARCHAR},#{operationDateTime,jdbcType=TIMESTAMP}
+	    )
+	</insert>
+	
+	<!-- updateSurgeryMaster -->
+	<update id="updateSurgeryMaster" parameterType="com.vico.clever.cdr.service.model.SurgeryMaster">
+        UPDATE Inst_OperationArrangement SET
+            RequestedIdentifier=#{surgeryReqID,jdbcType=VARCHAR},PatientIdentifier_Id=#{patientID,jdbcType=VARCHAR},
+            EncounterIdentifier=#{visitID,jdbcType=VARCHAR},Intervention=#{intervention,jdbcType=VARCHAR},
+            OperateApproach_Code=#{operateApproachCode,jdbcType=VARCHAR},
+            OperateApproach_Name=#{operateApproachName,jdbcType=VARCHAR},
+            NumberOfOperation=#{numberOfOperation,jdbcType=INTEGER},
+            StartDatetime=#{startDateTime,jdbcType=TIMESTAMP},EndDatetime=#{stopDateTime,jdbcType=TIMESTAMP},
+            SurgicalDoctorOne_Id=#{surgicalDoctorOneCode,jdbcType=VARCHAR},
+            SurgicalDoctorOne_Name=#{surgicalDoctorOneName,jdbcType=VARCHAR},
+            SurgicalDoctorTwo_Id=#{surgicalDoctorTwoCode,jdbcType=VARCHAR},
+            SurgicalDoctorTwo_Name=#{surgicalDoctorTwoName,jdbcType=VARCHAR},
+            AssistantOperatorOne_Id=#{assistantOperatorOneCode,jdbcType=VARCHAR},
+            AssistantOperatorOne_Name=#{assistantOperatorOneName,jdbcType=VARCHAR},
+            AssistantOperatorTwo_Id=#{assistantOperatorTwoCode,jdbcType=VARCHAR},
+            AssistantOperatorTwo_Name=#{assistantOperatorTwoName,jdbcType=VARCHAR},
+            AssistantOperatorThree_Id=#{assistantOperatorThreeCode,jdbcType=VARCHAR},
+            AssistantOperatorThree_Name=#{assistantOperatorThreeName,jdbcType=VARCHAR},
+            AssistantOperatorFour_Id=#{assistantOperatorFourCode,jdbcType=VARCHAR},
+            AssistantOperatorFour_Name=#{assistantOperatorFourName,jdbcType=VARCHAR},
+            InstrumentNurseOne_Id=#{instrumentNurseOneCode,jdbcType=VARCHAR},
+            InstrumentNurseOne_Name=#{instrumentNurseOneName,jdbcType=VARCHAR},
+            InstrumentNurseTwo_Id=#{instrumentNurseTwoCode,jdbcType=VARCHAR},
+            InstrumentNurseTwo_Name=#{instrumentNurseTwoName,jdbcType=VARCHAR},
+            InspectionNurseOne_Id=#{inspectionNurseOneCode,jdbcType=VARCHAR},
+            InspectionNurseOne_Name=#{inspectionNurseOneName,jdbcType=VARCHAR},
+            InspectionNurseTwo_Id=#{inspectionNurseTwoCode,jdbcType=VARCHAR},
+            InspectionNurseTwo_Name=#{inspectionNurseTwoName,jdbcType=VARCHAR},
+            OperationOnSite_OperatingRoomNumber_Code=#{operatingRoomNOCode,jdbcType=VARCHAR},
+            OperationOnSite_OperatingRoomNumber_Name=#{operatingRoomNO,jdbcType=VARCHAR},
+            OperationOnSite_OperatingRoom_Code=#{operatingRoomCode,jdbcType=VARCHAR},
+            OperationOnSite_OperatingRoom_Name=#{operatingRoom,jdbcType=VARCHAR},
+            OperationOnSite_OperationTable_Code=#{operationTableCode,jdbcType=VARCHAR},
+            OperationOnSite_OperationTable_Name=#{operationTable,jdbcType=VARCHAR},
+            OperationOnSite_Sequence=#{sequence,jdbcType=INTEGER},
+            OperationLevel_Code=#{operationLevelCode,jdbcType=VARCHAR},
+            OperationLevel_Name=#{operationLevelName,jdbcType=VARCHAR},
+            AnesthsiaApproach_Code=#{anesthetistApproachCode,jdbcType=VARCHAR},
+            AnesthsiaApproach_Name=#{anesthetistApproachName,jdbcType=VARCHAR},
+            Anesthetist_Id=#{anestheistCode,jdbcType=VARCHAR},Anesthetist_Name=#{anestheistName,jdbcType=VARCHAR},
+            AssistantAnesthetistOne_Id=#{assistantAnestheistOneCode,jdbcType=VARCHAR},
+            AssistantAnesthetistOne_Name=#{assistantAnestheistOneName,jdbcType=VARCHAR},
+            AssistantAnesthetistTwo_Id=#{assistantAnestheistTwoCode,jdbcType=VARCHAR},
+            AssistantAnesthetistTwo_Name=#{assistantAnestheistTwoName,jdbcType=VARCHAR},
+            SurgicalMode_Code=#{surgicalModeCode,jdbcType=VARCHAR},SurgicalMode_Name=#{surgicalModeName,jdbcType=VARCHAR},
+            OperationSerialNumber=#{operationSerialNO,jdbcType=VARCHAR},OperationDatetime=#{operationDateTime,jdbcType=TIMESTAMP}
+        WHERE RequestedIdentifier=#{surgeryReqID,jdbcType=VARCHAR}
+    </update>
+    
+    <!-- deleteSurgeryMaster -->
+    <delete id="deleteSurgeryMaster" parameterType="com.vico.clever.cdr.service.model.SurgeryMaster">
+  	    DELETE FROM Inst_OperationArrangement
+  		WHERE RequestedIdentifier=#{surgeryReqID,jdbcType=VARCHAR}
+ 	</delete>
+	
+	<!-- getSurgeryRecordBySurgeryReqID -->
+	<select id="getSurgeryRecordBySurgeryReqID" parameterType="java.lang.String" resultMap="SurgeryRecordMap">
+		<![CDATA[
+			SELECT * from Obsr_OperationRecord
+				WHERE OperationIdentifier = #{surgeryReqID} 
+		]]> 
+	</select>
+	<!-- getSurgeryRecordByPatientID -->
+	<select id="getSurgeryRecordByPatientID" parameterType="java.lang.String" resultMap="SurgeryRecordMap">
+		<![CDATA[
+			SELECT * from Obsr_OperationRecord
+				WHERE PatientIdentifier_Id = #{patientID} 
+		]]> 
+	</select>
+	<!-- getSurgeryRecordByVisitID -->
+	<select id="getSurgeryRecordByVisitID" parameterType="java.lang.String" resultMap="SurgeryRecordMap">
+		<![CDATA[
+			SELECT * from Obsr_OperationRecord
+				WHERE EncounterIdentifier = #{visitID} 
+		]]> 
+	</select>
+	<!-- getSurgeryRecordByReportID -->
+	<select id="getSurgeryRecordByReportID" parameterType="java.lang.String" resultMap="SurgeryRecordMap">
+		<![CDATA[
+			SELECT * from Obsr_OperationRecord
+				WHERE ReportIdentifier = #{reportID} 
+		]]> 
+	</select>
+	
+	<!-- getAllSurgeryRecords -->
+	<select id="getAllSurgeryRecords" resultMap="SurgeryRecordMap">
+	<![CDATA[
+			SELECT * from Obsr_OperationRecord
+		]]> 
+	</select>
+	
+	<!-- insertSurgeryRecord -->
+	<insert id="insertSurgeryRecord" parameterType="com.vico.clever.cdr.service.model.SurgeryRecord">
+		INSERT INTO Obsr_OperationRecord(
+			GUID,OperationIdentifier,PatientIdentifier_Id,EncounterIdentifier,ReportIdentifier,OperativeDetails_Bleeding,
+			OperativeDetails_Bleeding_Units,OperativeDetails_DetailsOfSurgeryPerformed_Description_Code,
+			OperativeDetails_DetailsOfSurgeryPerformed_Description_Name,OperativeDetails_SkinDisinfection,
+			Incision_Description,Closure_Drains_Sign,Closure_Drains_Material,Closure_Drains_MaterialAmount,
+			Closure_Drains_Location,OperativeDetails_Anesthesia_Indication,OperativeDetails_Anesthesia_Recovery,
+			OperativeDetails_Anesthesia_StartDatetime,OperativeDetails_Anesthesia_Asa_Code,
+			OperativeDetails_Anesthesia_Asa_Name,OperativeDetails_Anesthesia_Medicine,OperativeDetails_Anesthesia_Position,
+			OperativeDetails_Anesthesia_Description,OperativeDetails_Anesthesia_Complication,
+			OperativeDetails_Anesthesia_Effect,OperativeDetails_Anesthesia_Premedication,Closure_TracheaCannula_Type,
+			Closure_TracheaCannula_UnpinCannula,Transfusion_Volume,Transfusion_Volume_Units,Transfusion_Items,
+			Incision_LevelOfIncision_Code,Incision_LevelOfIncision_Name,Incision_HealingLevel
+		)VALUES(
+			newid(),#{surgeryReqID,jdbcType=VARCHAR},#{patientID,jdbcType=VARCHAR},
+			#{visitID,jdbcType=VARCHAR},#{reportID,jdbcType=VARCHAR},
+			#{bleeding,jdbcType=INTEGER},#{bleedingUnit,jdbcType=VARCHAR},
+			#{surDescriptionCode,jdbcType=VARCHAR},#{surDescription,jdbcType=VARCHAR},
+			#{skinDisinfection,jdbcType=VARCHAR},#{incisionDescription,jdbcType=VARCHAR},
+			#{closureDrainsSign,jdbcType=BIT},#{closureDrainsMaterial,jdbcType=VARCHAR},
+			#{closureDrainsMaterialAmount,jdbcType=INTEGER},#{closureDrainsLocation,jdbcType=VARCHAR},
+			#{anesthesiaIndication,jdbcType=VARCHAR},#{anesthesiaRecovery,jdbcType=VARCHAR},
+			#{anesthesiaStartDate,jdbcType=TIMESTAMP},#{anesthesiaASACode,jdbcType=VARCHAR},
+			#{anesthesiaASA,jdbcType=VARCHAR},#{anesthesiaMedicine,jdbcType=VARCHAR},
+			#{anesthesiaPosition,jdbcType=VARCHAR},#{anesthesiaDescription,jdbcType=VARCHAR},
+			#{anesthesiaComplication,jdbcType=VARCHAR},#{anesthesiaEffect,jdbcType=VARCHAR},
+			#{anesthesiaPremediaine,jdbcType=VARCHAR},#{tracheaCannulaType,jdbcType=VARCHAR},
+			#{tracheaCannulaUnpin,jdbcType=VARCHAR},#{transfusionVolume,jdbcType=INTEGER},
+			#{transfusionVolumeUnit,jdbcType=VARCHAR},#{transfusionItem,jdbcType=VARCHAR},
+			#{incsionLevelCode,jdbcType=VARCHAR},#{incsionLevelName,jdbcType=VARCHAR},
+			#{healLevel,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<!-- updateSurgeryRecord -->
+	<update id="updateSurgeryRecord" parameterType="com.vico.clever.cdr.service.model.SurgeryRecord">
+        UPDATE Obsr_OperationRecord SET
+        	PatientIdentifier_Id=#{patientID,jdbcType=VARCHAR},
+        	EncounterIdentifier=#{visitID,jdbcType=VARCHAR},
+        	ReportIdentifier=#{reportID,jdbcType=VARCHAR},
+        	OperativeDetails_Bleeding=#{bleeding,jdbcType=INTEGER},
+        	OperativeDetails_Bleeding_Units=#{bleedingUnit,jdbcType=VARCHAR},
+        	OperativeDetails_DetailsOfSurgeryPerformed_Description_Code=#{surDescriptionCode,jdbcType=VARCHAR},
+        	OperativeDetails_DetailsOfSurgeryPerformed_Description_Name=#{surDescription,jdbcType=VARCHAR},
+        	OperativeDetails_SkinDisinfection=#{skinDisinfection,jdbcType=VARCHAR},
+        	Incision_Description=#{incisionDescription,jdbcType=VARCHAR},
+        	Closure_Drains_Sign=#{closureDrainsSign,jdbcType=BIT},
+        	Closure_Drains_Material=#{closureDrainsMaterial,jdbcType=VARCHAR},
+        	Closure_Drains_MaterialAmount=#{closureDrainsMaterialAmount,jdbcType=INTEGER},
+        	Closure_Drains_Location=#{closureDrainsLocation,jdbcType=VARCHAR},
+        	OperativeDetails_Anesthesia_Indication=#{anesthesiaIndication,jdbcType=VARCHAR},
+        	OperativeDetails_Anesthesia_Recovery=#{anesthesiaRecovery,jdbcType=VARCHAR},
+        	OperativeDetails_Anesthesia_StartDatetime=#{anesthesiaStartDate,jdbcType=TIMESTAMP},
+        	OperativeDetails_Anesthesia_Asa_Code=#{anesthesiaASACode,jdbcType=VARCHAR},
+        	OperativeDetails_Anesthesia_Asa_Name=#{anesthesiaASA,jdbcType=VARCHAR},
+        	OperativeDetails_Anesthesia_Medicine=#{anesthesiaMedicine,jdbcType=VARCHAR},
+        	OperativeDetails_Anesthesia_Position=#{anesthesiaPosition,jdbcType=VARCHAR},
+        	OperativeDetails_Anesthesia_Description=#{anesthesiaDescription,jdbcType=VARCHAR},
+        	OperativeDetails_Anesthesia_Complication=#{anesthesiaComplication,jdbcType=VARCHAR},
+        	OperativeDetails_Anesthesia_Effect=#{anesthesiaEffect,jdbcType=VARCHAR},
+        	OperativeDetails_Anesthesia_Premedication=#{anesthesiaPremediaine,jdbcType=VARCHAR},
+        	Closure_TracheaCannula_Type=#{tracheaCannulaType,jdbcType=VARCHAR},
+        	Closure_TracheaCannula_UnpinCannula=#{tracheaCannulaUnpin,jdbcType=VARCHAR},
+        	Transfusion_Volume=#{transfusionVolume,jdbcType=INTEGER},
+        	Transfusion_Volume_Units=#{transfusionVolumeUnit,jdbcType=VARCHAR},
+        	Transfusion_Items=#{transfusionItem,jdbcType=VARCHAR},
+        	Incision_LevelOfIncision_Code=#{incsionLevelCode,jdbcType=VARCHAR},
+        	Incision_LevelOfIncision_Name=#{incsionLevelName,jdbcType=VARCHAR},
+        	Incision_HealingLevel=#{healLevel,jdbcType=VARCHAR}
+        WHERE OperationIdentifier=#{surgeryReqID,jdbcType=VARCHAR}
+    </update>
+    
+    <!-- deleteSurgeryRecord -->
+    <delete id="deleteSurgeryRecord" parameterType="com.vico.clever.cdr.service.model.SurgeryRecord">
+  	    DELETE FROM Obsr_OperationRecord
+  		WHERE OperationIdentifier=#{surgeryReqID,jdbcType=VARCHAR}
+ 	</delete>
+ 	
+ 	<!-- getSurgeryStatusBySurgeryReqID -->
+	<select id="getSurgeryStatusBySurgeryReqID" parameterType="java.lang.String" resultMap="SurgeryStatusMap">
+		<![CDATA[
+			SELECT * from Action_Operation
+				WHERE RequestedIdentifier = #{surgeryReqID} 
+		]]> 
+	</select>
+	<!-- getSurgeryStatusByPatientID -->
+	<select id="getSurgeryStatusByPatientID" parameterType="java.lang.String" resultMap="SurgeryStatusMap">
+		<![CDATA[
+			SELECT * from Action_Operation
+				WHERE PatientIdentifier_Id = #{patientID} 
+		]]> 
+	</select>
+	<!-- getSurgeryStatusByVisitID -->
+	<select id="getSurgeryStatusByVisitID" parameterType="java.lang.String" resultMap="SurgeryStatusMap">
+		<![CDATA[
+			SELECT * from Action_Operation
+				WHERE EncounterIdentifier = #{visitID} 
+		]]> 
+	</select>
+	
+	<!-- getAllSurgeryStatus -->
+	<select id="getAllSurgeryStatus" resultMap="SurgeryStatusMap">
+	<![CDATA[
+			SELECT * from Action_Operation
+		]]> 
+	</select>
+	
+	<!-- insertSurgeryStatus -->
+	<insert id="insertSurgeryStatus" parameterType="com.vico.clever.cdr.service.model.SurgeryStatus">
+		INSERT INTO Action_Operation(
+			GUID,RequestedIdentifier,PatientIdentifier_Id,EncounterIdentifier,OperationName,IsmTransition_CurrentState_Code,
+			IsmTransition_CurrentState_Name,IsmTransition_CareflowStep_Code,IsmTransition_CareflowStep_Name,Comment,
+			StartDateTime,Performer_Code,Performer_Name
+		)VALUES(
+			newid(),#{surgeryReqID,jdbcType=VARCHAR},#{patientID,jdbcType=VARCHAR},
+			#{visitID,jdbcType=VARCHAR},#{operationName,jdbcType=VARCHAR},
+			#{curStateCode,jdbcType=VARCHAR},#{curStateName,jdbcType=VARCHAR},
+			#{careflowStepCode,jdbcType=VARCHAR},#{careflowStepName,jdbcType=VARCHAR},
+			#{comment,jdbcType=VARCHAR},#{performDateTime,jdbcType=TIMESTAMP},
+			#{performDoctorCode,jdbcType=VARCHAR},#{performDoctorName,jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<!-- updateSurgeryStatus -->
+	<update id="updateSurgeryStatus" parameterType="com.vico.clever.cdr.service.model.SurgeryStatus">
+        UPDATE Action_Operation SET
+        	PatientIdentifier_Id=#{patientID,jdbcType=VARCHAR},
+        	EncounterIdentifier=#{visitID,jdbcType=VARCHAR},
+        	OperationName=#{operationName,jdbcType=VARCHAR},
+        	IsmTransition_CurrentState_Code=#{curStateCode,jdbcType=VARCHAR},
+        	IsmTransition_CurrentState_Name=#{curStateName,jdbcType=VARCHAR},
+        	IsmTransition_CareflowStep_Code=#{careflowStepCode,jdbcType=VARCHAR},
+        	IsmTransition_CareflowStep_Name=#{careflowStepName,jdbcType=VARCHAR},
+        	Comment=#{comment,jdbcType=VARCHAR},
+        	StartDateTime=#{performDateTime,jdbcType=TIMESTAMP},
+        	Performer_Code=#{performDoctorCode,jdbcType=VARCHAR},
+        	Performer_Name=#{performDoctorName,jdbcType=VARCHAR}
+        WHERE RequestedIdentifier=#{surgeryReqID,jdbcType=VARCHAR}
+    </update>
+    
+    <!-- deleteSurgeryStatus -->
+    <delete id="deleteSurgeryStatus" parameterType="com.vico.clever.cdr.service.model.SurgeryStatus">
+  	    DELETE FROM Action_Operation
+  		WHERE RequestedIdentifier=#{surgeryReqID,jdbcType=VARCHAR}
+ 	</delete>
+</mapper>

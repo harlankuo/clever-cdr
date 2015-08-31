@@ -17,6 +17,7 @@ import com.vico.clever.cdr.CleverRestApplication;
 import com.vico.clever.cdr.service.entity.PatientAdtEntity;
 import com.vico.clever.cdr.service.model.IntegrationResult;
 import com.vico.clever.cdr.service.model.PatientAdmission;
+import com.vico.clever.cdr.service.model.PatientDischargeInfo;
 import com.vico.clever.cdr.service.model.PatientInfo;
 import com.vico.clever.cdr.service.model.PatientTransferInfo;
 
@@ -131,10 +132,24 @@ public class PatientAdtResourceTest extends JerseyTest {
 		patientTransferInfo.setStatus(""+num);
 		patientTransferInfo.setVisitID("visitID-"+num);
 		logger.debug("*********  patientTransferInfo Created  ***********");
+		logger.debug(patientTransferInfo.toString());
+		
+		PatientDischargeInfo patientDischargeInfo=new PatientDischargeInfo();
+		patientDischargeInfo.setDateOfCharge(date);
+		patientDischargeInfo.setDischargeDept(param);
+		patientDischargeInfo.setDischargeDescripition(param);
+		patientDischargeInfo.setDischargeDestination(str);
+		patientDischargeInfo.setDischargeDestinationType(param);
+		patientDischargeInfo.setDisChargeWard(param);
+		patientDischargeInfo.setOrderID(id);
+		patientDischargeInfo.setPatientID("patient-"+num);
+		patientDischargeInfo.setVisitID("visit-"+num);
+		logger.debug("*********  patientDischargeInfo Created  ***********");
+		logger.debug(patientDischargeInfo.toString());
 		
 		PatientAdtEntity patientAdtEntity=new PatientAdtEntity();
 		patientAdtEntity.setPatientAdmission(patientAdm);
-		//patientAdtEntity.setPatientDischargeInfo(patientDischargeInfo);
+		patientAdtEntity.setPatientDischargeInfo(patientDischargeInfo);
 		patientAdtEntity.setPatientInfo(patientInfo);
 		patientAdtEntity.setPatientTransferInfo(patientTransferInfo);
 		

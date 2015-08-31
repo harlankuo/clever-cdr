@@ -1,7 +1,6 @@
 package com.vico.clever.cdr;
 
 import org.glassfish.jersey.server.ResourceConfig;
-import org.glassfish.jersey.server.ServerProperties;
 
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 
@@ -21,8 +20,5 @@ public class CleverRestApplication extends ResourceConfig {
 		// register json provider class
 		register(JacksonJsonProvider.class);
 
-		//property(ServerProperties.WADL_GENERATOR_CONFIG,true);
-		
-		//property(ServerProperties.WADL_FEATURE_DISABLE,false);
 	}
 }

@@ -42,4 +42,6 @@ public interface PatientAdtDao {
 	
 	public int deletePatDisCharge(@Param("patientID") String patientID,@Param("visitId") String visitId);
 
+	public PatientDischargeInfo selectPatientDischargeInfo(@Param("patientID") String patientID,@Param("visitId") String visitId);
+
 }
