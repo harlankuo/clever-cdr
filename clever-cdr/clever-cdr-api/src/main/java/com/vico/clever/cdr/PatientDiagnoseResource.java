@@ -1,5 +1,7 @@
 package com.vico.clever.cdr;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -48,10 +50,35 @@ public class PatientDiagnoseResource {
 				.insertProblemDiagnosis(problemDiagnosis);
 		return integrationResult;
 	}
-	
+
+	/**
+	 * Sub resource (exposed at "patientDiagnoseList" path) Method handling the
+	 * data entry of patient Diagnose information into CDR with HTTP POST
+	 * requests.
+	 * 
+	 * @author Yuan.Ziyang
+	 * @param problemDiagnosisList
+	 *            input json or xml object data that contains problemDiagnosis
+	 *            list info;
+	 * @return IntegrationResult that contains the handling result description
+	 *         as an application/json response.
+	 */
+	@POST
+	@Path("patientDiagnoseList")
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	public IntegrationResult problemDiagnosisList(
+			List<ProblemDiagnosis> problemDiagnosisList) {
+		IntegrationResult integrationResult = new IntegrationResult();
+		integrationResult = patientDiagService
+				.insertProblemDiagnosisList(problemDiagnosisList);
+		return integrationResult;
+	}
+
 	@GET
-	@Produces({ MediaType.APPLICATION_JSON})
-	public ProblemDiagnosis problemDiagnosis(@QueryParam("problemDiagnosisId") String problemDiagnosisId) {
+	@Produces({ MediaType.APPLICATION_JSON })
+	public ProblemDiagnosis problemDiagnosis(
+			@QueryParam("problemDiagnosisId") String problemDiagnosisId) {
 		return patientDiagService.getProblemDiagnosisById(problemDiagnosisId);
 	}
 
@@ -74,6 +101,29 @@ public class PatientDiagnoseResource {
 		IntegrationResult integrationResult = new IntegrationResult();
 		integrationResult = patientDiagService
 				.updateProblemDiagnosis(problemDiagnosis);
+		return integrationResult;
+	}
+
+	/**
+	 * Method handling operation of updating patient Diagnose information from
+	 * CDR with HTTP PUT requests.
+	 * 
+	 * @author Yuan.Ziyang
+	 * @param problemDiagnosisList
+	 *            input json or xml object data that contains problemDiagnosis
+	 *            List info;
+	 * @return IntegrationResult that contains the handling result description
+	 *         as an application/json response.
+	 */
+	@PUT
+	@Path("patientDiagnoseList")
+	@Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	@Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+	public IntegrationResult updateProblemDiagnosisList(
+			List<ProblemDiagnosis> problemDiagnosisList) {
+		IntegrationResult integrationResult = new IntegrationResult();
+		integrationResult = patientDiagService
+				.updateProblemDiagnosisList(problemDiagnosisList);
 		return integrationResult;
 	}
 

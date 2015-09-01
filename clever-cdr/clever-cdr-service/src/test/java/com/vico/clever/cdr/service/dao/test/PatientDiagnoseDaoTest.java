@@ -1,6 +1,8 @@
 package com.vico.clever.cdr.service.dao.test;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 
 import org.apache.ibatis.session.SqlSession;
@@ -69,7 +71,17 @@ public class PatientDiagnoseDaoTest {
 			int update=patientDiagDao.updatePatientDiagnose(problemDiagnosis2);
 			logger.debug("*********  problemDiagnosis update  ***********");
 			
+			List<ProblemDiagnosis> problemDiagnosisList=new ArrayList<ProblemDiagnosis>();
+			problemDiagnosisList.add(problemDiagnosis);
+			problemDiagnosisList.add(problemDiagnosis2);
+			int insertList=patientDiagDao.insertPatientDiagnoseList(problemDiagnosisList);
+			logger.debug("insertList:"+insertList);
+			logger.debug("*********  insertPatientDiagnoseList  ***********");
 			
+			logger.debug("*********  updatePatientDiagnoseList  ***********");
+			int updateList=patientDiagDao.updatePatientDiagnoseList(problemDiagnosisList);
+			logger.debug("updateList:"+updateList);
+			logger.debug("*********  updatePatientDiagnoseList  ***********");
 			sqlSession.commit();
 			logger.debug("*********  SqlSession Commit  ***********");
 		} catch (Exception e) {

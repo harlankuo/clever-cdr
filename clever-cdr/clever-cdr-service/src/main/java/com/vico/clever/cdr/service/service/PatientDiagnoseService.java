@@ -3,6 +3,8 @@
  */
 package com.vico.clever.cdr.service.service;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.log4j.Logger;
 
@@ -123,9 +125,66 @@ public class PatientDiagnoseService {
 				.openSession();
 		PatientDiagnoseDao patientDiagDao = sqlSession
 				.getMapper(PatientDiagnoseDao.class);
-		ProblemDiagnosis problemDiagnosis = patientDiagDao.getProblemDiagnosisById(problemDiagnosisId);
+		ProblemDiagnosis problemDiagnosis = patientDiagDao
+				.getProblemDiagnosisById(problemDiagnosisId);
 		sqlSession.commit();
 		sqlSession.close();
 		return problemDiagnosis;
+	}
+
+	public IntegrationResult insertProblemDiagnosisList(
+			List<ProblemDiagnosis> problemDiagnosisList) {
+		IntegrationResult integrationResult = new IntegrationResult();
+		SqlSession sqlSession = SQLSessionConfig.getSqlSessionFactory()
+				.openSession();
+		logger.debug("*********  SqlSession Open  ***********");
+		PatientDiagnoseDao patientDiagDao = sqlSession
+				.getMapper(PatientDiagnoseDao.class);
+		try {
+			int insertList = patientDiagDao
+					.insertPatientDiagnoseList(problemDiagnosisList);
+			logger.debug("批量写入病人诊断信息记录：" + insertList);
+		} catch (Exception e) {
+			logger.error(e.toString());
+			integrationResult.setResultCode(integrationResult.INTERNALERROR);
+			integrationResult.setResultDesc(integrationResult.INTERNALDESC
+					+ e.toString());
+			sqlSession.rollback();
+			logger.debug("*********  SqlSession Rollback  ***********");
+		} finally {
+			sqlSession.close();
+			logger.debug("*********  SqlSession Closed  ***********");
+		}
+		return integrationResult;
+	}
+
+	public IntegrationResult updateProblemDiagnosisList(
+			List<ProblemDiagnosis> problemDiagnosisList) {
+		IntegrationResult integrationResult = new IntegrationResult();
+		SqlSession sqlSession = SQLSessionConfig.getSqlSessionFactory()
+				.openSession();
+		logger.debug("*********  SqlSession Open  ***********");
+		PatientDiagnoseDao patientDiagDao = sqlSession
+				.getMapper(PatientDiagnoseDao.class);
+		try {
+			int update = patientDiagDao
+					.updatePatientDiagnoseList(problemDiagnosisList);
+			logger.debug("updatePatientDiagnoseList count : " + update);
+			sqlSession.commit();
+			logger.debug("*********  SqlSession Commit  ***********");
+			integrationResult.setResultCode(integrationResult.SUCCESSCODE);
+			integrationResult.setResultDesc(integrationResult.SUCCESSDESC);
+		} catch (Exception e) {
+			logger.error(e.toString());
+			integrationResult.setResultCode(integrationResult.INTERNALERROR);
+			integrationResult.setResultDesc(integrationResult.INTERNALDESC
+					+ e.toString());
+			sqlSession.rollback();
+			logger.debug("*********  SqlSession Rollback  ***********");
+		} finally {
+			sqlSession.close();
+			logger.debug("*********  SqlSession Closed  ***********");
+		}
+		return integrationResult;
 	}
 }
